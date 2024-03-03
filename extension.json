@@ -1,144 +1,144 @@
 {
-  "name": "AchievementBadges",
-  "version": "0.3.0",
-  "author": ["[https://femiwiki.com/ Femiwiki Team]"],
-  "url": "https://github.com/femiwiki/AchievementBadges",
-  "descriptionmsg": "achievementbadges-desc",
-  "license-name": "AGPL-3.0-or-later",
-  "type": "specialpage",
-  "requires": {
-    "MediaWiki": ">= 1.35.0"
-  },
-  "AutoloadNamespaces": {
-    "MediaWiki\\Extension\\AchievementBadges\\": "includes/"
-  },
-  "Hooks": {
-    "BeforeCreateEchoEvent": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onBeforeCreateEchoEvent",
-    "BeforeEchoEventInsert": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onBeforeEchoEventInsert",
-    "EchoGetBundleRules": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onEchoGetBundleRules",
-    "GetBetaFeaturePreferences": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onGetBetaFeaturePreferences",
-    "ContributionsToolLinks": "Main",
-    "MediaWikiServices": "MediaWikiServices",
-    "ResourceLoaderGetConfigVars": "Main",
-    "APIAfterExecute": "AchievementRegister",
-    "BeforeCreateAchievement": "AchievementRegister",
-    "LocalUserCreated": "AchievementRegister",
-    "PageSaveComplete": "AchievementRegister",
-    "SpecialAchievementsBeforeGetEarned": "AchievementRegister",
-    "UserSaveSettings": "AchievementRegister",
-    "ChangeTagsAfterUpdateTags": "AchievementRegister"
-  },
-  "ExtensionFunctions": [
-    "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\MediaWikiServices::onExtensionFunction"
-  ],
-  "HookHandlers": {
-    "Main": {
-      "class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main",
-      "services": ["MainConfig", "AchievementBadgesHookRunner"]
-    },
-    "MediaWikiServices": {
-      "class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\MediaWikiServices"
-    },
-    "AchievementRegister": {
-      "class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\AchievementRegister",
-      "services": [
-        "MainConfig",
-        "DBLoadBalancer",
-        "RevisionStore",
-        "UserOptionsLookup"
-      ]
-    }
-  },
-  "SpecialPages": {
-    "Achievements": {
-      "class": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialAchievements",
-      "services": ["AchievementBadgesHookRunner"]
-    },
-    "ShareAchievement": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialShareAchievement"
-  },
-  "ResourceFileModulePaths": {
-    "localBasePath": "modules",
-    "remoteExtPath": "AchievementBadges/modules"
-  },
-  "ResourceModules": {
-    "ext.achievementbadges.special.achievements.styles": {
-      "styles": ["styles/spacial-achievements.less"]
-    },
-    "ext.achievementbadges.special.shareachievement.styles": {
-      "styles": ["styles/spacial-shareachievement.less"]
-    },
-    "ext.achievementbadges.special.shareachievement": {
-      "targets": ["desktop", "mobile"],
-      "scripts": ["shareachievement.js"],
-      "dependencies": ["ext.achievementbadges.dm", "mediawiki.page.ready"]
-    },
-    "ext.achievementbadges.dm": {
-      "targets": ["desktop", "mobile"],
-      "scripts": ["mw.achievementbadges.js"]
-    }
-  },
-  "LogTypes": ["achievementbadges"],
-  "LogActionsHandlers": {
-    "achievementbadges/*": "MediaWiki\\Extension\\AchievementBadges\\LogFormatter"
-  },
-  "ServiceWiringFiles": ["includes/ServiceWiring.php"],
-  "config": {
-    "AchievementBadgesEnableBetaFeature": {
-      "value": false,
-      "description": "Whether to have AchievementBadges available only as a beta feature and only shown to the users who have enabled the beta feature."
-    },
-    "AchievementBadgesReplaceEchoThankYouEdit": {
-      "value": false,
-      "description": "Whether to suppress edit milestone notifications sent from Echo."
-    },
-    "AchievementBadgesReplaceEchoWelcome": {
-      "value": false,
-      "description": "Whether to suppress the welcome notification sent from Echo."
-    },
-    "AchievementBadgesAchievementFallbackIcon": {
-      "value": "extensions/AchievementBadges/images/achievement-icon-fallback.svg",
-      "description": [
-        "Path to the fallback icon of achievements which is relative to the $wgScriptPath. The icon can be different for ltr and rtl languages. icons for specific languages can also specified using the language code.",
-        "Example: \"{$wgScriptPath}/static/image/achievement-fallback-icon.svg\"",
-        "Example 2:",
-        "[ 'ko' => \"$wgScriptPath/static/images/achievement-fallback-icon-ko.png\",",
-        "'ltr' => \"$wgScriptPath/static/images/achievement-fallback-icon-ltr.png\",",
-        "'rtl' => \"$wgScriptPath/static/images/achievement-fallback-icon-rtl.png\", ]"
-      ]
-    },
-    "AchievementBadgesAchievementFallbackOpenGraphImage": {
-      "value": "extensions/AchievementBadges/images/achievement-og-image-fallback.png",
-      "description": [
-        "Path to the fallback imago of achievements which is showed as an Open Graph image. Could be an array value, like $wgAchievementBadgesAchievementFallbackIcon"
-      ]
-    },
-    "AchievementBadgesAchievements": {
-      "value": {},
-      "merge_strategy": "array_plus_2d",
-      "description": "Contains a key-value pair list of achievements. The thresholds should not be changed."
-    },
-    "AchievementBadgesDisabledAchievements": {
-      "value": [],
-      "description": "Keys of achievements should be excluded."
-    },
-    "AchievementBadgesFacebookAppId": {
-      "value": false,
-      "description": "Facebook App id for SNS sharing."
-    },
-    "AchievementBadgesAddThisId": {
-      "value": false,
-      "description": "AddThis id for SNS sharing. it could include tool id in a form of array has keys 'pub' and 'tool'."
-    }
-  },
-  "MessagesDirs": {
-    "AchievementBadges": ["i18n"]
-  },
-  "ExtensionMessagesFiles": {
-    "AchievementBadgesAlias": "AchievementBadges.i18n.alias.php"
-  },
-  "TestAutoloadNamespaces": {
-    "MediaWiki\\Extension\\AchievementBadges\\Tests\\Integration\\": "tests/phpunit/integration/",
-    "MediaWiki\\Extension\\AchievementBadges\\Tests\\Unit\\": "tests/phpunit/unit/"
-  },
-  "manifest_version": 2
+	"name": "AchievementBadges",
+	"version": "0.3.0",
+	"author": [ "[https://femiwiki.com/ Femiwiki Team]" ],
+	"url": "https://github.com/femiwiki/AchievementBadges",
+	"descriptionmsg": "achievementbadges-desc",
+	"license-name": "AGPL-3.0-or-later",
+	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AchievementBadges\\": "includes/"
+	},
+	"Hooks": {
+		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onBeforeCreateEchoEvent",
+		"BeforeEchoEventInsert": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onBeforeEchoEventInsert",
+		"EchoGetBundleRules": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onEchoGetBundleRules",
+		"GetBetaFeaturePreferences": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main::onGetBetaFeaturePreferences",
+		"ContributionsToolLinks": "Main",
+		"MediaWikiServices": "MediaWikiServices",
+		"ResourceLoaderGetConfigVars": "Main",
+		"APIAfterExecute": "AchievementRegister",
+		"BeforeCreateAchievement": "AchievementRegister",
+		"LocalUserCreated": "AchievementRegister",
+		"PageSaveComplete": "AchievementRegister",
+		"SpecialAchievementsBeforeGetEarned": "AchievementRegister",
+		"UserSaveSettings": "AchievementRegister",
+		"ChangeTagsAfterUpdateTags": "AchievementRegister"
+	},
+	"ExtensionFunctions": [
+		"MediaWiki\\Extension\\AchievementBadges\\HookHandler\\MediaWikiServices::onExtensionFunction"
+	],
+	"HookHandlers": {
+		"Main": {
+			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main",
+			"services": [ "MainConfig", "AchievementBadgesHookRunner" ]
+		},
+		"MediaWikiServices": {
+			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\MediaWikiServices"
+		},
+		"AchievementRegister": {
+			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\AchievementRegister",
+			"services": [
+				"MainConfig",
+				"DBLoadBalancer",
+				"RevisionStore",
+				"UserOptionsLookup"
+			]
+		}
+	},
+	"SpecialPages": {
+		"Achievements": {
+			"class": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialAchievements",
+			"services": [ "AchievementBadgesHookRunner" ]
+		},
+		"ShareAchievement": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialShareAchievement"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "AchievementBadges/modules"
+	},
+	"ResourceModules": {
+		"ext.achievementbadges.special.achievements.styles": {
+			"styles": [ "styles/spacial-achievements.less" ]
+		},
+		"ext.achievementbadges.special.shareachievement.styles": {
+			"styles": [ "styles/spacial-shareachievement.less" ]
+		},
+		"ext.achievementbadges.special.shareachievement": {
+			"targets": [ "desktop", "mobile" ],
+			"scripts": [ "shareachievement.js" ],
+			"dependencies": [ "ext.achievementbadges.dm", "mediawiki.page.ready" ]
+		},
+		"ext.achievementbadges.dm": {
+			"targets": [ "desktop", "mobile" ],
+			"scripts": [ "mw.achievementbadges.js" ]
+		}
+	},
+	"LogTypes": [ "achievementbadges" ],
+	"LogActionsHandlers": {
+		"achievementbadges/*": "MediaWiki\\Extension\\AchievementBadges\\LogFormatter"
+	},
+	"ServiceWiringFiles": [ "includes/ServiceWiring.php" ],
+	"config": {
+		"AchievementBadgesEnableBetaFeature": {
+			"value": false,
+			"description": "Whether to have AchievementBadges available only as a beta feature and only shown to the users who have enabled the beta feature."
+		},
+		"AchievementBadgesReplaceEchoThankYouEdit": {
+			"value": false,
+			"description": "Whether to suppress edit milestone notifications sent from Echo."
+		},
+		"AchievementBadgesReplaceEchoWelcome": {
+			"value": false,
+			"description": "Whether to suppress the welcome notification sent from Echo."
+		},
+		"AchievementBadgesAchievementFallbackIcon": {
+			"value": "extensions/AchievementBadges/images/achievement-icon-fallback.svg",
+			"description": [
+				"Path to the fallback icon of achievements which is relative to the $wgScriptPath. The icon can be different for ltr and rtl languages. icons for specific languages can also specified using the language code.",
+				"Example: \"{$wgScriptPath}/static/image/achievement-fallback-icon.svg\"",
+				"Example 2:",
+				"[ 'ko' => \"$wgScriptPath/static/images/achievement-fallback-icon-ko.png\",",
+				"'ltr' => \"$wgScriptPath/static/images/achievement-fallback-icon-ltr.png\",",
+				"'rtl' => \"$wgScriptPath/static/images/achievement-fallback-icon-rtl.png\", ]"
+			]
+		},
+		"AchievementBadgesAchievementFallbackOpenGraphImage": {
+			"value": "extensions/AchievementBadges/images/achievement-og-image-fallback.png",
+			"description": [
+				"Path to the fallback imago of achievements which is showed as an Open Graph image. Could be an array value, like $wgAchievementBadgesAchievementFallbackIcon"
+			]
+		},
+		"AchievementBadgesAchievements": {
+			"value": {},
+			"merge_strategy": "array_plus_2d",
+			"description": "Contains a key-value pair list of achievements. The thresholds should not be changed."
+		},
+		"AchievementBadgesDisabledAchievements": {
+			"value": [],
+			"description": "Keys of achievements should be excluded."
+		},
+		"AchievementBadgesFacebookAppId": {
+			"value": false,
+			"description": "Facebook App id for SNS sharing."
+		},
+		"AchievementBadgesAddThisId": {
+			"value": false,
+			"description": "AddThis id for SNS sharing. it could include tool id in a form of array has keys 'pub' and 'tool'."
+		}
+	},
+	"MessagesDirs": {
+		"AchievementBadges": [ "i18n" ]
+	},
+	"ExtensionMessagesFiles": {
+		"AchievementBadgesAlias": "AchievementBadges.i18n.alias.php"
+	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\AchievementBadges\\Tests\\Integration\\": "tests/phpunit/integration/",
+		"MediaWiki\\Extension\\AchievementBadges\\Tests\\Unit\\": "tests/phpunit/unit/"
+	},
+	"manifest_version": 2
 }
