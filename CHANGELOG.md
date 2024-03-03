@@ -5,6 +5,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 ## Unreleased
 
 - Localisations update.
+- Remove AddThis.
 
 ## v0.3.1
 

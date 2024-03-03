@@ -122,7 +122,6 @@ class SpecialShareAchievement extends SpecialPage {
 
 		$data['text-share-header'] = $this->msg( 'special-shareachievement-header-share',
 			$this->obtainer->getName() );
-		$data['data-add-this'] = $this->getAddThisData();
 		if ( !$data['data-add-this'] ) {
 			$data['data-share'] = $this->getSnsShareData();
 		}
@@ -187,40 +186,6 @@ class SpecialShareAchievement extends SpecialPage {
 			'text-obtainer' => $obtainerText,
 			'text-icon' => $iconPath,
 		];
-	}
-
-	/** @return array|null */
-	private function getAddThisData() {
-		$config = $this->getConfig()->get( Constants::CONFIG_KEY_ADD_THIS_ID );
-		if ( !$config ) {
-			return null;
-		}
-
-		$data = [];
-		$classes = [ 'addthis_inline_share_toolbox' ];
-		if ( is_array( $config ) ) {
-			if ( isset( $config['tool'] ) ) {
-				$classes[] = 'addthis_inline_share_toolbox_' . $config['tool'];
-			}
-			$data['text-pub-id'] = $config['pub'];
-		} else {
-			$data['text-pub-id'] = $config;
-		}
-
-		$data['text-class'] = implode( ' ', $classes );
-		$data['text-url-for-share'] = $this->getUrlForShare();
-
-		$obtainer = $this->obtainer;
-		$viewer = $this->viewer;
-		$tweet = ( $obtainer == $viewer ) ? 'special-shareachievement-tweet'
-			: 'special-shareachievement-tweet-viewer';
-		$tweet = $this->msg( $tweet )
-			->plaintextParams( $obtainer->getName() )
-			->plaintextParams( $this->achvNameMsg->text() )
-			->plaintextParams( '' )
-			->parse();
-		$data['text-tweet'] = trim( $tweet );
-		return $data;
 	}
 
 	/** @return array */
