@@ -1,68 +1,70 @@
 @keyframes coloring {
-  0%,
-  10% {
-    opacity: 40%;
-    filter: grayscale(1);
-  }
-  100% {
-    opacity: 100%;
-    filter: grayscale(0);
-  }
+	0%,
+	10% {
+		opacity: 40%;
+		filter: grayscale( 1 );
+	}
+
+	100% {
+		opacity: 100%;
+		filter: grayscale( 0 );
+	}
 }
 
 .message {
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.3em;
-  margin: 1.5rem 0;
+	text-align: center;
+	font-weight: normal;
+	font-size: 1.3em;
+	margin: 1.5rem 0;
 }
 
 .achievement-name {
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  font-size: 1.6em;
-  margin: 0;
+	text-align: center;
+	font-weight: bold;
+	border: none;
+	font-size: 1.6em;
+	margin: 0;
 }
+
 .achievement-icon {
-  display: block;
-  width: 5.5em;
-  margin: 2em auto;
-  animation: coloring 2s forwards;
+	display: block;
+	width: 5.5em;
+	margin: 2em auto;
+	animation: coloring 2s forwards;
 }
 
 .achievement-description {
-  text-align: center;
-  max-width: 20em;
-  margin: auto;
+	text-align: center;
+	max-width: 20em;
+	margin: auto;
 }
 
 .share-achievement {
-  text-align: center;
-  font-weight: normal;
-  margin: 3em 0 1em;
+	text-align: center;
+	font-weight: normal;
+	margin: 3em 0 1em;
 }
 
 .share-media {
-  list-style-type: none;
-  padding: 0;
-  text-align: center;
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
 
-  li {
-    display: inline-block;
-    border-radius: 1.5em;
+	li {
+		display: inline-block;
+		border-radius: 1.5em;
 
-    &:not(:last-child) {
-      margin-right: 0.5em;
-    }
-  }
+		&:not( :last-child ) {
+			margin-right: 0.5em;
+		}
+	}
 }
 
 .addthis_inline_share_toolbox {
-  text-align: center;
+	text-align: center;
 }
 
 .achievement-suggestion {
-  margin-top: 3em;
-  text-align: center;
+	margin-top: 3em;
+	text-align: center;
 }
