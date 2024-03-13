@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"special-achievements": "Alla prestationer",
+	"achievement-earned-at-tooltip": "$1, på $1",
+	"special-shareachievement-invalid-username": "Ogiltigt användarnamn",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"achievementbadges-achievement-name-sign-up": "Registrera",
+	"achievementbadges-achievement-description-sign-up": "{{GENDER:$1|Du}} är nu en bidragsgivare på {{SITENAME}}!",
+	"achievementbadges-achievement-name-edit-page-0": "Första redigeringen",
+	"achievementbadges-achievement-hint-create-page-0": "Skapa en ny sida!",
+	"achievementbadges-achievement-description-long-user-page": "{{GENDER:$1|Du}} skapade din användarsida och presenterade dig!",
+	"achievementbadges-achievement-name-contribs-monday": "Det är måndag!",
+	"achievementbadges-achievement-hint-contribs-monday": "Bidra på måndag",
+	"achievementbadges-achievement-name-contribs-tuesday": "Det är tisdag!",
+	"achievementbadges-achievement-hint-contribs-tuesday": "Bidra till tisdag",
+	"achievementbadges-achievement-name-contribs-wednesday": "Det är onsdag!",
+	"achievementbadges-achievement-name-contribs-thursday": "Det är torsdag!",
+	"achievementbadges-achievement-hint-contribs-thursday": "Bidra på torsdag",
+	"achievementbadges-achievement-name-contribs-friday": "Det är fredag!",
+	"achievementbadges-achievement-name-contribs-saturday": "Det är lördag!",
+	"achievementbadges-achievement-name-thanks": "Tack!",
+	"achievementbadges-achievement-hint-be-thanked": "Fortsätt {{GENDER:$1|redigera}}."
+}

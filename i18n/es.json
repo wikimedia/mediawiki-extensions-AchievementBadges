@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"MarleneR329"
+		]
+	},
+	"special-achievements": "Todos los logros",
+	"special-achievements-other-user": "Logros de $1",
+	"special-shareachievement-invalid": "Acceso no válido",
+	"special-shareachievement-header-share": "Compartir",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"log-name-achievementbadges": "Registro de logros",
+	"notification-link-text-all-achievements": "Todos los logros",
+	"achievementbadges-link-on-user-contributes": "logros alcanzados",
+	"achievementbadges-achievement-name-edit-page-0": "Primera edición",
+	"achievementbadges-achievement-hint-edit-page-0": "Editar cualquier página.",
+	"achievementbadges-achievement-hint-edit-page-1": "Seguir editando.",
+	"achievementbadges-achievement-name-visual-edit": "Editor visual",
+	"achievementbadges-achievement-name-edit-size-0": "Una hoja de una Hoja",
+	"achievementbadges-achievement-name-edit-size-2": "Una canasta de Hojas",
+	"achievementbadges-achievement-name-long-user-page": "Perfil",
+	"achievementbadges-achievement-name-contribs-sunday": "¡Es domingo!",
+	"achievementbadges-achievement-name-contribs-monday": "¡Es lunes!",
+	"achievementbadges-achievement-name-contribs-tuesday": "¡Es martes!",
+	"achievementbadges-achievement-name-contribs-wednesday": "¡Es miércoles!",
+	"achievementbadges-achievement-name-contribs-thursday": "¡Es jueves!",
+	"achievementbadges-achievement-name-contribs-friday": "¡Es viernes!",
+	"achievementbadges-achievement-name-contribs-saturday": "¡Es sábado!",
+	"achievementbadges-achievement-name-thanks": "¡Gracias!",
+	"achievementbadges-achievement-description-thanks": "Diste las gracias a alguien por la edición."
+}

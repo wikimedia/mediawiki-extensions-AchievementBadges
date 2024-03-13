@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dr Lotus Black"
+		]
+	},
+	"special-achievements": "အောင်မြင်မှုများအားလုံး",
+	"special-achievements-other-user": "$1 ၏ အောင်မြင်မှုများ",
+	"achievementbadges-anon-text": "အောင်မြင်မှုများကြည့်ရန် လော့ဂ်အင်ဝင်ပါ။",
+	"special-shareachievement-header-share": "မျှဝေ",
+	"special-shareachievement-item-facebook": "ဖေ့ဘုတ်",
+	"special-shareachievement-item-twitter": "တွတ်တာ",
+	"achievementbadges-beta-feature-achievement-enable-message": "အောင်မြင်မှု တံဆိပ်များ",
+	"log-name-achievementbadges": "အောင်မြင်မှုမှတ်တမ်း",
+	"achievementbadges-achievement-name-sign-up": "မှတ်ပုံတင်ရန်",
+	"achievementbadges-achievement-hint-sign-up": "[[Special:Createaccount|မှတ်ပုံတင်ရန် {{SITENAME}}]]။",
+	"achievementbadges-achievement-description-sign-up": "{{GENDER:$1|သင်သည်}} ယခု {{SITENAME}} ၏ ပံ့ပိုးသူတစ်ယောက်ဖြစ်ပါပြီ။",
+	"achievementbadges-achievement-name-edit-page-0": "ပထမဆုံး တည်းဖြတ်မှု",
+	"achievementbadges-achievement-hint-edit-page-0": "မည်သည့်စာမျက်နှာကိုမဆို တည်းဖြတ်ရန်။",
+	"achievementbadges-achievement-hint-edit-page-2": "ဆက်လက်တည်းဖြတ်ပါ။",
+	"achievementbadges-achievement-name-long-user-page": "ပရိုဖိုင်",
+	"achievementbadges-achievement-hint-be-thanked": "{{GENDER:$1|တည်းဖြတ်ခြင်း}} ဆက်လုပ်ပါ။",
+	"achievementbadges-achievement-description-be-thanked": "{{GENDER:$1|သင်၏}}တည်းဖြတ်မှုအတွက် တယောက်ယောက်က ကျေးဇူးတင်ခဲ့သည်။"
+}

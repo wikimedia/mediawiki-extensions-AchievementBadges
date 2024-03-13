@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tofeiku"
+		]
+	},
+	"special-achievements": "Semua pencapaian",
+	"special-shareachievement-invalid": "Capaian tidak sah",
+	"special-shareachievement-invalid-username": "Nama pengguna tidak sah",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"achievementbadges-beta-feature-achievement-enable-message": "Lencana Pencapaian",
+	"echo-category-title-achievement-badges": "Peroleh pencapaian",
+	"log-name-achievementbadges": "Log pencapaian",
+	"notification-link-text-all-achievements": "Semua pencapaian",
+	"achievementbadges-achievement-name-edit-page-0": "Suntingan Pertama",
+	"achievementbadges-achievement-hint-edit-page-0": "Sunting sebarang laman.",
+	"achievementbadges-achievement-hint-edit-page-2": "Teruskan menyunting.",
+	"achievementbadges-achievement-name-visual-edit": "Penyunting Visual",
+	"achievementbadges-achievement-hint-visual-edit": "{{GENDER:$1|Cuba}} penyunting visual",
+	"achievementbadges-achievement-hint-edit-size-0": "Tulis lebih daripada dua atau tiga ayat pada masa yang sama apabila menyunting!",
+	"achievementbadges-achievement-hint-create-page-0": "Cipta sebarang laman baru!",
+	"achievementbadges-achievement-hint-contribs-monday": "Sumbang pada Isnin",
+	"achievementbadges-achievement-name-thanks": "Terima kasih!"
+}

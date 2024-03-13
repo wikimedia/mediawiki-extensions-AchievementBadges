@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Brettchenweber",
+			"Umlaut",
+			"Zabe"
+		]
+	},
+	"special-shareachievement-invalid-username": "Ungültiger Benutzername",
+	"special-shareachievement-header-share": "Teilen",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"achievementbadges-achievement-name-sign-up": "Registrieren",
+	"achievementbadges-achievement-name-edit-page-0": "Erste Bearbeitung",
+	"achievementbadges-achievement-name-long-user-page": "Profil",
+	"achievementbadges-achievement-name-contribs-sunday": "Es ist Sonntag!",
+	"achievementbadges-achievement-name-contribs-monday": "Es ist Montag!",
+	"achievementbadges-achievement-name-contribs-tuesday": "Es ist Dienstag!",
+	"achievementbadges-achievement-name-contribs-wednesday": "Es ist Mittwoch!",
+	"achievementbadges-achievement-name-contribs-thursday": "Es ist Donnerstag!",
+	"achievementbadges-achievement-name-contribs-friday": "Es ist Freitag!",
+	"achievementbadges-achievement-name-contribs-saturday": "Es ist Samstag!",
+	"achievementbadges-achievement-name-thanks": "Vielen Dank!",
+	"achievementbadges-achievement-hint-thanks": "Es gibt immer etwas, wofür man sich bedanken kann.",
+	"achievementbadges-achievement-description-thanks": "Du hast dich für eine Bearbeitung bedankt.",
+	"achievementbadges-achievement-description-be-thanked": "Jemand hat {{GENDER:$1|dir}} für deine Bearbeitung gedankt."
+}

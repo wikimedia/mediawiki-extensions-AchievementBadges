@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kizule",
+			"Milicevic01"
+		]
+	},
+	"special-achievements": "Сва достигнућа",
+	"special-shareachievement-invalid-username": "Погрешно корисничко име",
+	"special-shareachievement-item-facebook": "Фејсбук",
+	"special-shareachievement-item-twitter": "Твитер",
+	"log-name-achievementbadges": "Дневник достигнућа",
+	"notification-link-text-all-achievements": "Сва достигнућа",
+	"achievementbadges-achievement-name-edit-page-0": "Прва измена",
+	"achievementbadges-achievement-hint-edit-page-1": "Настави уређивање.",
+	"achievementbadges-achievement-hint-edit-page-2": "Настави уређивање.",
+	"achievementbadges-achievement-name-long-user-page": "Профил",
+	"achievementbadges-achievement-name-thanks": "Хвала!",
+	"achievementbadges-achievement-description-thanks": "Захвалили сте се некоме за измену.",
+	"achievementbadges-achievement-hint-be-thanked": "Наставите {{GENDER:$1|уређивање}}.",
+	"achievementbadges-achievement-description-be-thanked": "Неко {{GENDER:$1|Вам}} се захвалио за вашу измену."
+}

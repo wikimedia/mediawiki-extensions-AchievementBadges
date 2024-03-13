@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"achievementbadges-desc": "Dèje 'nu sisteme [[Special:Achievements|realizzazione]]",
+	"special-achievements": "Tutte le realizzaziune",
+	"achievement-earned-at-tooltip": "$2, a le $1",
+	"special-shareachievement-header-share": "Condivide",
+	"special-shareachievement-item-facebook": "Feisbuc",
+	"special-shareachievement-item-twitter": "Tuitter",
+	"achievementbadges-achievement-name-sign-up": "Reggistrate"
+}

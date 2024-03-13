@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"achievement-earned-at-tooltip": "$2, a $1",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"achievementbadges-achievement-name-edit-size-0": "Na fogghia di na fogghia",
+	"achievementbadges-achievement-name-long-user-page": "Prufilu",
+	"achievementbadges-achievement-name-contribs-sunday": "È duminicadìa!",
+	"achievementbadges-achievement-name-contribs-monday": "È lunidìa!",
+	"achievementbadges-achievement-name-contribs-tuesday": "È martidìa!",
+	"achievementbadges-achievement-name-contribs-wednesday": "È mercuridì!",
+	"achievementbadges-achievement-name-contribs-thursday": "È jovidìa!",
+	"achievementbadges-achievement-name-contribs-friday": "È venniridìa|",
+	"achievementbadges-achievement-name-contribs-saturday": "È sabbatudìa!",
+	"achievementbadges-achievement-name-thanks": "Grazzi!"
+}
