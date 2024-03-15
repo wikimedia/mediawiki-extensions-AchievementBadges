@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Josve05a",
 			"Sabelöga"
 		]
 	},
@@ -12,8 +13,13 @@
 	"achievementbadges-achievement-name-sign-up": "Registrera",
 	"achievementbadges-achievement-description-sign-up": "{{GENDER:$1|Du}} är nu en bidragsgivare på {{SITENAME}}!",
 	"achievementbadges-achievement-name-edit-page-0": "Första redigeringen",
+	"achievementbadges-achievement-name-edit-page-4": "Chefredaktör",
+	"achievementbadges-achievement-hint-edit-page-4": "Fortsätt redigera. Det här prestationen är mycket svår att uppnå.",
+	"achievementbadges-achievement-name-visual-edit": "Visual Editor",
 	"achievementbadges-achievement-hint-create-page-0": "Skapa en ny sida!",
 	"achievementbadges-achievement-description-long-user-page": "{{GENDER:$1|Du}} skapade din användarsida och presenterade dig!",
+	"achievementbadges-achievement-name-contribs-sunday": "Det är söndag!",
+	"achievementbadges-achievement-hint-contribs-sunday": "Bidra på söndag",
 	"achievementbadges-achievement-name-contribs-monday": "Det är måndag!",
 	"achievementbadges-achievement-hint-contribs-monday": "Bidra på måndag",
 	"achievementbadges-achievement-name-contribs-tuesday": "Det är tisdag!",
@@ -24,5 +30,8 @@
 	"achievementbadges-achievement-name-contribs-friday": "Det är fredag!",
 	"achievementbadges-achievement-name-contribs-saturday": "Det är lördag!",
 	"achievementbadges-achievement-name-thanks": "Tack!",
-	"achievementbadges-achievement-hint-be-thanked": "Fortsätt {{GENDER:$1|redigera}}."
+	"achievementbadges-achievement-description-thanks": "Du tackade någon för redigeringen.",
+	"achievementbadges-achievement-name-be-thanked": "Tacksam dag",
+	"achievementbadges-achievement-hint-be-thanked": "Fortsätt {{GENDER:$1|redigera}}.",
+	"achievementbadges-achievement-description-be-thanked": "Någon tackade {{GENDER:$1|dig}} för din redigering."
 }
