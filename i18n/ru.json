@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac",
+			"Max34",
+			"Okras",
+			"Wileyfoxyx",
+			"Yurina Tatiana"
+		]
+	},
+	"special-achievements": "Все достижения",
+	"special-achievements-other-user": "Достижения участника $1",
+	"achievements-summary": "Это список достижений.\n* Вы можете использовать, если [[Special:Preferences#mw-prefsection-betafeatures|включите]] их.\n* Достижения могут быть удалены без предупреждения.\n* Достижение(-я), заработанные во время бета-периода могут быть запущены\nЭта функция всё ещё в состоянии тестирования.",
+	"achievement-earned-at-tooltip": "$2, в $1",
+	"special-shareachievement-invalid": "Нет доступа",
+	"special-shareachievement-invalid-username": "Неверное имя пользователя",
+	"special-shareachievement-message-other": "$1 получил(а)",
+	"special-shareachievement-header-share": "Поделиться",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Твиттер",
+	"notification-header-achievementbadges-earn": "{{GENDER:$2|Вы заработали}} достижение «$3».",
+	"notification-link-text-all-achievements": "Все достижения",
+	"achievementbadges-link-on-user-contributes": "полученные достижения",
+	"achievementbadges-achievement-name-sign-up": "Регистрация",
+	"achievementbadges-achievement-name-edit-page-0": "Первая правка",
+	"achievementbadges-achievement-name-edit-page-4": "Шеф-редактор",
+	"achievementbadges-achievement-name-visual-edit": "Визуальный редактор",
+	"achievementbadges-achievement-name-long-user-page": "Профиль",
+	"achievementbadges-achievement-name-contribs-tuesday": "Это вторник!",
+	"achievementbadges-achievement-name-thanks": "Спасибо!",
+	"achievementbadges-achievement-description-thanks": "Вы поблагодарили кого-то за правку.",
+	"achievementbadges-achievement-hint-be-thanked": "Продолжайте {{GENDER:$1|делать правки}}.",
+	"achievementbadges-achievement-description-be-thanked": "Кто-то поблагодарил {{GENDER:$1|вас}} за вашу правку."
+}

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Շահէն"
+		]
+	},
+	"special-shareachievement-header-share": "Բաժնել",
+	"special-shareachievement-item-facebook": "Ֆէյսպուք",
+	"special-shareachievement-item-twitter": "Թուիթըր",
+	"achievementbadges-achievement-name-sign-up": "Գրանցուիլ",
+	"achievementbadges-achievement-name-edit-page-0": "Առաջին Խմբագրում",
+	"achievementbadges-achievement-hint-edit-page-0": "Խմբագրել որեւէ էջ:",
+	"achievementbadges-achievement-hint-edit-page-2": "Շարունակել խմբագրել:",
+	"achievementbadges-achievement-name-edit-page-4": "Գլխաւոր խմբագիր",
+	"achievementbadges-achievement-name-visual-edit": "Տեսողական Խմբագրում",
+	"achievementbadges-achievement-hint-create-page-0": "Ստեղծէ որեւէ՛ էջ մը",
+	"achievementbadges-achievement-name-create-page-1": "Տերեւներ",
+	"achievementbadges-achievement-name-contribs-sunday": "Կիրակի՜ է",
+	"achievementbadges-achievement-name-contribs-monday": "Երկուշաբթի՜ է",
+	"achievementbadges-achievement-name-contribs-wednesday": "Չորեքշաբթի՜ է",
+	"achievementbadges-achievement-name-contribs-thursday": "Հինգշաբթի՜ է",
+	"achievementbadges-achievement-name-contribs-friday": "Ուրբա՜թ է",
+	"achievementbadges-achievement-name-contribs-saturday": "Շաբա՜թ է",
+	"achievementbadges-achievement-name-thanks": "Շնորհակալութի՜ւն"
+}

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"special-shareachievement-header-share": "Deelen",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter",
+	"notification-link-text-all-achievements": "All Realisatiounen",
+	"achievementbadges-achievement-name-edit-page-0": "Éischt Ännerung",
+	"achievementbadges-achievement-hint-edit-page-0": "Iergendeng Säit änneren.",
+	"achievementbadges-achievement-name-edit-page-4": "Chef-Redakter",
+	"achievementbadges-achievement-name-visual-edit": "Visuellen Editeur",
+	"achievementbadges-achievement-name-edit-size-2": "E Kuerf mat Blieder",
+	"achievementbadges-achievement-name-edit-size-4": "E Bam voll mat Blieder",
+	"achievementbadges-achievement-name-create-page-1": "Blieder",
+	"achievementbadges-achievement-name-create-page-2": "Feldblummen",
+	"achievementbadges-achievement-name-long-user-page": "Profil",
+	"achievementbadges-achievement-name-contribs-sunday": "Et ass Sonndeg!",
+	"achievementbadges-achievement-name-contribs-monday": "Et ass Méindeg!",
+	"achievementbadges-achievement-name-contribs-tuesday": "Et ass Dënschden!",
+	"achievementbadges-achievement-hint-contribs-tuesday": "Dënschdes matmaachen",
+	"achievementbadges-achievement-name-contribs-wednesday": "Et ass Mëttwoch!",
+	"achievementbadges-achievement-name-contribs-thursday": "Et ass Donneschdeg!",
+	"achievementbadges-achievement-name-contribs-friday": "Et ass Freideg!",
+	"achievementbadges-achievement-name-contribs-saturday": "Et ass Samschdeg!",
+	"achievementbadges-achievement-name-thanks": "Merci!"
+}
