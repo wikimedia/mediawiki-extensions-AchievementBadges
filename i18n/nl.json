@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
+	"achievementbadges-desc": "Biedt een [[Special:Achievements|prestatiessysteem]]",
 	"special-shareachievement-invalid": "Ongeldige toegang",
 	"special-shareachievement-invalid-username": "Ongeldige gebruikersnaam",
 	"special-shareachievement-item-facebook": "Facebook",
