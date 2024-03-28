@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Msz2001",
 			"SemanticPioneer"
 		]
 	},
@@ -27,7 +28,7 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Właśnie {{GENDER:$1|zdobyłem|zdobyłam}} osiągnięcie $2 na {{SITENAME}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 właśnie {{GENDER:$1|zdobył|zdobyła}} osiągnięcie $2 na {{SITENAME}}! $3",
-	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|{{GENDER:$1|Dołącz}}]] teraz, aby zacząć zdobywać osiągnięcia.\n\nMasz konto? [[Special:Login|Zaloguj się]]",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Zarejestruj się]] teraz, aby zacząć zdobywać osiągnięcia.\n\nMasz konto? [[Special:Login|Zaloguj się]]",
 	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|{{GENDER:$1|Rozpocznij}} teraz zdobywanie osiągnięć!]]",
 	"achievementbadges-beta-feature-achievement-enable-message": "Odznaki za osiągnięcia",
 	"achievementbadges-beta-feature-achievement-enable-description": "Zdobywaj dane osiągnięcia, aby otrzymywać odznaki.",
