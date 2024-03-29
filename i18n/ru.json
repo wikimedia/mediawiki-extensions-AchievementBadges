@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fenixs-ru",
 			"Kareyac",
 			"Max34",
 			"Okras",
@@ -12,8 +13,10 @@
 	"special-achievements-other-user": "Достижения участника $1",
 	"achievements-summary": "Это список достижений.\n* Вы можете использовать, если [[Special:Preferences#mw-prefsection-betafeatures|включите]] их.\n* Достижения могут быть удалены без предупреждения.\n* Достижение(-я), заработанные во время бета-периода могут быть запущены\nЭта функция всё ещё в состоянии тестирования.",
 	"achievement-earned-at-tooltip": "$2, в $1",
+	"special-shareachievement": "Поделиться значком достижения",
 	"special-shareachievement-invalid": "Нет доступа",
 	"special-shareachievement-invalid-username": "Неверное имя пользователя",
+	"special-shareachievement-invalid-achievement-name": "Неверное название достижения",
 	"special-shareachievement-message-other": "$1 получил(а)",
 	"special-shareachievement-header-share": "Поделиться",
 	"special-shareachievement-item-facebook": "Facebook",
