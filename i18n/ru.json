@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dirruw'o",
 			"Fenixs-ru",
 			"Kareyac",
 			"Max34",
@@ -9,18 +10,26 @@
 			"Yurina Tatiana"
 		]
 	},
+	"achievementbadges-desc": "Предоставьте систему [[Служебная:Достижения|достижения]]",
 	"special-achievements": "Все достижения",
 	"special-achievements-other-user": "Достижения участника $1",
 	"achievements-summary": "Это список достижений.\n* Вы можете использовать, если [[Special:Preferences#mw-prefsection-betafeatures|включите]] их.\n* Достижения могут быть удалены без предупреждения.\n* Достижение(-я), заработанные во время бета-периода могут быть запущены\nЭта функция всё ещё в состоянии тестирования.",
+	"achievementbadges-anon-text": "Пожалуйста, войдите для просмотра достижений.",
+	"achievementbadges-disabled": "Бета-версия значков достижений отключена для {{GENDER:$1|ты}}.",
+	"achievementbadges-target-not-disabled-ab": "$а {{GENDER:$1| сделал}} не включил бета-функцию «Значки достижений».",
+	"special-achievements-header-not-earning-achievements": "Не {{GENDER:$1|зарабатывая}} достижения",
 	"achievement-earned-at-tooltip": "$2, в $1",
 	"special-shareachievement": "Поделиться значком достижения",
 	"special-shareachievement-invalid": "Нет доступа",
 	"special-shareachievement-invalid-username": "Неверное имя пользователя",
 	"special-shareachievement-invalid-achievement-name": "Неверное название достижения",
 	"special-shareachievement-message-other": "$1 получил(а)",
+	"special-shareachievement-title": "{{GENDER:$1|Вы заработали}} достижение «$2»!",
+	"special-shareachievement-external-description": "$1 всего {{GENDER:$1| заработал}} достижение $2 на сайте {{SITENAME}}!",
 	"special-shareachievement-header-share": "Поделиться",
 	"special-shareachievement-item-facebook": "Facebook",
 	"special-shareachievement-item-twitter": "Твиттер",
+	"special-shareachievement-tweet": "Я только что {{GENDER:$1| заработал}} достижение $2 на сайте {{SITENAME}}! $3",
 	"log-name-achievementbadges": "Журнал достижений",
 	"notification-header-achievementbadges-earn": "{{GENDER:$2|Вы заработали}} достижение «$3».",
 	"notification-link-text-all-achievements": "Все достижения",

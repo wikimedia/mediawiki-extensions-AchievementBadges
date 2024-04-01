@@ -2,11 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Brettchenweber",
+			"Killarnee",
+			"TomatoCake",
 			"Umlaut",
 			"Zabe"
 		]
 	},
+	"special-achievements": "Alle Erfolge",
+	"special-achievements-other-user": "Erfolge von $1",
+	"achievements-summary": "Dies ist eine Liste von Erfolgen.\n* Du kannst sie verwenden, wenn du sie [[Special:Preferences#mw-prefsection-betafeatures|aktivierst]].\n* Erfolge können ohne Ankündigung gelöscht werden.\n* Während der Betaphase erzielte Erfolge können initialisiert werden\nDiese Funktion befindet sich noch in der Betaphase.",
+	"achievementbadges-anon-text": "Bitte melde dich an, um Erfolge anzuzeigen.",
+	"achievement-earned-at-tooltip": "$2, am $1",
+	"special-shareachievement": "Erfolgsabzeichen teilen",
+	"special-shareachievement-invalid": "Ungültiger Zugang",
 	"special-shareachievement-invalid-username": "Ungültiger Benutzername",
+	"special-shareachievement-invalid-achievement-name": "Ungültiger Erfolgsname",
+	"special-shareachievement-message": "Herzlichen Glückwunsch! Du hast es geschafft",
+	"special-shareachievement-message-other": "$1 erreicht",
 	"special-shareachievement-header-share": "Teilen",
 	"special-shareachievement-item-facebook": "Facebook",
 	"special-shareachievement-item-twitter": "Twitter",
