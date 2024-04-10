@@ -4,5 +4,18 @@
 			"Pyscowicz"
 		]
 	},
-	"achievementbadges-achievement-name-thanks": "Kiitos!"
+	"special-achievements": "Kaikki saavutukset",
+	"special-achievements-other-user": "Käyttäjän $1 saavutukset",
+	"special-shareachievement-header-share": "Jaa",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Rekisteröidy]] nyt saadaksesi saavutuksia.\n\nOn jo käyttäjätunnus? [[Special:Login|Kirjaudu sisään]]",
+	"achievementbadges-achievement-name-edit-page-0": "Ensimmäinen muokkaus",
+	"achievementbadges-achievement-name-visual-edit": "Visuaalinen muokkain",
+	"achievementbadges-achievement-name-contribs-sunday": "On sunnuntai!",
+	"achievementbadges-achievement-name-contribs-monday": "On maanantai!",
+	"achievementbadges-achievement-name-contribs-tuesday": "On tiistai!",
+	"achievementbadges-achievement-name-contribs-thursday": "On torstai!",
+	"achievementbadges-achievement-name-contribs-friday": "On perjantai!",
+	"achievementbadges-achievement-name-contribs-saturday": "On lauantai!",
+	"achievementbadges-achievement-name-thanks": "Kiitos!",
+	"achievementbadges-achievement-name-be-thanked": "Kiitollinen päivä"
 }
