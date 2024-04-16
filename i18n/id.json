@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Daud I.F. Argana"
+			"Daud I.F. Argana",
+			"MarioMS",
+			"Zulf"
 		]
 	},
 	"achievementbadges-desc": "Menyediakan sistem [[Special:Achievements|pencapaian]]",
 	"special-achievements": "Semua pencapaian",
 	"special-achievements-other-user": "Pencapaian $1",
 	"achievements-summary": "Ini adalah daftar pencapaian.\n* Anda bisa menggunakannya jika sudah [[Special:Preferences#mw-prefsection-betafeatures|diaktifkan]].\n* Pencapaian bisa dihapus tanpa pemberitahuan.\n* Pencapaian yang diperoleh selama periode beta bisa diinisialisasi\nFitur ini masih dalam tahap beta.",
-	"achievementbadges-anon-text": "Tolong masuk log untuk melihat pencapaian."
+	"achievementbadges-anon-text": "Tolong masuk log untuk melihat pencapaian.",
+	"special-shareachievement-invalid": "Akses tidak sah",
+	"special-shareachievement-invalid-username": "Nama pengguna tidak sah",
+	"special-shareachievement-header-share": "Bagikan",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Twitter"
 }
