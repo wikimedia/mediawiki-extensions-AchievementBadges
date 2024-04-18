@@ -5,7 +5,8 @@
 			"Killarnee",
 			"TomatoCake",
 			"Umlaut",
-			"Zabe"
+			"Zabe",
+			"LuluCode"
 		]
 	},
 	"special-achievements": "Alle Erfolge",
@@ -24,6 +25,10 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"achievementbadges-achievement-name-sign-up": "Registrieren",
 	"achievementbadges-achievement-name-edit-page-0": "Erste Bearbeitung",
+	"achievementbadges-achievement-hint-edit-page-1": "Weiter bearbeiten.",
+	"achievementbadges-achievement-hint-edit-page-2": "Weiter bearbeiten.",
+	"achievementbadges-achievement-name-visual-edit": "Visueller Editor.",
+	"achievementbadges-achievement-hint-visual-edit": "Probieren Sie den visuellen Editor aus",
 	"achievementbadges-achievement-description-edit-size-0": "Mehr als 1.000 Bytes wurden gleichzeitig in eine {{SITENAME}}-Seite eingefügt. Dadurch wird diese Seite wertvoller!",
 	"achievementbadges-achievement-name-long-user-page": "Profil",
 	"achievementbadges-achievement-name-contribs-sunday": "Es ist Sonntag!",
