@@ -129,9 +129,9 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 
 		if ( $expected == UserNotLoggedIn::class ) {
 			$this->expectException( $expected );
-			list( $html, ) = $this->executeSpecialPage( $subpage, null, 'qqx', $viewer );
+			[ $html, ] = $this->executeSpecialPage( $subpage, null, 'qqx', $viewer );
 		} else {
-			list( $html, ) = $this->executeSpecialPage( $subpage, null, 'qqx', $viewer );
+			[ $html, ] = $this->executeSpecialPage( $subpage, null, 'qqx', $viewer );
 			$this->assertStringContainsString( $expected, $html );
 		}
 	}
@@ -145,7 +145,7 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 		$optionManager->setOption( $user, Constants::PREF_KEY_ACHIEVEMENT_ENABLE, '1' );
 		$user->addToDatabase();
 
-		list( $html, ) = $this->executeSpecialPage( '', null, 'qqx', $user );
+		[ $html, ] = $this->executeSpecialPage( '', null, 'qqx', $user );
 		$this->assertStringContainsString( 'achievementbadges-achievement-hint-long-user-page', $html,
 			'A user can see a hint for not earning achievement' );
 	}
@@ -165,13 +165,13 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 		$info = [ 'key' => $key, 'user' => $user, 'stats' => 1 ];
 
 		Achievement::sendStats( $info );
-		list( $html, ) = $this->executeSpecialPage( '', null, 'qqx', $user );
+		[ $html, ] = $this->executeSpecialPage( '', null, 'qqx', $user );
 		$this->assertStringContainsString( 'achievementbadges-achievement-description-special-test-0', $html,
 			'Achieved achievement should be shown on Special:Achievements' );
 
 		$info['stats'] = 15;
 		Achievement::sendStats( $info );
-		list( $html, ) = $this->executeSpecialPage( '', null, 'qqx', $user );
+		[ $html, ] = $this->executeSpecialPage( '', null, 'qqx', $user );
 		$this->assertStringContainsString( 'achievementbadges-achievement-description-special-test-0', $html,
 			'Achieved achievement should be shown on Special:Achievements' );
 		$this->assertStringContainsString( 'achievementbadges-achievement-description-special-test-1', $html,

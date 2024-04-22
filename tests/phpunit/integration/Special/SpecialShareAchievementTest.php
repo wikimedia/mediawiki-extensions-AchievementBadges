@@ -46,7 +46,7 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 		$key = 'share-badge1';
 		$id = $this->getAchievedUserId( $key );
 
-		list( $html, ) = $this->executeSpecialPage( base64_encode( "$id/$key" ), null, 'qqx' );
+		[ $html, ] = $this->executeSpecialPage( base64_encode( "$id/$key" ), null, 'qqx' );
 		$this->assertStringContainsString( 'special-shareachievement-message', $html );
 	}
 

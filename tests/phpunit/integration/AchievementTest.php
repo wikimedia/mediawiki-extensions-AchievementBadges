@@ -153,7 +153,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getTestUser()->getUser();
 
 		foreach ( $testSets as $set ) {
-			list( $stats, $expected ) = $set;
+			[ $stats, $expected ] = $set;
 			Achievement::sendStats( [
 				'key' => $key,
 				'user' => $user,

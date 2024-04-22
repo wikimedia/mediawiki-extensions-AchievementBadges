@@ -163,7 +163,7 @@ class SpecialAchievements extends SpecialPage {
 		if ( $isEarned ) {
 			$data['html-description'] = $this->msg( "achievementbadges-achievement-description-$key", $user->getName() )
 				->parse();
-			list( $timePeriod, $timestamp ) = Achievement::getHumanTimes( $this->getLanguage(), $user, $timestamp );
+			[ $timePeriod, $timestamp ] = Achievement::getHumanTimes( $this->getLanguage(), $user, $timestamp );
 			$data['data-time'] = [
 				'text-timestamp' => $timestamp,
 				'text-time-period' => $timePeriod,

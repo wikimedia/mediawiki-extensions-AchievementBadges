@@ -84,13 +84,13 @@ class SpecialShareAchievement extends SpecialPage {
 			return;
 		}
 
-		list( $obtainerId, $key ) = $split;
+		[ $obtainerId, $key ] = $split;
 		$this->obtainer = User::newFromId( (int)$obtainerId );
 		if ( !$this->obtainer ) {
 			$out->addWikiTextAsInterface( $this->msg( 'special-shareachievement-invalid-username' )->parse() );
 			return;
 		}
-		list( $this->suffixedKey, $this->unsuffixedKey, ) = Achievement::extractKeySegments( $key );
+		[ $this->suffixedKey, $this->unsuffixedKey, ] = Achievement::extractKeySegments( $key );
 		$this->achievementType = $this->suffixedKey == $this->unsuffixedKey ? 'instant' : 'stats';
 		$this->registry = $config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
 		if ( !array_key_exists( $this->unsuffixedKey, $this->registry ) ) {
