@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"MuratTheTurkish",
-			"Rapsar"
+			"Rapsar",
+			"RuzDD"
 		]
 	},
 	"achievementbadges-desc": "Bir [[Special:Achievements|başarı]] sistemi sağlayın",
@@ -28,7 +29,7 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "{{SITENAME}} sitesinde $2 başarı {{GENDER:$1|aldım}}! $3",
 	"special-shareachievement-tweet-viewer": "$1, {{SITENAME}} sitesinde $2 başarısını aldı! $3",
-	"special-shareachievement-suggestion-sign-up": "Başarıları almaya başlamak için [[Special:Createaccount|{{GENDER:$1|şimdi kaydolun}}]].\n\nHesabınız var mı? [[Special:Login|Oturum açın]]",
+	"special-shareachievement-suggestion-sign-up": "Kazanımları almaya başlamak için [[Special:Createaccount|kaydolun]].\n\nHesabınız var mı? [[Special:Login|Oturum açın]]",
 	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|Şimdi başarıları almaya {{GENDER:$1|başlayın}}!]]",
 	"achievementbadges-beta-feature-achievement-enable-message": "Başarı Rozetleri",
 	"achievementbadges-beta-feature-achievement-enable-description": "Rozetleri almak için verilen başarıları kazanın.",
