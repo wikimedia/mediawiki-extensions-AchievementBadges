@@ -28,6 +28,8 @@
 	"special-shareachievement-item-facebook": "Facebook",
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Ik heb zojuist de prestatie $2 {{GENDER:$1|behaald}} op {{SITENAME}}! $3",
+	"special-shareachievement-tweet-viewer": "$1 heeft zojuist de prestatie $2 {{GENDER:$1|behaald}} op {{SITENAME}}! $3",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Schrijf u nu in]] om te beginnen met het behalen van prestaties.\n\nHebt u al een account? [[Special:Login|Meld u dan aan]]",
 	"achievementbadges-achievement-name-visual-edit": "Visueel tekstverwerker",
 	"achievementbadges-achievement-name-edit-size-4": "Een boom vol bladeren",
 	"achievementbadges-achievement-name-long-user-page": "Profiel",
