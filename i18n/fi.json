@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nike",
 			"Pyscowicz"
 		]
 	},
@@ -8,7 +9,7 @@
 	"special-achievements-other-user": "Käyttäjän $1 saavutukset",
 	"special-shareachievement-invalid-username": "Virheellinen käyttäjänimi",
 	"special-shareachievement-invalid-achievement-name": "Virheellinen saavutuksen nimi",
-	"special-shareachievement-message-other": "$1 saavutettu",
+	"special-shareachievement-message-other": "$1 saavutti",
 	"special-shareachievement-title": "{{GENDER:$1|Ansaitsi}} saavutuksen $2!",
 	"special-shareachievement-external-description": "$1 {{GENDER:$1|ansaitsi}} juuri saavutuksen $2 {{GRAMMAR:inessive|{{SITENAME}}}}!",
 	"special-shareachievement-header-share": "Jaa",
