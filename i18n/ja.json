@@ -4,7 +4,8 @@
 			"LaMagiaaa",
 			"Sou0012",
 			"Yamagata Yusuke",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Omotecho"
 		]
 	},
 	"achievementbadges-desc": "[[Special:Achievements|実績(アチーブメント)]]システムを提供する。",
@@ -35,7 +36,7 @@
 	"log-name-achievementbadges": "達成記録",
 	"log-description-achievementbadges": "利用者が獲得した実績のリストを表示する記録です。",
 	"logentry-achievementbadges": "$1が実績「$4」を解除しました",
-	"notification-header-achievementbadges-earn": "あなたは実績「$3」を解除しました",
+	"notification-header-achievementbadges-earn": "実績 $3 を{{GENDER:$2|獲得しました}}。",
 	"notification-link-text-all-achievements": "すべてのアチーブメント",
 	"achievementbadges-link-on-user-contributes": "達成されたアチーブメント",
 	"achievementbadges-achievement-name-enable-achievement-badges": "アチーブメントバッジを有効にする",
