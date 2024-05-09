@@ -6,7 +6,8 @@
 			"Killarnee",
 			"Robby",
 			"Verdy p",
-			"렌즈"
+			"렌즈",
+			"Nike"
 		]
 	},
 	"achievementbadges-desc": "{{desc|name=AchievementBadges|url=https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AchievementBadges}}",
@@ -24,7 +25,7 @@
 	"special-shareachievement-invalid-username": "Error message which is shown when given username is wrong",
 	"special-shareachievement-invalid-achievement-name": "Error message which is shown when given achievement key is wrong",
 	"special-shareachievement-message": "Message displayed to whom earn the achievement in [[Special:ShareAchievement]].",
-	"special-shareachievement-message-other": "Message displayed to whom does not earn the achievement in [[Special:ShareAchievement]].\n\nParameters:\n* $1 - the name of the user who earn the achievement",
+	"special-shareachievement-message-other": "Message displayed when it is not the viewer who earned the achievement in [[Special:ShareAchievement]].\n\nParameters:\n* $1 - the name of the user who earn the achievement",
 	"special-shareachievement-title": "This message is shown in [[Special:ShareAchievement]] as a title.\n* $1 - user's name\n* $2 - the name of the obtained achievement",
 	"special-shareachievement-external-description": "This is used as a Open Graph description.",
 	"special-shareachievement-header-share": "This is a label is used as a header in [[Special:ShareAchievement]].\n\nParameters:\n* $1 - the name of the user who earn the achievement\n\n{{identical|Share}}",

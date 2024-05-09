@@ -3,7 +3,8 @@
 		"authors": [
 			"Daud I.F. Argana",
 			"MarioMS",
-			"Zulf"
+			"Zulf",
+			"Veracious"
 		]
 	},
 	"achievementbadges-desc": "Menyediakan sistem [[Special:Achievements|pencapaian]]",
@@ -11,6 +12,7 @@
 	"special-achievements-other-user": "Pencapaian $1",
 	"achievements-summary": "Ini adalah daftar pencapaian.\n* Anda bisa menggunakannya jika sudah [[Special:Preferences#mw-prefsection-betafeatures|diaktifkan]].\n* Pencapaian bisa dihapus tanpa pemberitahuan.\n* Pencapaian yang diperoleh selama periode beta bisa diinisialisasi\nFitur ini masih dalam tahap beta.",
 	"achievementbadges-anon-text": "Tolong masuk log untuk melihat pencapaian.",
+	"achievement-earned-at-tooltip": "$2, pada $1",
 	"special-shareachievement-invalid": "Akses tidak sah",
 	"special-shareachievement-invalid-username": "Nama pengguna tidak sah",
 	"special-shareachievement-header-share": "Bagikan",
