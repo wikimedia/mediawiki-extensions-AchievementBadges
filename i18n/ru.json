@@ -31,6 +31,8 @@
 	"special-shareachievement-item-twitter": "Твиттер",
 	"special-shareachievement-tweet": "Я только что {{GENDER:$1| заработал}} достижение $2 на сайте {{SITENAME}}! $3",
 	"achievementbadges-beta-feature-achievement-enable-message": "Значки достижений",
+	"echo-category-title-achievement-badges": "Получить достижение",
+	"achievementbadges-pref-tooltip-achievement-badges": "Сообщите мне, когда я получу достижение.",
 	"log-name-achievementbadges": "Журнал достижений",
 	"notification-header-achievementbadges-earn": "{{GENDER:$2|Вы заработали}} достижение «$3».",
 	"notification-link-text-all-achievements": "Все достижения",
