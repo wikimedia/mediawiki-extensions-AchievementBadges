@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"DDPAT",
-			"Ice bulldog"
+			"Ice bulldog",
+			"Ата"
 		]
 	},
 	"achievementbadges-desc": "Забезпечте систему [[Special:Achievements|досягнень]]",
@@ -28,7 +29,7 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Я щойно {{GENDER:$1|заробив}} досягнення  $2 на {{SITENAME}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 щойно {{GENDER:$1|eaзаробивrned}} досягнення $2 на {{SITENAME}}! $3",
-	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|{{GENDER:$1|Зареєструйтесь}}]] зараз, щоб почати отримувати досягнення\n\nМаєте акаунт? [[Special:Login|Увійдіть]]",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Зареєструйтеся]] зараз, щоб почати отримувати досягнення.\n\nМаєте акаунт? [[Special:Login|Увійдіть]]",
 	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|{{GENDER:$1|Почніть}} зароблять досягнення зараз!]]",
 	"achievementbadges-beta-feature-achievement-enable-message": "Значки досягнень",
 	"achievementbadges-beta-feature-achievement-enable-description": "Отримуйте досягнення, щоб отримати значки.",
