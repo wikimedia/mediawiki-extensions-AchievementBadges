@@ -28,7 +28,7 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Acabei de atingir o objetivo $2 na wiki {{SITENAME}}! $3{{GENDER:$1|}}",
 	"special-shareachievement-tweet-viewer": "$1 acaba de atingir o objetivo $2 na wiki {{SITENAME}}! $3{{GENDER:$1|}}",
-	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Registe-se]] agora para começar a ganhar medalhas de objetivos.\n\nJá tem conta? [[Special:Login|Entrar]]{{GENDER:$1|}}",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|Registe-se]] agora para começar a ganhar medalhas de objetivos.\n\nJá tem conta? [[Special:Login|Entrar]]",
 	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|Comece a ganhar medalhas de objetivos já!]]{{GENDER:$1|}}",
 	"achievementbadges-beta-feature-achievement-enable-message": "Medalhas de objetivos",
 	"achievementbadges-beta-feature-achievement-enable-description": "Atinja os objetivos especificados para receber medalhas.",
