@@ -124,12 +124,7 @@ class Main implements
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$addThisId = $config->get( Constants::CONFIG_KEY_ADD_THIS_ID );
-		if ( $addThisId ) {
-			$vars['wg' . Constants::CONFIG_KEY_ADD_THIS_ID] = $addThisId;
-		} else {
-			$vars['wg' . Constants::CONFIG_KEY_FACEBOOK_APP_ID] = $config->get( Constants::CONFIG_KEY_FACEBOOK_APP_ID );
-		}
+		$vars['wg' . Constants::CONFIG_KEY_FACEBOOK_APP_ID] = $config->get( Constants::CONFIG_KEY_FACEBOOK_APP_ID );
 	}
 
 	/**
