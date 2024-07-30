@@ -64,15 +64,17 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 		$user->addToDatabase();
 		$this->assertSame( 0, $user->getEditCount() );
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_EDIT_PAGE => [
-				'type' => 'stats',
-				'thresholds' => [ 1, 2 ],
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_EDIT_PAGE => [
+					'type' => 'stats',
+					'thresholds' => [ 1, 2 ],
+				],
 			],
-		] );
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_CREATE_PAGE,
-			Constants::ACHV_KEY_EDIT_SIZE,
+			Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_CREATE_PAGE,
+				Constants::ACHV_KEY_EDIT_SIZE,
+			],
 		] );
 
 		$ct = 1;
@@ -96,16 +98,18 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 		$user->setName( 'CreatePageDummy' );
 		$user->addToDatabase();
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_CREATE_PAGE => [
-				'type' => 'stats',
-				'thresholds' => [ 1, 2 ],
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_CREATE_PAGE => [
+					'type' => 'stats',
+					'thresholds' => [ 1, 2 ],
+				],
+			],
+			Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_EDIT_PAGE,
+				Constants::ACHV_KEY_EDIT_SIZE,
 			],
 		] );
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_EDIT_PAGE,
-			Constants::ACHV_KEY_EDIT_SIZE,
-			] );
 
 		$ct = 1;
 		// Create a page
@@ -126,7 +130,7 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 		$user->setName( 'EditSizePageDummy' );
 		$user->addToDatabase();
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
 			Constants::ACHV_KEY_EDIT_SIZE => [
 				'type' => 'stats',
 				'thresholds' => [ 10, 100 ],
@@ -145,7 +149,7 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testAchieveEditSizeExist() {
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
 			Constants::ACHV_KEY_EDIT_SIZE => [
 				'type' => 'stats',
 				'thresholds' => [ 10, 100 ],
@@ -172,16 +176,18 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 		$user->setName( __METHOD__ );
 		$user->addToDatabase();
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_EDIT_SIZE => [
-				'type' => 'stats',
-				'thresholds' => [ 10, 20, 30, 40, 50 ],
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_EDIT_SIZE => [
+					'type' => 'stats',
+					'thresholds' => [ 10, 20, 30, 40, 50 ],
+				],
+			],
+			Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_EDIT_PAGE,
+				Constants::ACHV_KEY_CREATE_PAGE,
 			],
 		] );
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_EDIT_PAGE,
-			Constants::ACHV_KEY_CREATE_PAGE,
-			] );
 
 		$this->editPage( __METHOD__, str_repeat( 'ipsum', 30 ), '', NS_MAIN, $user );
 
@@ -193,9 +199,10 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testLongUserPage() {
-		global $wgAchievementBadgesAchievements;
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
-			Constants::ACHV_KEY_LONG_USER_PAGE => $wgAchievementBadgesAchievements[Constants::ACHV_KEY_LONG_USER_PAGE]
+		$config = $this->getServiceContainer()->getMainConfig();
+		$achievements = $config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
+			Constants::ACHV_KEY_LONG_USER_PAGE => $achievements[Constants::ACHV_KEY_LONG_USER_PAGE],
 		] );
 		$user = new User();
 		$user->setName( 'UserPageDummy' );
