@@ -13,6 +13,7 @@ use UserNotLoggedIn;
 
 /**
  * @group AchievementBadges
+ * @group Database
  *
  * @covers \MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements
  */
