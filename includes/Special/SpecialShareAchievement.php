@@ -123,9 +123,7 @@ class SpecialShareAchievement extends SpecialPage {
 
 		$data['text-share-header'] = $this->msg( 'special-shareachievement-header-share',
 			$this->obtainer->getName() );
-		if ( !$data['data-add-this'] ) {
-			$data['data-share'] = $this->getSnsShareData();
-		}
+		$data['data-share'] = $this->getSnsShareData();
 
 		$betaConfigEnabled = $config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE );
 		$userBetaEnabled = $betaConfigEnabled && BetaFeatures::isFeatureEnabled( $viewer,
