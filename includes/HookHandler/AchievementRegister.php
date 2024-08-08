@@ -237,7 +237,7 @@ class AchievementRegister implements
 			'user' => $user,
 		] );
 
-		$dbr = $this->loadBalancer->getMaintenanceConnectionRef( DB_REPLICA );
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 
 		if ( $editResult->isNew() ) {
 			$query = $this->revisionStore->getQueryInfo();
