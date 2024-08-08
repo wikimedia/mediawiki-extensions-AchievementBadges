@@ -14,7 +14,6 @@ use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\MaintainableDBConnRef;
 
 class AchievementRegister implements
 	\MediaWiki\Api\Hook\APIAfterExecuteHook,
@@ -32,9 +31,9 @@ class AchievementRegister implements
 		private $config;
 
 		/**
-		 * @var MaintainableDBConnRef
+		 * @var ILoadBalancer
 		 */
-		private $mDb;
+		private $loadBalancer;
 
 		/**
 		 * @var RevisionStore
@@ -48,18 +47,18 @@ class AchievementRegister implements
 
 	/**
 	 * @param Config $config
-	 * @param ILoadBalancer $DBLoadBalancer
+	 * @param ILoadBalancer $loadBalancer
 	 * @param RevisionStore $revisionStore
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		Config $config,
-		ILoadBalancer $DBLoadBalancer,
+		ILoadBalancer $loadBalancer,
 		RevisionStore $revisionStore,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
-		$this->mDb = $DBLoadBalancer->getMaintenanceConnectionRef( DB_REPLICA );
+		$this->loadBalancer = $loadBalancer;
 		$this->revisionStore = $revisionStore;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
@@ -238,7 +237,7 @@ class AchievementRegister implements
 			'user' => $user,
 		] );
 
-		$dbr = $this->mDb;
+		$dbr = $this->loadBalancer->getMaintenanceConnectionRef( DB_REPLICA );
 
 		if ( $editResult->isNew() ) {
 			$query = $this->revisionStore->getQueryInfo();
