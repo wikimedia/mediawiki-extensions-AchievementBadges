@@ -10,6 +10,7 @@ use User;
 
 /**
  * @group AchievementBadges
+ * @group Database
  *
  * @covers \MediaWiki\Extension\AchievementBadges\Special\SpecialShareAchievement
  */
