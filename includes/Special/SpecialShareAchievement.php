@@ -274,7 +274,7 @@ class SpecialShareAchievement extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'special-shareachievement' )->escaped();
+		return $this->msg( 'special-shareachievement' );
 	}
 
 	/**
