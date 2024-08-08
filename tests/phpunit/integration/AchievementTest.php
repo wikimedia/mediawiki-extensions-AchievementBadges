@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AchievementBadges\Tests\Integration;
 
-use Language;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\MediaWikiServices;
@@ -220,7 +219,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetImageForLanguage( $langCode, $path, $expected ) {
 		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
-		$lang = Language::factory( $langCode );
+		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( $langCode );
 		$this->assertEquals( $expected, Achievement::getAchievementIcon( $lang, $path ),
 			"Should be $expected" );
 	}
@@ -230,7 +229,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetAchievementIconFallback() {
 		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
-		$lang = Language::factory( 'en' );
+		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
 		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_ICON, 'foo/bar.svg' );
 		$this->assertEquals( '/wiki/foo/bar.svg', Achievement::getAchievementIcon( $lang ),
 			'A call without any parameter falls back' );
@@ -241,7 +240,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetAchievementOgImage() {
 		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
-		$lang = Language::factory( 'en' );
+		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
 		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE, 'foo/bar.png' );
 		$this->assertEquals( '/wiki/foo/bar.png', Achievement::getAchievementOgImage( $lang ),
 			'A call without any parameter falls back' );
