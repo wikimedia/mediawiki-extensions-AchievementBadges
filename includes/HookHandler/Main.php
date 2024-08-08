@@ -19,7 +19,7 @@ use User;
 class Main implements
 	\MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook,
 	\MediaWiki\Hook\ContributionsToolLinksHook
-	{
+{
 
 	/** @var Config */
 	private $config;
@@ -131,11 +131,11 @@ class Main implements
 	 * @inheritDoc
 	 */
 	public function onContributionsToolLinks(
-			$id,
-			Title $title,
-			array &$tools,
-			SpecialPage $specialPage
-		) {
+		$id,
+		Title $title,
+		array &$tools,
+		SpecialPage $specialPage
+	) {
 		$target = User::newFromId( $id );
 		if ( $target->isAnon() ) {
 			return;

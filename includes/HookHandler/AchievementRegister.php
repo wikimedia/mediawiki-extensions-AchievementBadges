@@ -23,27 +23,27 @@ class AchievementRegister implements
 	\MediaWiki\Extension\AchievementBadges\Hooks\SpecialAchievementsBeforeGetEarnedHook,
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\User\Hook\UserSaveSettingsHook
-	{
+{
 
-		/**
-		 * @var Config
-		 */
-		private $config;
+	/**
+	 * @var Config
+	 */
+	private $config;
 
-		/**
-		 * @var ILoadBalancer
-		 */
-		private $loadBalancer;
+	/**
+	 * @var ILoadBalancer
+	 */
+	private $loadBalancer;
 
-		/**
-		 * @var RevisionStore
-		 */
-		private $revisionStore;
+	/**
+	 * @var RevisionStore
+	 */
+	private $revisionStore;
 
-		/**
-		 * @var UserOptionsLookup
-		 */
-		private $userOptionsLookup;
+	/**
+	 * @var UserOptionsLookup
+	 */
+	private $userOptionsLookup;
 
 	/**
 	 * @param Config $config
