@@ -81,7 +81,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 			];
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $key,

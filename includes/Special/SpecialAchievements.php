@@ -8,6 +8,7 @@ use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\AchievementBadges\Hooks\HookRunner;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use TemplateParser;
@@ -180,7 +181,7 @@ class SpecialAchievements extends SpecialPage {
 	 * @return string[]
 	 */
 	private function getEarnedAchievementData( User $user ): array {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_actor' => $user->getActorId(),

@@ -152,7 +152,7 @@ class SpecialShareAchievement extends SpecialPage {
 		if ( $registry['type'] != $this->achievementType ) {
 			return false;
 		}
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $this->unsuffixedKey,

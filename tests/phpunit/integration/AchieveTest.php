@@ -44,7 +44,7 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function assertEarnedAchievement( $num, $user, $key ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $key,

@@ -193,7 +193,7 @@ class Achievement {
 	 * @return int
 	 */
 	private static function selectLogCount( $key, User $user ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = self::getQueryInfo( $dbr );
 		$query['fields'] = '*';
 		$query['conds'] = array_merge( $query['conds'], [
