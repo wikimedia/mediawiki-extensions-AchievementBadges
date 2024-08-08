@@ -100,7 +100,8 @@ class SpecialShareAchievement extends SpecialPage {
 		}
 
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$obtainerLang = Language::factory( $userOptionsLookup->getOption( $this->obtainer, 'language' ) );
+		$languageFactory = MediaWikiServices::getInstance()->getLanguageFactory();
+		$obtainerLang = $languageFactory->getLanguage( $userOptionsLookup->getOption( $this->obtainer, 'language' ) );
 		$this->obtainerLang = $obtainerLang;
 		$this->achvNameMsg = $this->msg( 'achievementbadges-achievement-name-' . ( $this->suffixedKey ),
 			$this->obtainer->getName() );
