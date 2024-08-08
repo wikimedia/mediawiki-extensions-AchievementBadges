@@ -218,9 +218,9 @@ class SpecialAchievements extends SpecialPage {
 	/** @inheritDoc */
 	public function getDescription() {
 		if ( isset( $this->target ) && !$this->getUser()->equals( $this->target ) ) {
-			return $this->msg( 'special-achievements-other-user', $this->target->getName() )->escaped();
+			return $this->msg( 'special-achievements-other-user', $this->target->getName() );
 		}
-		return $this->msg( 'special-achievements' )->escaped();
+		return $this->msg( 'special-achievements' );
 	}
 
 	/** @inheritDoc */
