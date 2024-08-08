@@ -23,7 +23,10 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		return new SpecialAchievements( $this->createMock( HookRunner::class ) );
+		return new SpecialAchievements(
+			$this->createMock( HookRunner::class ),
+			$this->getServiceContainer()->getDBLoadBalancer()
+		);
 	}
 
 	/** @return array */

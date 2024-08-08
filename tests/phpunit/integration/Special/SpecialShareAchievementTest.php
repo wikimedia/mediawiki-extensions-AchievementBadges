@@ -20,7 +20,12 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		return new SpecialShareAchievement();
+		$services = $this->getServiceContainer();
+		return new SpecialShareAchievement(
+			$services->getLanguageFactory(),
+			$services->getDBLoadBalancer(),
+			$services->getUserOptionsLookup()
+		);
 	}
 
 	/**

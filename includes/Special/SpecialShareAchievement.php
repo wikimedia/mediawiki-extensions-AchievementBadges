@@ -7,13 +7,15 @@ use Linker;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use NamespaceInfo;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use TemplateParser;
 use User;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Special page
@@ -58,8 +60,19 @@ class SpecialShareAchievement extends SpecialPage {
 	/** @var \Message */
 	private $achvNameMsg;
 
-	public function __construct() {
+	private LanguageFactory $languageFactory;
+	private ILoadBalancer $loadBalancer;
+	private UserOptionsLookup $userOptionsLookup;
+
+	public function __construct(
+		LanguageFactory $languageFactory,
+		ILoadBalancer $loadBalancer,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		parent::__construct( self::PAGE_NAME );
+		$this->languageFactory = $languageFactory;
+		$this->loadBalancer = $loadBalancer;
+		$this->userOptionsLookup = $userOptionsLookup;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
 	}
@@ -99,9 +112,9 @@ class SpecialShareAchievement extends SpecialPage {
 			return;
 		}
 
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$languageFactory = MediaWikiServices::getInstance()->getLanguageFactory();
-		$obtainerLang = $languageFactory->getLanguage( $userOptionsLookup->getOption( $this->obtainer, 'language' ) );
+		$obtainerLang = $this->languageFactory->getLanguage(
+			$this->userOptionsLookup->getOption( $this->obtainer, 'language' )
+		);
 		$this->obtainerLang = $obtainerLang;
 		$this->achvNameMsg = $this->msg( 'achievementbadges-achievement-name-' . ( $this->suffixedKey ),
 			$this->obtainer->getName() );
@@ -150,7 +163,7 @@ class SpecialShareAchievement extends SpecialPage {
 		if ( $registry['type'] != $this->achievementType ) {
 			return false;
 		}
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $this->unsuffixedKey,

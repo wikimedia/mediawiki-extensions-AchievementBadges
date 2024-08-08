@@ -8,11 +8,11 @@ use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\AchievementBadges\Hooks\HookRunner;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use TemplateParser;
 use User;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Special page
@@ -27,6 +27,8 @@ class SpecialAchievements extends SpecialPage {
 	/** @var HookRunner */
 	private $hookRunner;
 
+	private ILoadBalancer $loadBalancer;
+
 	/** @var TemplateParser */
 	private $templateParser;
 
@@ -36,12 +38,13 @@ class SpecialAchievements extends SpecialPage {
 	/** @var User */
 	private $target;
 
-	/**
-	 * @param HookRunner $hookRunner
-	 */
-	public function __construct( HookRunner $hookRunner ) {
+	public function __construct(
+		HookRunner $hookRunner,
+		ILoadBalancer $loadBalancer
+	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->hookRunner = $hookRunner;
+		$this->loadBalancer = $loadBalancer;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
 	}
@@ -181,7 +184,7 @@ class SpecialAchievements extends SpecialPage {
 	 * @return string[]
 	 */
 	private function getEarnedAchievementData( User $user ): array {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_actor' => $user->getActorId(),
