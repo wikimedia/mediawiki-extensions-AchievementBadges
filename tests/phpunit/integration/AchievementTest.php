@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AchievementBadges\Tests\Integration;
 
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use User;
@@ -17,13 +16,9 @@ use User;
  */
 class AchievementTest extends MediaWikiIntegrationTestCase {
 
-	/** @var Config */
-	private $config;
-
 	/** @inheritDoc */
 	protected function setUp(): void {
 		parent::setUp();
-		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 	}
 
 	/**
