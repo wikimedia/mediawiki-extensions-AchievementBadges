@@ -92,7 +92,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$this->base64subPage = $subPage;
 		$subPage = base64_decode( $subPage );
 		$split = explode( '/', $subPage, 2 );
-		if ( count( $split ) != 2 ) {
+		if ( count( $split ) !== 2 ) {
 			$out->addWikiTextAsInterface( $this->msg( 'special-shareachievement-invalid' )->parse() );
 			return;
 		}
@@ -104,7 +104,7 @@ class SpecialShareAchievement extends SpecialPage {
 			return;
 		}
 		[ $this->suffixedKey, $this->unsuffixedKey, ] = Achievement::extractKeySegments( $key );
-		$this->achievementType = $this->suffixedKey == $this->unsuffixedKey ? 'instant' : 'stats';
+		$this->achievementType = $this->suffixedKey === $this->unsuffixedKey ? 'instant' : 'stats';
 		$this->registry = $config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
 		if ( !array_key_exists( $this->unsuffixedKey, $this->registry ) ) {
 			$out->addWikiTextAsInterface( $this->msg( 'special-shareachievement-invalid-achievement-name' )
@@ -160,7 +160,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$out = $this->getOutput();
 
 		$registry = $this->registry[$this->unsuffixedKey];
-		if ( $registry['type'] != $this->achievementType ) {
+		if ( $registry['type'] !== $this->achievementType ) {
 			return false;
 		}
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
@@ -220,8 +220,8 @@ class SpecialShareAchievement extends SpecialPage {
 				'text-url' => $url,
 			];
 		}
-		$viewer = $this->viewer;
-		$tweet = ( $obtainer == $viewer ) ? 'special-shareachievement-tweet'
+		$tweet = $obtainer->equals( $this->viewer )
+			? 'special-shareachievement-tweet'
 			: 'special-shareachievement-tweet-viewer';
 
 		$tweet = $this->msg( $tweet );

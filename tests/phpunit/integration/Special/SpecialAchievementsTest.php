@@ -131,7 +131,7 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 			$subpage = $otherUser->getName();
 		}
 
-		if ( $expected == UserNotLoggedIn::class ) {
+		if ( $expected === UserNotLoggedIn::class ) {
 			$this->expectException( $expected );
 			[ $html, ] = $this->executeSpecialPage( $subpage, null, 'qqx', $viewer );
 		} else {

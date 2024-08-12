@@ -95,7 +95,7 @@ class SpecialAchievements extends SpecialPage {
 
 		foreach ( $allAchvs as $key => $info ) {
 			$icon = Achievement::getAchievementIcon( $lang, $info['icon'] ?? null );
-			if ( $info['type'] == 'stats' ) {
+			if ( $info['type'] === 'stats' ) {
 				$max = count( $info['thresholds'] );
 				for ( $i = 0; $i < $max; $i++ ) {
 					$suffixedKey = "$key-$i";

@@ -297,7 +297,7 @@ class AchievementRegister implements
 
 	/** @inheritDoc */
 	public function onAPIAfterExecute( $module ) {
-		if ( $module->getModuleName() != 'thank' ) {
+		if ( $module->getModuleName() !== 'thank' ) {
 			return;
 		}
 		$user = $module->getUser();
@@ -306,7 +306,7 @@ class AchievementRegister implements
 			return;
 		}
 		$result = $result['result'];
-		if ( !isset( $result['recipient'] ) || $result['success'] != 1 ) {
+		if ( !isset( $result['recipient'] ) || !$result['success'] ) {
 			return;
 		}
 		$recipient = User::newFromName( $result['recipient'] );

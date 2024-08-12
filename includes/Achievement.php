@@ -322,7 +322,7 @@ class Achievement {
 		preg_match( '/(.+)\-(\d+)/', $key, $matches );
 		if ( empty( $matches ) ) {
 			return [ $key, $key, null ];
-		} elseif ( count( $matches ) == 3 ) {
+		} elseif ( count( $matches ) === 3 ) {
 			array_shift( $matches );
 			return [ $key, $matches[0], (int)$matches[1] ];
 		} else {

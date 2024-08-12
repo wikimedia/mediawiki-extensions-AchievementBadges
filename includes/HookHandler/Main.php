@@ -93,7 +93,7 @@ class Main implements
 	 * @param string &$bundleString
 	 */
 	public static function onEchoGetBundleRules( $event, &$bundleString ) {
-		if ( $event->getType() == Constants::EVENT_KEY_EARN ) {
+		if ( $event->getType() === Constants::EVENT_KEY_EARN ) {
 			$bundleString = Constants::EVENT_KEY_EARN;
 		}
 	}
@@ -106,11 +106,11 @@ class Main implements
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$type = $event->getType();
 
-		if ( $type == 'thank-you-edit'
+		if ( $type === 'thank-you-edit'
 			&& $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_THANK_YOU_EDIT ) ) {
 			return false;
 		}
-		if ( $type == 'welcome'
+		if ( $type === 'welcome'
 			&& $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_WELCOME )
 			&& !$config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
 			// the welcome notification is replaced with 'sign-up' achievement.
