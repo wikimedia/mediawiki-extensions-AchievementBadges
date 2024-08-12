@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AchievementBadges;
 
-use EchoEvent;
-use EchoEventPresentationModel;
 use Language;
 use MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements;
 use MediaWiki\Extension\AchievementBadges\Special\SpecialShareAchievement;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
+use MediaWiki\Extension\Notifications\Model\Event;
 use Message;
 use SpecialPage;
 use User;
@@ -17,7 +17,7 @@ class EarnEchoEventPresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */
 	protected function __construct(
-		EchoEvent $event,
+		Event $event,
 		Language $language,
 		User $user,
 		$distributionType

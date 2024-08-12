@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AchievementBadges;
 
-use EchoEvent;
 use ExtensionRegistry;
 use FatalError;
 use Language;
@@ -10,6 +9,7 @@ use LogPage;
 use ManualLogEntry;
 use MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
@@ -155,7 +155,7 @@ class Achievement {
 			$suffixedKey .= "-$index";
 		}
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
-			EchoEvent::create( [
+			Event::create( [
 				'type' => Constants::EVENT_KEY_EARN,
 				'agent' => $user,
 				'extra' => [ 'key' => $suffixedKey ],

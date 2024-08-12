@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AchievementBadges\Tests\Integration;
 
-use EchoNotificationMapper;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
+use MediaWiki\Extension\Notifications\Mapper\NotificationMapper;
 use MediaWikiIntegrationTestCase;
 use User;
 
@@ -29,7 +29,7 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 	 * @return void
 	 */
 	private function assertNotificationForAchievement( $earned, $user, $key, $msg ) {
-		$notifMapper = new EchoNotificationMapper();
+		$notifMapper = new NotificationMapper();
 		$limit = 50;
 		$notifs = $notifMapper->fetchUnreadByUser( $user, $limit, null, [ Constants::EVENT_KEY_EARN ] );
 		$eventKeys = array_map( static function ( $notif ) {

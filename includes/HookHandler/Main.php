@@ -3,14 +3,14 @@
 namespace MediaWiki\Extension\AchievementBadges\HookHandler;
 
 use Config;
-use EchoAttributeManager;
-use EchoEvent;
-use EchoUserLocator;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\AchievementBadges\EarnEchoEventPresentationModel;
 use MediaWiki\Extension\AchievementBadges\Hooks\HookRunner;
 use MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Extension\Notifications\AttributeManager;
+use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\MediaWikiServices;
 use SpecialPage;
 use Title;
@@ -79,8 +79,8 @@ class Main implements
 				'email' => true,
 				'expandable' => true,
 			],
-			EchoAttributeManager::ATTR_LOCATORS => [
-				EchoUserLocator::class . '::locateEventAgent',
+			AttributeManager::ATTR_LOCATORS => [
+				UserLocator::class . '::locateEventAgent',
 			],
 		];
 		$icons[Constants::EVENT_KEY_EARN] = [
@@ -89,7 +89,7 @@ class Main implements
 	}
 
 	/**
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @param string &$bundleString
 	 */
 	public static function onEchoGetBundleRules( $event, &$bundleString ) {
@@ -99,10 +99,10 @@ class Main implements
 	}
 
 	/**
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @return bool
 	 */
-	public static function onBeforeEchoEventInsert( EchoEvent $event ) {
+	public static function onBeforeEchoEventInsert( Event $event ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$type = $event->getType();
 
