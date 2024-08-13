@@ -7,7 +7,6 @@ use ExtensionRegistry;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\User\UserOptionsLookup;
@@ -117,7 +116,7 @@ class AchievementRegister implements
 				'priority' => 500,
 			];
 		}
-		if ( self::isVisualEditorTagUsed() ) {
+		if ( $this->isVisualEditorTagUsed() ) {
 			$achievements[Constants::ACHV_KEY_VISUAL_EDIT] = [
 				'type' => 'instant',
 				'priority' => 400,
@@ -136,11 +135,9 @@ class AchievementRegister implements
 	}
 
 	/** @return bool */
-	private static function isVisualEditorTagUsed() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
+	private function isVisualEditorTagUsed() {
 		return ExtensionRegistry::getInstance()->isLoaded( 'VisualEditor' )
-			&& $config->get( 'VisualEditorUseChangeTagging' );
+			&& $this->config->get( 'VisualEditorUseChangeTagging' );
 	}
 
 	/** @return bool */
@@ -284,7 +281,7 @@ class AchievementRegister implements
 	/** @inheritDoc */
 	public function onChangeTagsAfterUpdateTags( $addedTags, $removedTags,
 		$prevTags, $rc_id, $rev_id, $log_id, $params, $rc, $user ) {
-		if ( self::isVisualEditorTagUsed() && in_array( 'visualeditor', $addedTags ) ) {
+		if ( $this->isVisualEditorTagUsed() && in_array( 'visualeditor', $addedTags ) ) {
 			// The given $user is empty when visual editing
 			$user = $this->revisionStore->getRevisionById( $rev_id )->getUser();
 			$user = User::newFromIdentity( $user );
