@@ -103,9 +103,9 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 		$queriesAbout,
 		$expected
 	) {
-		$this->setMwGlobals( [
-			'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS => [],
-			'wg' . Constants::CONFIG_KEY_ENABLE_BETA_FEATURE => $isBetaEnabled
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [],
+			Constants::CONFIG_KEY_ENABLE_BETA_FEATURE => $isBetaEnabled,
 		] );
 		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
 
@@ -141,7 +141,7 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 	}
 
 	public function testDisplayHint() {
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, false );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, false );
 		$user = new User();
 		$user->setId( 1 );
 		$user->setName( 'DisplayHintUser' );
@@ -156,9 +156,9 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 
 	public function testStatsAchievement() {
 		$key = 'special-test';
-		$this->setMwGlobals( [
-			'wg' . Constants::CONFIG_KEY_ENABLE_BETA_FEATURE => false,
-			'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS => [
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ENABLE_BETA_FEATURE => false,
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [
 				$key => [
 					'type' => 'stats',
 					'thresholds' => [ 1, 10, 100 ],

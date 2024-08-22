@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AchievementBadges\Tests\Integration;
 
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
+use MediaWiki\MainConfigNames;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use User;
@@ -25,7 +26,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::isAchievementBadgesAvailable
 	 */
 	public function testIsAchievementBadgesAvailable() {
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
+		$this->overrideConfigValue( Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
 			Constants::ACHV_KEY_SIGN_UP, Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES ] );
 
 		$systemUser = User::newSystemUser( __METHOD__ );
@@ -34,13 +35,13 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $systemUser ),
 			'A system user cannot use AB' );
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, false );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, false );
 		$this->assertTrue( Achievement::isAchievementBadgesAvailable( $user ),
 			'Every user can use AB where wiki uses AB as a default' );
 		$this->assertTrue( Achievement::isAchievementBadgesAvailable( $anon ),
 			'A anonymous user can use AB where wiki uses AB as a default' );
 
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, true );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, true );
 		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $user ),
 			'A user which do not enable AB cannot use AB where wiki uses AB as a beta feature' );
 		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $anon ),
@@ -138,7 +139,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 * @param array $testSets
 	 */
 	public function testSendStats( $key, $thresholds, $testSets ) {
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
 			$key => [
 				'type' => 'stats',
 				'thresholds' => $thresholds,
@@ -213,7 +214,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 * @param string $expected
 	 */
 	public function testGetImageForLanguage( $langCode, $path, $expected ) {
-		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
+		$this->overrideConfigValue( MainConfigNames::ScriptPath, '/wiki' );
 		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( $langCode );
 		$this->assertEquals( $expected, Achievement::getAchievementIcon( $lang, $path ),
 			"Should be $expected" );
@@ -223,9 +224,9 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::getAchievementIcon()
 	 */
 	public function testGetAchievementIconFallback() {
-		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
+		$this->overrideConfigValue( MainConfigNames::ScriptPath, '/wiki' );
 		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_ICON, 'foo/bar.svg' );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_ICON, 'foo/bar.svg' );
 		$this->assertEquals( '/wiki/foo/bar.svg', Achievement::getAchievementIcon( $lang ),
 			'A call without any parameter falls back' );
 	}
@@ -234,9 +235,9 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::getAchievementOgImage()
 	 */
 	public function testGetAchievementOgImage() {
-		$this->setMwGlobals( 'wgScriptPath', '/wiki' );
+		$this->overrideConfigValue( MainConfigNames::ScriptPath, '/wiki' );
 		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE, 'foo/bar.png' );
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE, 'foo/bar.png' );
 		$this->assertEquals( '/wiki/foo/bar.png', Achievement::getAchievementOgImage( $lang ),
 			'A call without any parameter falls back' );
 	}

@@ -33,10 +33,10 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 	 * @return int
 	 */
 	private function getAchievedUserId( $key ) {
-		$this->setMwGlobals( 'wg' . Constants::CONFIG_KEY_ACHIEVEMENTS, [
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
 			$key => [
-				'type' => 'instant'
-			]
+				'type' => 'instant',
+			],
 		] );
 		$user = new User();
 		$name = 'ShareAchievementTester';
