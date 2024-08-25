@@ -40,7 +40,7 @@ class Achievement {
 	 * user: The user who earned the achievement.
 	 */
 	public static function achieve( $info ) {
-		if ( empty( $info['key'] ) ) {
+		if ( !isset( $info['key'] ) ) {
 			throw new MWException( "'key' parameter is mandatory" );
 		}
 
@@ -85,7 +85,7 @@ class Achievement {
 	 * stats:
 	 */
 	public static function sendStats( $info ) {
-		if ( empty( $info['key'] ) ) {
+		if ( !isset( $info['key'] ) ) {
 			throw new MWException( "'key' parameter is mandatory" );
 		}
 
@@ -320,7 +320,7 @@ class Achievement {
 	 */
 	public static function extractKeySegments( $key ) {
 		preg_match( '/(.+)\-(\d+)/', $key, $matches );
-		if ( empty( $matches ) ) {
+		if ( !$matches ) {
 			return [ $key, $key, null ];
 		} elseif ( count( $matches ) === 3 ) {
 			array_shift( $matches );
