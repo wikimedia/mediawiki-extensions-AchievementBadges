@@ -9,13 +9,8 @@ class HookRunner implements
 	BeforeCreateAchievementHook,
 	SpecialAchievementsBeforeGetEarnedHook
 {
+	private HookContainer $hookContainer;
 
-	/** @var HookContainer */
-	private $hookContainer;
-
-	/**
-	 * @param HookContainer $hookContainer
-	 */
 	public function __construct( HookContainer $hookContainer ) {
 		$this->hookContainer = $hookContainer;
 	}

@@ -12,8 +12,7 @@ use SpecialPage;
 use User;
 
 class EarnEchoEventPresentationModel extends EchoEventPresentationModel {
-	/** @var string */
-	private $achievementKey;
+	private string $achievementKey;
 
 	/** @inheritDoc */
 	protected function __construct(
@@ -53,10 +52,7 @@ class EarnEchoEventPresentationModel extends EchoEventPresentationModel {
 		}
 	}
 
-	/**
-	 * @return array
-	 */
-	private function getSpecialAchievementsLink() {
+	private function getSpecialAchievementsLink(): array {
 		$title = SpecialPage::getTitleFor( SpecialAchievements::PAGE_NAME );
 		return [
 			'url' => $title->getFullURL(),

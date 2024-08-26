@@ -24,19 +24,11 @@ class SpecialAchievements extends SpecialPage {
 
 	public const PAGE_NAME = 'Achievements';
 
-	/** @var HookRunner */
-	private $hookRunner;
-
+	private HookRunner $hookRunner;
 	private ILoadBalancer $loadBalancer;
-
-	/** @var TemplateParser */
-	private $templateParser;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var User */
-	private $target;
+	private TemplateParser $templateParser;
+	private LoggerInterface $logger;
+	private ?User $target = null;
 
 	public function __construct(
 		HookRunner $hookRunner,
@@ -131,11 +123,7 @@ class SpecialAchievements extends SpecialPage {
 		] ) );
 	}
 
-	/**
-	 * @param string|null $subPage
-	 * @return User|null
-	 */
-	private function getObtainerFromSubPage( $subPage ) {
+	private function getObtainerFromSubPage( ?string $subPage ): ?User {
 		if ( !$subPage ) {
 			return null;
 		}
@@ -146,15 +134,13 @@ class SpecialAchievements extends SpecialPage {
 		return $user;
 	}
 
-	/**
-	 * @param string $key
-	 * @param string $icon
-	 * @param user $user
-	 * @param bool $isEarned
-	 * @param string|null $timestamp
-	 * @return array
-	 */
-	private function getDataAchievement( $key, $icon, User $user, $isEarned, $timestamp = null ) {
+	private function getDataAchievement(
+		string $key,
+		string $icon,
+		User $user,
+		bool $isEarned,
+		string $timestamp = null
+	): array {
 		$data = [
 			'text-type' => $key,
 			'text-class' => implode( ' ', [
@@ -221,7 +207,7 @@ class SpecialAchievements extends SpecialPage {
 
 	/** @inheritDoc */
 	public function getDescription() {
-		if ( isset( $this->target ) && !$this->getUser()->equals( $this->target ) ) {
+		if ( $this->target && !$this->getUser()->equals( $this->target ) ) {
 			return $this->msg( 'special-achievements-other-user', $this->target->getName() );
 		}
 		return $this->msg( 'special-achievements' );
