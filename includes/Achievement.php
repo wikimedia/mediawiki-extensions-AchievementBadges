@@ -11,6 +11,7 @@ use MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use MWTimestamp;
@@ -259,7 +260,7 @@ class Achievement {
 				$path = $path[$lang->getDir()];
 			}
 		}
-		return $config->get( 'ScriptPath' ) . "/$path";
+		return $config->get( MainConfigNames::ScriptPath ) . "/$path";
 	}
 
 	/**

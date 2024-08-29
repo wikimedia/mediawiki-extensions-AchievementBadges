@@ -10,6 +10,7 @@ use MediaWiki\Html\TemplateParser;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
@@ -225,13 +226,13 @@ class SpecialShareAchievement extends SpecialPage {
 	 */
 	private function getUrlForShare() {
 		$titleText = NamespaceInfo::CANONICAL_NAMES[NS_SPECIAL] . ':' . self::PAGE_NAME . '/' . $this->base64subPage;
-		$articlePath = $this->getConfig()->get( 'ArticlePath' );
+		$articlePath = $this->getConfig()->get( MainConfigNames::ArticlePath );
 		$localUrl = str_replace( '$1', $titleText, $articlePath );
 		return MediaWikiServices::getInstance()->getUrlUtils()->expand( $localUrl ) ?? '';
 	}
 
 	private function addMeta() {
-		$sitename = $this->getConfig()->get( 'Sitename' );
+		$sitename = $this->getConfig()->get( MainConfigNames::Sitename );
 		$obtainerLang = $this->obtainerLang;
 		$achvNameMsg = $this->msg( 'achievementbadges-achievement-name-' . ( $this->suffixedKey ),
 			$this->obtainer->getName() );

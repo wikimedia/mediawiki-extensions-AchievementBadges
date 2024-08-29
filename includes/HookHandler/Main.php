@@ -11,6 +11,7 @@ use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Notifications\AttributeManager;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Notifications\UserLocator;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SpecialPage;
@@ -33,7 +34,7 @@ class Main implements
 		if ( !$config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
 			return;
 		}
-		$extensionAssetsPath = $config->get( 'ExtensionAssetsPath' );
+		$extensionAssetsPath = $config->get( MainConfigNames::ExtensionAssetsPath );
 		$betaPrefs[Constants::PREF_KEY_ACHIEVEMENT_ENABLE] = [
 			'label-message' => 'achievementbadges-beta-feature-achievement-enable-message',
 			'desc-message' => 'achievementbadges-beta-feature-achievement-enable-description',
