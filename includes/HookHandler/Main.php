@@ -20,26 +20,14 @@ class Main implements
 	\MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook,
 	\MediaWiki\Hook\ContributionsToolLinksHook
 {
+	private Config $config;
+	private HookRunner $hookRunner;
 
-	/** @var Config */
-	private $config;
-
-	/** @var HookRunner */
-	private $hookRunner;
-
-	/**
-	 * @param Config $config
-	 * @param HookRunner $hookRunner
-	 */
 	public function __construct( Config $config, HookRunner $hookRunner ) {
 		$this->config = $config;
 		$this->hookRunner = $hookRunner;
 	}
 
-	/**
-	 * @param User $user
-	 * @param array &$betaPrefs
-	 */
 	public static function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		if ( !$config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {

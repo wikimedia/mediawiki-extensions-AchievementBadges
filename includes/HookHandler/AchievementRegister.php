@@ -23,33 +23,11 @@ class AchievementRegister implements
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
+	private Config $config;
+	private ILoadBalancer $loadBalancer;
+	private RevisionStore $revisionStore;
+	private UserOptionsLookup $userOptionsLookup;
 
-	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @var ILoadBalancer
-	 */
-	private $loadBalancer;
-
-	/**
-	 * @var RevisionStore
-	 */
-	private $revisionStore;
-
-	/**
-	 * @var UserOptionsLookup
-	 */
-	private $userOptionsLookup;
-
-	/**
-	 * @param Config $config
-	 * @param ILoadBalancer $loadBalancer
-	 * @param RevisionStore $revisionStore
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct(
 		Config $config,
 		ILoadBalancer $loadBalancer,
@@ -134,14 +112,12 @@ class AchievementRegister implements
 		}
 	}
 
-	/** @return bool */
-	private function isVisualEditorTagUsed() {
+	private function isVisualEditorTagUsed(): bool {
 		return ExtensionRegistry::getInstance()->isLoaded( 'VisualEditor' )
 			&& $this->config->get( 'VisualEditorUseChangeTagging' );
 	}
 
-	/** @return bool */
-	private static function isThanksEnabled() {
+	private static function isThanksEnabled(): bool {
 		return ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
 	}
 

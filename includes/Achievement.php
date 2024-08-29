@@ -20,10 +20,7 @@ use User;
 use Wikimedia\Rdbms\IDatabase;
 
 class Achievement {
-	/**
-	 * @var LoggerInterface
-	 */
-	private static $logger = null;
+	private static ?LoggerInterface $logger = null;
 
 	/**
 	 * You should not call the constructor.
@@ -129,12 +126,7 @@ class Achievement {
 		}
 	}
 
-	/**
-	 * @param string $key
-	 * @param User $user
-	 * @param int|null $index
-	 */
-	private static function achieveInternal( $key, User $user, $index = null ) {
+	private static function achieveInternal( string $key, User $user, int $index = null ) {
 		$logEntry = new ManualLogEntry( Constants::LOG_TYPE, $key );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( SpecialPage::getTitleFor( SpecialAchievements::PAGE_NAME ) );
@@ -187,12 +179,7 @@ class Achievement {
 		return $queryInfo;
 	}
 
-	/**
-	 * @param string $key
-	 * @param User $user
-	 * @return int
-	 */
-	private static function selectLogCount( $key, User $user ) {
+	private static function selectLogCount( string $key, User $user ): int {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$query = self::getQueryInfo( $dbr );
 		$query['fields'] = '*';
@@ -210,11 +197,7 @@ class Achievement {
 		);
 	}
 
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
-	public static function isAchievementBadgesAvailable( User $user ) {
+	public static function isAchievementBadgesAvailable( User $user ): bool {
 		if ( $user->isSystemUser() ) {
 			return false;
 		}
@@ -241,7 +224,7 @@ class Achievement {
 	 * @param string|array|null $path
 	 * @return string
 	 */
-	public static function getAchievementIcon( Language $lang, $path = null ) {
+	public static function getAchievementIcon( Language $lang, $path = null ): string {
 		if ( $path === null ) {
 			$config = MediaWikiServices::getInstance()->getMainConfig();
 			$path = $config->get( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_ICON );
@@ -254,7 +237,7 @@ class Achievement {
 	 * @param string|array|null $path
 	 * @return string
 	 */
-	public static function getAchievementOgImage( Language $lang, $path = null ) {
+	public static function getAchievementOgImage( Language $lang, $path = null ): string {
 		if ( $path === null ) {
 			$config = MediaWikiServices::getInstance()->getMainConfig();
 			$path = $config->get( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE );
@@ -267,7 +250,7 @@ class Achievement {
 	 * @param string|array $path
 	 * @return string
 	 */
-	public static function getImageForLanguage( Language $lang, $path ) {
+	public static function getImageForLanguage( Language $lang, $path ): string {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		if ( is_array( $path ) ) {
 			if ( array_key_exists( $lang->getCode(), $path ) ) {
@@ -287,7 +270,7 @@ class Achievement {
 	 * 0: Shorten for display with a message (ex: "Earned at")
 	 * 1: Full timestamp for title attribute of html
 	 */
-	public static function getHumanTimes( Language $lang, $user, $timestamp = null ) {
+	public static function getHumanTimes( Language $lang, User $user, string $timestamp = null ): array {
 		/** @var MWTimestamp */
 		$timestamp = MWTimestamp::getInstance( $timestamp );
 
@@ -318,7 +301,7 @@ class Achievement {
 	 * 1: Unsuffixed key (ex: 'edit-page')
 	 * 2: index (ex: 0)
 	 */
-	public static function extractKeySegments( $key ) {
+	public static function extractKeySegments( string $key ) {
 		preg_match( '/(.+)\-(\d+)/', $key, $matches );
 		if ( !$matches ) {
 			return [ $key, $key, null ];

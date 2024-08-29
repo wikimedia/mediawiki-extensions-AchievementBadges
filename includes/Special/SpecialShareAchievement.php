@@ -10,6 +10,7 @@ use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsLookup;
+use Message;
 use NamespaceInfo;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
@@ -27,39 +28,17 @@ class SpecialShareAchievement extends SpecialPage {
 
 	public const PAGE_NAME = 'ShareAchievement';
 
-	/** @var TemplateParser */
-	private $templateParser;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var string */
-	private $base64subPage;
-
-	/** @var User */
-	private $obtainer;
-
-	/** @var Language */
-	private $obtainerLang;
-
-	/** @var User */
-	private $viewer;
-
-	/** @var string */
-	private $suffixedKey;
-
-	/** @var string */
-	private $unsuffixedKey;
-
-	/** @var string */
-	private $achievementType;
-
-	/** @var array */
-	private $registry;
-
-	/** @var \Message */
-	private $achvNameMsg;
-
+	private TemplateParser $templateParser;
+	private LoggerInterface $logger;
+	private string $base64subPage;
+	private User $obtainer;
+	private Language $obtainerLang;
+	private User $viewer;
+	private string $suffixedKey;
+	private string $unsuffixedKey;
+	private string $achievementType;
+	private array $registry;
+	private Message $achvNameMsg;
 	private LanguageFactory $languageFactory;
 	private ILoadBalancer $loadBalancer;
 	private UserOptionsLookup $userOptionsLookup;
