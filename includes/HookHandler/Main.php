@@ -18,6 +18,10 @@ use SpecialPage;
 use User;
 
 class Main implements
+	\MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook,
+	\MediaWiki\Extension\Notifications\Hooks\BeforeCreateEchoEventHook,
+	\MediaWiki\Extension\Notifications\Hooks\BeforeEchoEventInsertHook,
+	\MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook,
 	\MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook,
 	\MediaWiki\Hook\ContributionsToolLinksHook
 {
@@ -29,12 +33,11 @@ class Main implements
 		$this->hookRunner = $hookRunner;
 	}
 
-	public static function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		if ( !$config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
+	public function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
+		if ( !$this->config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
 			return;
 		}
-		$extensionAssetsPath = $config->get( MainConfigNames::ExtensionAssetsPath );
+		$extensionAssetsPath = $this->config->get( MainConfigNames::ExtensionAssetsPath );
 		$betaPrefs[Constants::PREF_KEY_ACHIEVEMENT_ENABLE] = [
 			'label-message' => 'achievementbadges-beta-feature-achievement-enable-message',
 			'desc-message' => 'achievementbadges-beta-feature-achievement-enable-description',
@@ -52,7 +55,7 @@ class Main implements
 	 * @param array &$categories
 	 * @param array &$icons
 	 */
-	public static function onBeforeCreateEchoEvent( &$notifs, &$categories, &$icons ) {
+	public function onBeforeCreateEchoEvent( array &$notifs, array &$categories, array &$icons ) {
 		$categories[Constants::ECHO_EVENT_CATEGORY] = [
 			'priority' => 9,
 			'tooltip' => 'achievementbadges-pref-tooltip-achievement-badges',
@@ -81,7 +84,7 @@ class Main implements
 	 * @param Event $event
 	 * @param string &$bundleString
 	 */
-	public static function onEchoGetBundleRules( $event, &$bundleString ) {
+	public function onEchoGetBundleRules( Event $event, string &$bundleString ) {
 		if ( $event->getType() === Constants::EVENT_KEY_EARN ) {
 			$bundleString = Constants::EVENT_KEY_EARN;
 		}
@@ -91,17 +94,16 @@ class Main implements
 	 * @param Event $event
 	 * @return bool
 	 */
-	public static function onBeforeEchoEventInsert( Event $event ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	public function onBeforeEchoEventInsert( Event $event ) {
 		$type = $event->getType();
 
 		if ( $type === 'thank-you-edit'
-			&& $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_THANK_YOU_EDIT ) ) {
+			&& $this->config->get( Constants::CONFIG_KEY_REPLACE_ECHO_THANK_YOU_EDIT ) ) {
 			return false;
 		}
 		if ( $type === 'welcome'
-			&& $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_WELCOME )
-			&& !$config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
+			&& $this->config->get( Constants::CONFIG_KEY_REPLACE_ECHO_WELCOME )
+			&& !$this->config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
 			// the welcome notification is replaced with 'sign-up' achievement.
 			return false;
 		}
