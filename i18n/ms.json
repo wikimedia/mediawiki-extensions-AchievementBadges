@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
 	"special-achievements": "Semua pencapaian",
@@ -16,8 +17,9 @@
 	"achievementbadges-achievement-name-edit-page-0": "Suntingan Pertama",
 	"achievementbadges-achievement-hint-edit-page-0": "Sunting sebarang laman.",
 	"achievementbadges-achievement-hint-edit-page-2": "Teruskan menyunting.",
-	"achievementbadges-achievement-name-visual-edit": "Penyunting Visual",
-	"achievementbadges-achievement-hint-visual-edit": "{{GENDER:$1|Cuba}} penyunting visual",
+	"achievementbadges-achievement-name-visual-edit": "Alat Sunting Visual",
+	"achievementbadges-achievement-hint-visual-edit": "{{GENDER:$1|Cuba}} alat sunting visual",
+	"achievementbadges-achievement-description-visual-edit": "{{GENDER:$1|Anda}} menyunting menggunakan alat sunting visual",
 	"achievementbadges-achievement-hint-edit-size-0": "Tulis lebih daripada dua atau tiga ayat pada masa yang sama apabila menyunting!",
 	"achievementbadges-achievement-hint-create-page-0": "Cipta sebarang laman baru!",
 	"achievementbadges-achievement-hint-contribs-monday": "Sumbang pada Isnin",
