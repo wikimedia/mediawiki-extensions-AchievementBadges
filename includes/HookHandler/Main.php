@@ -13,6 +13,7 @@ use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserFactory;
 use SpecialPage;
 use User;
 
@@ -26,10 +27,16 @@ class Main implements
 {
 	private Config $config;
 	private HookRunner $hookRunner;
+	private UserFactory $userFactory;
 
-	public function __construct( Config $config, HookRunner $hookRunner ) {
+	public function __construct(
+		Config $config,
+		HookRunner $hookRunner,
+		UserFactory $userFactory
+	) {
 		$this->config = $config;
 		$this->hookRunner = $hookRunner;
+		$this->userFactory = $userFactory;
 	}
 
 	public function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
@@ -125,7 +132,7 @@ class Main implements
 		array &$tools,
 		SpecialPage $specialPage
 	) {
-		$target = User::newFromId( $id );
+		$target = $this->userFactory->newFromId( $id );
 		if ( $target->isAnon() ) {
 			return;
 		}

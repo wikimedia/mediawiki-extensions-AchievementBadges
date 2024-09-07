@@ -11,6 +11,7 @@ use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\Utils\UrlUtils;
 use Message;
@@ -44,18 +45,21 @@ class SpecialShareAchievement extends SpecialPage {
 	private LanguageFactory $languageFactory;
 	private ILoadBalancer $loadBalancer;
 	private UrlUtils $urlUtils;
+	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		LanguageFactory $languageFactory,
 		ILoadBalancer $loadBalancer,
 		UrlUtils $urlUtils,
+		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->languageFactory = $languageFactory;
 		$this->loadBalancer = $loadBalancer;
 		$this->urlUtils = $urlUtils;
+		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
@@ -81,7 +85,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$this->base64subPage = $subPage;
 
 		[ $obtainerId, $key ] = $split;
-		$this->obtainer = User::newFromId( (int)$obtainerId );
+		$this->obtainer = $this->userFactory->newFromId( (int)$obtainerId );
 		if ( !$this->obtainer ) {
 			$out->addWikiTextAsInterface( $this->msg( 'special-shareachievement-invalid-username' )->parse() );
 			return;

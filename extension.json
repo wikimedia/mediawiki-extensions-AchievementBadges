@@ -35,7 +35,11 @@
 	"HookHandlers": {
 		"Main": {
 			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\Main",
-			"services": [ "MainConfig", "AchievementBadgesHookRunner" ]
+			"services": [
+				"MainConfig",
+				"AchievementBadgesHookRunner",
+				"UserFactory"
+			]
 		},
 		"MediaWikiServices": {
 			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\MediaWikiServices"
@@ -46,6 +50,7 @@
 				"MainConfig",
 				"DBLoadBalancer",
 				"RevisionStore",
+				"UserFactory",
 				"UserOptionsLookup"
 			]
 		}
@@ -55,7 +60,8 @@
 			"class": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialAchievements",
 			"services": [
 				"AchievementBadgesHookRunner",
-				"DBLoadBalancer"
+				"DBLoadBalancer",
+				"UserFactory"
 			]
 		},
 		"ShareAchievement": {
@@ -64,6 +70,7 @@
 				"LanguageFactory",
 				"DBLoadBalancer",
 				"UrlUtils",
+				"UserFactory",
 				"UserOptionsLookup"
 			]
 		}

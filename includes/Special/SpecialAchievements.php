@@ -9,6 +9,7 @@ use MediaWiki\Extension\AchievementBadges\Hooks\HookRunner;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Html\TemplateParser;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\User\UserFactory;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use User;
@@ -26,17 +27,20 @@ class SpecialAchievements extends SpecialPage {
 
 	private HookRunner $hookRunner;
 	private ILoadBalancer $loadBalancer;
+	private UserFactory $userFactory;
 	private TemplateParser $templateParser;
 	private LoggerInterface $logger;
 	private ?User $target = null;
 
 	public function __construct(
 		HookRunner $hookRunner,
-		ILoadBalancer $loadBalancer
+		ILoadBalancer $loadBalancer,
+		UserFactory $userFactory
 	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->hookRunner = $hookRunner;
 		$this->loadBalancer = $loadBalancer;
+		$this->userFactory = $userFactory;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
 	}
@@ -127,7 +131,7 @@ class SpecialAchievements extends SpecialPage {
 		if ( !$subPage ) {
 			return null;
 		}
-		$user = User::newFromName( $subPage );
+		$user = $this->userFactory->newFromName( $subPage );
 		if ( !$user ) {
 			return null;
 		}

@@ -9,6 +9,7 @@ use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use User;
@@ -27,17 +28,20 @@ class AchievementRegister implements
 	private Config $config;
 	private ILoadBalancer $loadBalancer;
 	private RevisionStore $revisionStore;
+	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		Config $config,
 		ILoadBalancer $loadBalancer,
 		RevisionStore $revisionStore,
+		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
 		$this->loadBalancer = $loadBalancer;
 		$this->revisionStore = $revisionStore;
+		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
@@ -172,7 +176,7 @@ class AchievementRegister implements
 	 */
 	public function onUserEditCountUpdate( $infos ): void {
 		foreach ( $infos as $info ) {
-			$user = User::newFromIdentity( $info->getUser() );
+			$user = $this->userFactory->newFromUserIdentity( $info->getUser() );
 			Achievement::sendStats( [
 				'key' => Constants::ACHV_KEY_EDIT_PAGE,
 				'user' => $user,
@@ -199,7 +203,7 @@ class AchievementRegister implements
 			LoggerFactory::getInstance( 'AchievementBadges' )->debug( 'revert is ignored.' );
 			return;
 		}
-		$user = User::newFromIdentity( $user );
+		$user = $this->userFactory->newFromUserIdentity( $user );
 		if ( $user->isAnon() ) {
 			return;
 		}
@@ -270,7 +274,7 @@ class AchievementRegister implements
 		if ( $this->isVisualEditorTagUsed() && in_array( 'visualeditor', $addedTags ) ) {
 			// The given $user is empty when visual editing
 			$user = $this->revisionStore->getRevisionById( $rev_id )->getUser();
-			$user = User::newFromIdentity( $user );
+			$user = $this->userFactory->newFromUserIdentity( $user );
 			Achievement::achieve( [
 				'key' => Constants::ACHV_KEY_VISUAL_EDIT,
 				'user' => $user,
@@ -292,7 +296,7 @@ class AchievementRegister implements
 		if ( !isset( $result['recipient'] ) || !$result['success'] ) {
 			return;
 		}
-		$recipient = User::newFromName( $result['recipient'] );
+		$recipient = $this->userFactory->newFromName( $result['recipient'] );
 		LoggerFactory::getInstance( 'AchievementBadges' )->debug( "$user thanks to $recipient" );
 		Achievement::achieve( [
 			'key' => Constants::ACHV_KEY_THANKS,
