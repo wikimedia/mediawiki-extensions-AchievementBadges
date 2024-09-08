@@ -73,13 +73,12 @@ class SpecialShareAchievement extends SpecialPage {
 		$out->addModules( [ 'ext.achievementbadges.special.shareachievement' ] );
 		$config = $this->getConfig();
 
-		$this->base64subPage = $subPage;
-		$subPage = base64_decode( $subPage );
-		$split = explode( '/', $subPage, 2 );
+		$split = explode( '/', base64_decode( $subPage ?? '' ) ?: '', 2 );
 		if ( count( $split ) !== 2 ) {
 			$out->addWikiTextAsInterface( $this->msg( 'special-shareachievement-invalid' )->parse() );
 			return;
 		}
+		$this->base64subPage = $subPage;
 
 		[ $obtainerId, $key ] = $split;
 		$this->obtainer = User::newFromId( (int)$obtainerId );
