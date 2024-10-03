@@ -1,4 +1,5 @@
 {
+	"name": "AchievementBadges",
 	"private": true,
 	"scripts": {
 		"test": "grunt test",
