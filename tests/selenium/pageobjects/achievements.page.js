@@ -7,8 +7,8 @@ class AchievementsPage extends Page {
 		return $( '#achievement-long-user-page .achievement-hint' );
 	}
 
-	open() {
-		super.openTitle( 'Special:Achievements' );
+	async open() {
+		return super.openTitle( 'Special:Achievements' );
 	}
 }
 
