@@ -139,7 +139,7 @@ class SpecialAchievements extends SpecialPage {
 		string $icon,
 		User $user,
 		bool $isEarned,
-		string $timestamp = null
+		?string $timestamp = null
 	): array {
 		$data = [
 			'text-type' => $key,

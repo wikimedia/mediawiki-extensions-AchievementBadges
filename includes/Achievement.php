@@ -126,7 +126,7 @@ class Achievement {
 		}
 	}
 
-	private static function achieveInternal( string $key, User $user, int $index = null ) {
+	private static function achieveInternal( string $key, User $user, ?int $index = null ) {
 		$logEntry = new ManualLogEntry( Constants::LOG_TYPE, $key );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( SpecialPage::getTitleFor( SpecialAchievements::PAGE_NAME ) );
@@ -270,7 +270,7 @@ class Achievement {
 	 * 0: Shorten for display with a message (ex: "Earned at")
 	 * 1: Full timestamp for title attribute of html
 	 */
-	public static function getHumanTimes( Language $lang, User $user, string $timestamp = null ): array {
+	public static function getHumanTimes( Language $lang, User $user, ?string $timestamp = null ): array {
 		/** @var MWTimestamp */
 		$timestamp = MWTimestamp::getInstance( $timestamp );
 
