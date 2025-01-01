@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cigaryno",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
+	"achievementbadges-desc": "توفير نظام [[Special:Achievements|إنجازات]]",
 	"special-achievements": "كل الإنجازات",
+	"special-achievements-other-user": "إنجازات $1",
 	"special-shareachievement-item-facebook": "فيسبوك",
 	"special-shareachievement-item-twitter": "تويتر",
 	"achievementbadges-beta-feature-achievement-enable-message": "شارات الإنجاز",
