@@ -13,6 +13,8 @@
 	"special-shareachievement-invalid": "وصول غير صالح",
 	"special-shareachievement-invalid-username": "اسم مستخدم غير صالح",
 	"special-shareachievement-invalid-achievement-name": "إسم إنجاز غير صالح",
+	"special-shareachievement-message-other": "تم تحقيق $1",
+	"special-shareachievement-title": "{{GENDER:$1|حصل|حصلت}} على الإنجاز $2!",
 	"special-shareachievement-header-share": "شارك",
 	"special-shareachievement-item-facebook": "فيسبوك",
 	"special-shareachievement-item-twitter": "تويتر",
@@ -22,6 +24,7 @@
 	"achievementbadges-achievement-name-sign-up": "أنشئ حسابًا",
 	"achievementbadges-achievement-name-edit-page-0": "أول تعديل",
 	"achievementbadges-achievement-name-visual-edit": "المحرر المرئي",
+	"achievementbadges-achievement-name-long-user-page": "الملف الشخصي",
 	"achievementbadges-achievement-name-thanks": "شكرًا!",
 	"achievementbadges-achievement-description-thanks": "لقد شكرت شخصًا ما على التعديل."
 }
