@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rdwnnr"
+		]
+	},
+	"achievementbadges-achievement-name-contribs-sunday": "Ahaq iyéhé!",
+	"achievementbadges-achievement-name-contribs-monday": "Assenéng iyéhé!",
+	"achievementbadges-achievement-name-contribs-tuesday": "Salasa iyéhé!",
+	"achievementbadges-achievement-name-contribs-wednesday": "Arrabaq iyéhé!",
+	"achievementbadges-achievement-name-contribs-thursday": "Kamisiq iyéhé!",
+	"achievementbadges-achievement-name-contribs-friday": "Jumaq Mabbarakkaq iyédé!",
+	"achievementbadges-achievement-description-contribs-friday": "{{GENDER:$1|Idiq}} pura annorengngi ri Jumaqé!",
+	"achievementbadges-achievement-name-contribs-saturday": "Sattu iyéhé!",
+	"achievementbadges-achievement-hint-contribs-saturday": "Annoreng ri Sattu",
+	"achievementbadges-achievement-description-contribs-saturday": "{{GENDER:$1|Idiq}} pura annorengngi ri Sattué!"
+}
