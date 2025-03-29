@@ -7,10 +7,10 @@ use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\AchievementBadges\Hooks\HookRunner;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\Logger\LoggerFactory;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
-use TemplateParser;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 

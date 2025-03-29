@@ -3,18 +3,18 @@
 namespace MediaWiki\Extension\AchievementBadges\Special;
 
 use Language;
-use Linker;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\Languages\LanguageFactory;
+use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
 use NamespaceInfo;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
-use TemplateParser;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
