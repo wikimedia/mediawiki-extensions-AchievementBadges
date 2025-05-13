@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
+	"special-shareachievement-invalid-username": "Ongültege Benotzernumm",
 	"special-shareachievement-header-share": "Deelen",
 	"special-shareachievement-item-facebook": "Facebook",
 	"special-shareachievement-item-twitter": "Twitter",
