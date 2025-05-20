@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"special-achievements": "Sva dostignuća",
+	"special-shareachievement-invalid-username": "Pogrešno korisničko ime",
+	"special-shareachievement-item-facebook": "Fejsbuk",
+	"special-shareachievement-item-twitter": "Tviter",
+	"log-name-achievementbadges": "Dnevnik dostignuća",
+	"notification-link-text-all-achievements": "Sva dostignuća",
+	"achievementbadges-achievement-name-edit-page-0": "Prva izmena",
+	"achievementbadges-achievement-hint-edit-page-1": "Nastavi uređivanje.",
+	"achievementbadges-achievement-hint-edit-page-2": "Nastavi uređivanje.",
+	"achievementbadges-achievement-name-long-user-page": "Profil",
+	"achievementbadges-achievement-name-thanks": "Hvala!",
+	"achievementbadges-achievement-description-thanks": "Zahvalili ste se nekome za izmenu.",
+	"achievementbadges-achievement-hint-be-thanked": "Nastavite {{GENDER:$1|uređivanje}}.",
+	"achievementbadges-achievement-description-be-thanked": "Neko {{GENDER:$1|Vam}} se zahvalio za vašu izmenu."
+}
