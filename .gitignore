@@ -5,3 +5,4 @@ tests/selenium/log
 # composer dependencies
 /vendor/
 composer.lock
+/.stylelintcache
