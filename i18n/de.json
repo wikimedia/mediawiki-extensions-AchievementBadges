@@ -5,6 +5,7 @@
 			"Justman10000",
 			"Killarnee",
 			"LuluCode",
+			"PretzelRocky",
 			"TomatoCake",
 			"Umlaut",
 			"Zabe"
@@ -35,6 +36,7 @@
 	"achievementbadges-pref-tooltip-achievement-badges": "Benachrichtige mich, wenn ich einen Erfolg erreiche.",
 	"log-name-achievementbadges": "Erfolgsprotokoll",
 	"log-description-achievementbadges": "Dies ist ein Protokoll mit einer Liste der Erfolge, die ein Benutzer erzielt hat.",
+	"notification-link-text-all-achievements": "Alle Erfolge",
 	"achievementbadges-achievement-name-sign-up": "Registrieren",
 	"achievementbadges-achievement-name-edit-page-0": "Erste Bearbeitung",
 	"achievementbadges-achievement-hint-edit-page-0": "Bearbeite eine beliebige Seite.",
