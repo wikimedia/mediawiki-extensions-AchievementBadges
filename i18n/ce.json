@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"special-achievements": "Массо а кхиамаш",
+	"special-achievements-other-user": "Декъашхойн кхиамаш $1",
+	"achievement-earned-at-tooltip": "$2, $1 чохь",
+	"special-shareachievement-invalid": "ТӀекхача йиш йац",
+	"special-shareachievement-invalid-username": "Нийса йоцу декъашхочун керла цӀе",
+	"special-shareachievement-message-other": "$1 кхаьчна",
+	"special-shareachievement-header-share": "Йекъа",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "Твиттер",
+	"notification-link-text-all-achievements": "Массо а кхиамаш",
+	"achievementbadges-achievement-name-sign-up": "Регистраци",
+	"achievementbadges-achievement-name-edit-page-0": "Хьалхара хийцам",
+	"achievementbadges-achievement-hint-edit-page-1": "Кхин дӀа тайе.",
+	"achievementbadges-achievement-name-visual-edit": "БӀаьран редактор",
+	"achievementbadges-achievement-name-create-page-5": "Баобаб",
+	"achievementbadges-achievement-name-long-user-page": "Профиль",
+	"achievementbadges-achievement-name-contribs-sunday": "Тахана кӀиран де ду!",
+	"achievementbadges-achievement-name-contribs-monday": "Тахана оршотан де ду!",
+	"achievementbadges-achievement-name-contribs-tuesday": "Шинарин де ду!",
+	"achievementbadges-achievement-name-contribs-thursday": "Йеарин де ду!",
+	"achievementbadges-achievement-name-contribs-friday": "Тахана пӀераскан де ду!",
+	"achievementbadges-achievement-name-contribs-saturday": "Тахана шот де ду!",
+	"achievementbadges-achievement-name-thanks": "Баркалла!"
+}
