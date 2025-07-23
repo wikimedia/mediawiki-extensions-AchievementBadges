@@ -56,6 +56,7 @@
 	"achievementbadges-achievement-description-edit-size-3": "Mehr als 50.000 Bytes wurden auf der Seite {{SITENAME}} auf einmal hinzugefügt. {{GENDER:$1|Du}} hast es geschafft, dein Debüt auf {{SITENAME}} zu geben.",
 	"achievementbadges-achievement-name-edit-size-4": "Ein Baum voller Blätter",
 	"achievementbadges-achievement-hint-edit-size-4": "Schreibe beim Bearbeiten einen sehr, sehr langen Text auf einmal! Diese Leistung ist sehr schwer zu erreichen.",
+	"achievementbadges-achievement-hint-create-page-0": "Erstelle eine neue Seite!",
 	"achievementbadges-achievement-hint-create-page-3": "Erstelle weiterhin neue Seiten. Dieser Erfolg ist schwer zu erreichen.",
 	"achievementbadges-achievement-description-create-page-3": "{{GENDER:$1|Du}} hast 100 neue Seiten auf {{SITENAME}} erstellt. Deine Spuren werden auf {{SITENAME}} eingefärbt!",
 	"achievementbadges-achievement-name-create-page-4": "Laubbaum",
