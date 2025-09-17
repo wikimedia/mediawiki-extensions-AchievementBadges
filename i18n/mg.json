@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jagwar"
+		]
+	},
+	"achievementbadges-desc": "Manomeza rafitra [[Special:Achievements|achievements]].",
+	"special-achievements": "Ny zava-bita rehetra",
+	"special-achievements-other-user": "Ny zava-bita nataon'ny $1.",
+	"achievement-earned-at-tooltip": "$2, tamin'ny $1",
+	"special-shareachievement": "Fampizarana ny mari-pahaizana momba ny zava-bita",
+	"special-shareachievement-invalid": "Fidirana tsy mety",
+	"special-shareachievement-invalid-username": "solon'anarana tsy mety",
+	"special-shareachievement-invalid-achievement-name": "Anaran'ny zava-bita tsy mety",
+	"special-shareachievement-message": "Arahabaina! Nahavita ianao",
+	"special-shareachievement-message-other": "$1 tratra",
+	"special-shareachievement-title": "{{GENDER:$1| Nahazo}} zava-bita $2 !",
+	"special-shareachievement-external-description": "{{GENDER:$1|Nahazo}} ny zava-bita $2 tao amin'ny {{SITENAME}} i $1!",
+	"special-shareachievement-header-share": "Zaraina",
+	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-twitter": "X/Twitter",
+	"special-shareachievement-tweet": "Vao {{GENDER:$1| nahazo}} ny zava-bita $2 tao amin'ny {{SITENAME}} aho! $3",
+	"special-shareachievement-tweet-viewer": "{{GENDER:$1|Nahazo}} ny zava-bita $2 tao amin'ny {{SITENAME}} i $1! $3",
+	"achievementbadges-beta-feature-achievement-enable-message": "Famaritana ny zava-bita",
+	"achievementbadges-beta-feature-achievement-enable-description": "Mahazoa zava-bita nomena mba hahazoana badge.",
+	"echo-category-title-achievement-badges": "Hahazo zava-bita",
+	"achievementbadges-pref-tooltip-achievement-badges": "Ampahafantaro ahy rehefa mahazo zava-bita aho.",
+	"log-name-achievementbadges": "Laogin'ny zava-bita",
+	"log-description-achievementbadges": "Ity dia laogy mampiseho lisitry ny zava-bita azon'ny mpikambana iray.",
+	"notification-link-text-all-achievements": "Zava-bita rehetra",
+	"achievementbadges-link-on-user-contributes": "zava-bita tratra",
+	"achievementbadges-achievement-name-enable-achievement-badges": "Hampandeha ny mari-pankasitrahana"
+}
