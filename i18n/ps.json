@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"special-shareachievement-header-share": "وېشل",
+	"special-shareachievement-item-facebook": "فيسبوک",
+	"special-shareachievement-item-twitter": "ټویټر",
+	"achievementbadges-beta-feature-achievement-enable-message": "ترلاسه‌شوې ستاين‌نښې",
+	"achievementbadges-beta-feature-achievement-enable-description": "د ستاين‌نښو د ترلاسنې لپاره لاسته‌راوړنې ولرئ.",
+	"achievementbadges-achievement-name-long-user-page": "پېژنيال",
+	"achievementbadges-achievement-hint-long-user-page": "خپل [[User:$1|کارن مخ]] ښکلی کړئ.",
+	"achievementbadges-achievement-description-long-user-page": "{{GENDER:$1|تاسو}} خپل کارن مخ جوړ کړ او ځان مو راوپېژاند!",
+	"achievementbadges-achievement-name-contribs-sunday": "نن يوه‌نۍ ده!",
+	"achievementbadges-achievement-hint-contribs-sunday": "د يوه‌نۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-sunday": "{{GENDER:$1|تاسو}} د يوه‌نۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-monday": "نن دوه‌نۍ ده!",
+	"achievementbadges-achievement-hint-contribs-monday": "د دوه‌نۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-monday": "{{GENDER:$1|تاسو}} د دوه‌نۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-tuesday": "نن درې‌نۍ ده!",
+	"achievementbadges-achievement-hint-contribs-tuesday": "د درې‌نۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-tuesday": "{{GENDER:$1|تاسو}} د درې‌نۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-wednesday": "نن څلورنۍ ده!",
+	"achievementbadges-achievement-hint-contribs-wednesday": "د څلورنۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-wednesday": "{{GENDER:$1|تاسو}} د څلورنۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-thursday": "نن پېنځه‌نۍ ده!",
+	"achievementbadges-achievement-hint-contribs-thursday": "د پېنځه‌نۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-thursday": "{{GENDER:$1|تاسو}} د پېنځه‌نۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-friday": "نن ادينه ده!",
+	"achievementbadges-achievement-hint-contribs-friday": "د ادينې په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-friday": "{{GENDER:$1|تاسو}} د ادينې په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-contribs-saturday": "نن پيلنۍ ده!",
+	"achievementbadges-achievement-hint-contribs-saturday": "د پيلنۍ په ورځ ونډه واخلئ",
+	"achievementbadges-achievement-description-contribs-saturday": "{{GENDER:$1|تاسو}} د پيلنۍ په ورځ ونډه واخيسته!",
+	"achievementbadges-achievement-name-thanks": "مننه!",
+	"achievementbadges-achievement-hint-thanks": "تل د مننې لپاره يو څه شته.",
+	"achievementbadges-achievement-description-thanks": "تاسو د سمون لپاره د چا مننه وکړه.",
+	"achievementbadges-achievement-name-be-thanked": "له مننې ډکه ورځه",
+	"achievementbadges-achievement-hint-be-thanked": "{{GENDER:$1|سمون}} ته ودوام ورکړئ.",
+	"achievementbadges-achievement-description-be-thanked": "يو چا {{GENDER:$1|ستاسو}} د سمون په خاطر له تاسو مننه وکړه."
+}
