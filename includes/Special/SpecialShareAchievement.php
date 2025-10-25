@@ -10,6 +10,7 @@ use MediaWiki\Html\TemplateParser;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
 use Message;
 use NamespaceInfo;
@@ -226,7 +227,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$titleText = NamespaceInfo::CANONICAL_NAMES[NS_SPECIAL] . ':' . self::PAGE_NAME . '/' . $this->base64subPage;
 		$articlePath = $this->getConfig()->get( 'ArticlePath' );
 		$localUrl = str_replace( '$1', $titleText, $articlePath );
-		return wfExpandUrl( $localUrl );
+		return MediaWikiServices::getInstance()->getUrlUtils()->expand( $localUrl ) ?? '';
 	}
 
 	private function addMeta() {
@@ -252,7 +253,7 @@ class SpecialShareAchievement extends SpecialPage {
 				->plaintextParams( $achvName )
 				->inLanguage( $obtainerLang )->text();
 		$meta['description'] = $meta['og:description'];
-		$meta['og:image'] = wfExpandUrl( $ogImagePath );
+		$meta['og:image'] = MediaWikiServices::getInstance()->getUrlUtils()->expand( $ogImagePath );
 
 		$out = $this->getOutput();
 		foreach ( $meta as $property => $value ) {
