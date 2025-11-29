@@ -12,7 +12,6 @@ use MediaWiki\Extension\Notifications\AttributeManager;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SpecialPage;
 use User;
@@ -114,7 +113,6 @@ class Main implements
 	 * @inheritDoc
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$vars['wg' . Constants::CONFIG_KEY_FACEBOOK_APP_ID] = $config->get( Constants::CONFIG_KEY_FACEBOOK_APP_ID );
 	}
 

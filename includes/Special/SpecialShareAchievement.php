@@ -11,8 +11,8 @@ use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\Utils\UrlUtils;
 use Message;
 use NamespaceInfo;
 use Psr\Log\LoggerInterface;
@@ -43,16 +43,19 @@ class SpecialShareAchievement extends SpecialPage {
 	private Message $achvNameMsg;
 	private LanguageFactory $languageFactory;
 	private ILoadBalancer $loadBalancer;
+	private UrlUtils $urlUtils;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		LanguageFactory $languageFactory,
 		ILoadBalancer $loadBalancer,
+		UrlUtils $urlUtils,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->languageFactory = $languageFactory;
 		$this->loadBalancer = $loadBalancer;
+		$this->urlUtils = $urlUtils;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
@@ -228,7 +231,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$titleText = NamespaceInfo::CANONICAL_NAMES[NS_SPECIAL] . ':' . self::PAGE_NAME . '/' . $this->base64subPage;
 		$articlePath = $this->getConfig()->get( MainConfigNames::ArticlePath );
 		$localUrl = str_replace( '$1', $titleText, $articlePath );
-		return MediaWikiServices::getInstance()->getUrlUtils()->expand( $localUrl ) ?? '';
+		return $this->urlUtils->expand( $localUrl ) ?? '';
 	}
 
 	private function addMeta() {
@@ -254,7 +257,7 @@ class SpecialShareAchievement extends SpecialPage {
 				->plaintextParams( $achvName )
 				->inLanguage( $obtainerLang )->text();
 		$meta['description'] = $meta['og:description'];
-		$ogImage = MediaWikiServices::getInstance()->getUrlUtils()->expand( $ogImagePath );
+		$ogImage = $this->urlUtils->expand( $ogImagePath );
 		if ( $ogImage !== null ) {
 			$meta['og:image'] = $ogImage;
 		}

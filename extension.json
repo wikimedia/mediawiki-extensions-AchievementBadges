@@ -63,6 +63,7 @@
 			"services": [
 				"LanguageFactory",
 				"DBLoadBalancer",
+				"UrlUtils",
 				"UserOptionsLookup"
 			]
 		}

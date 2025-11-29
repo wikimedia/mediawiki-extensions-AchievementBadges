@@ -24,6 +24,7 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 		return new SpecialShareAchievement(
 			$services->getLanguageFactory(),
 			$services->getDBLoadBalancer(),
+			$services->getUrlUtils(),
 			$services->getUserOptionsLookup()
 		);
 	}
