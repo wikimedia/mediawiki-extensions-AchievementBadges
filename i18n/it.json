@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"Dream Indigo",
 			"EditGio"
 		]
 	},
@@ -49,5 +50,5 @@
 	"achievementbadges-achievement-hint-contribs-saturday": "Contribuendo di sabato",
 	"achievementbadges-achievement-name-thanks": "Grazie!",
 	"achievementbadges-achievement-description-thanks": "Hai ringraziato qualcuno per la modifica.",
-	"achievementbadges-achievement-description-be-thanked": "Qualcuno ti ha {{GENDER:$1|ringraziato|ringraziata}} per la tua modifica."
+	"achievementbadges-achievement-description-be-thanked": "Qualcuno ti ha ringraziat{{GENDER:$1|o|a|o/a}} per la tua modifica."
 }
