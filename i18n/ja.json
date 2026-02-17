@@ -5,7 +5,8 @@
 			"Omotecho",
 			"Sou0012",
 			"Yamagata Yusuke",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Gurio318"
 		]
 	},
 	"achievementbadges-desc": "[[Special:Achievements|実績(アチーブメント)]]システムを提供する。",
@@ -31,6 +32,8 @@
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "{{SITENAME}}で実績$2をつい先{{GENDER:$1|獲得}}しました！ $3",
 	"special-shareachievement-tweet-viewer": "$1は{{SITENAME}}で実績$2をつい先{{GENDER:$1|獲得}}しました！ $3",
+	"special-shareachievement-suggestion-sign-up": "[[Special:Createaccount|アカウントを作成]]して、実績の獲得を始めましょう。\n\nすでにアカウントをお持ちですか？ [[Special:Login|ログイン]]",
+	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|{{GENDER:$1|実績の獲得を始めましょう}}]]",
 	"achievementbadges-beta-feature-achievement-enable-message": "アチーブメントバッジ",
 	"achievementbadges-beta-feature-achievement-enable-description": "与えられたアチーブメントを獲得して、バッジを手に入れる。",
 	"log-name-achievementbadges": "達成記録",
