@@ -2,18 +2,18 @@
 	'use strict';
 	// https://developers.facebook.com/docs/plugins/share-button/
 	( function ( d, s, id ) {
-		var js, fjs = d.getElementsByTagName( s )[ 0 ];
+		const fjs = d.getElementsByTagName( s )[ 0 ];
 		if ( d.getElementById( id ) ) {
 			return;
 		}
-		js = d.createElement( s );
+		const js = d.createElement( s );
 		js.id = id;
 		js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
 		fjs.parentNode.insertBefore( js, fjs );
 	}( document, 'script', 'facebook-jssdk' ) );
 
 	// Initialize Facebook SDK
-	var facebookAppId = mw.config.get( 'wgAchievementBadgesFacebookAppId' );
+	const facebookAppId = mw.config.get( 'wgAchievementBadgesFacebookAppId' );
 	window.fbAsyncInit = function () {
 		FB.init( {
 			appId: facebookAppId,
@@ -23,14 +23,14 @@
 		} );
 	};
 
-	var button = window.document.getElementById( 'share-achievement-facebook' );
-	button.addEventListener( 'click', function ( e ) {
+	const button = window.document.getElementById( 'share-achievement-facebook' );
+	button.addEventListener( 'click', ( e ) => {
 		FB.ui(
 			{
 				method: 'share',
 				href: window.location.href
 			},
-			function () {}
+			() => {}
 		);
 		e.preventDefault();
 	} );
