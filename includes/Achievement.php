@@ -275,7 +275,7 @@ class Achievement {
 		$timestamp = MWTimestamp::getInstance( $timestamp );
 
 		$shortHumanTime = wfMessage( 'achievement-earned-at',
-			$user,
+			$user->getName(),
 			$lang->getHumanTimestamp(
 				$timestamp,
 				null,
