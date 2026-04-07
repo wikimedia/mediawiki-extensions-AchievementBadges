@@ -1,6 +1,4 @@
-'use strict';
-
-const Page = require( 'wdio-mediawiki/Page' );
+import Page from 'wdio-mediawiki/Page';
 
 class AchievementsPage extends Page {
 	get longUserPageHint() {
@@ -12,4 +10,4 @@ class AchievementsPage extends Page {
 	}
 }
 
-module.exports = new AchievementsPage();
+export default new AchievementsPage();

@@ -1,4 +1,7 @@
 {
 	"root": true,
-	"extends": [ "wikimedia/selenium" ]
+	"extends": [ "wikimedia/selenium" ],
+	"parserOptions": {
+		"sourceType": "module"
+	}
 }
