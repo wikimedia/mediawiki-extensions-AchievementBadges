@@ -3,7 +3,8 @@
 		"authors": [
 			"Ykhwong",
 			"렌즈",
-			"열심"
+			"열심",
+			"Tensama0415"
 		]
 	},
 	"achievementbadges-desc": "[[Special:Achievements|도전과제]]를 제공합니다",
@@ -29,7 +30,7 @@
 	"special-shareachievement-item-twitter": "트위터",
 	"special-shareachievement-tweet": "{{SITENAME}}에서 $2 도전과제를 지금 막 {{GENDER:$1|달성했어요}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 님이 {{SITENAME}}에서 $2 도전과제를 달성했어요, 축하해주세요! $3",
-	"special-shareachievement-suggestion-sign-up": "도전과제를 {{GENDER:$1|달성하려면}} 지금 [[Special:Createaccount|{{SITENAME}}에 가입]]하세요.\n\n계정이 있으신가요? [[Special:Login|로그인]]",
+	"special-shareachievement-suggestion-sign-up": "도전과제를 달성하려면 지금 [[Special:Createaccount|가입]]하세요.\n\n계정이 있으신가요? [[Special:Login|로그인]]",
 	"special-shareachievement-suggestion-beta": "[[Special:Preferences#mw-prefsection-betafeatures|지금 도전과제 달성을 {{GENDER:$1|시작하세요}}!]]",
 	"achievementbadges-beta-feature-achievement-enable-message": "도전과제 뱃지",
 	"achievementbadges-beta-feature-achievement-enable-description": "준비된 도전과제를 달성하고 뱃지를 부여받습니다.",
@@ -39,7 +40,7 @@
 	"log-description-achievementbadges": "도전과제 달성 기록입니다.",
 	"logentry-achievementbadges": "$1님이 $4 도전과제를 {{GENDER:$2|달성하였습니다}}",
 	"notification-header-achievementbadges-earn": "$3 도전과제를 {{GENDER:$2|달성했습니다}}.",
-	"notification-bundle-header-achievementbadges-earn": "새 도전과제를 $3개 {{GENDER:$2|달성했습니다}}.",
+	"notification-bundle-header-achievementbadges-earn": "{{PLURAL:$3|새 도전과제}}를 $3개 {{GENDER:$2|달성했습니다}}.",
 	"notification-link-text-all-achievements": "모든 도전과제",
 	"achievementbadges-link-on-user-contributes": "달성 도전과제",
 	"achievementbadges-achievement-name-enable-achievement-badges": "도전과제 활성화하기",
