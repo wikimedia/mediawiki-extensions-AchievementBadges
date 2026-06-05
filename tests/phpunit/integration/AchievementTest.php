@@ -83,12 +83,11 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 			'log_action' => $key,
 			'log_actor' => $user->getActorId(),
 		] );
-		$this->assertSelect(
-			$query['tables'],
-			[ 'log_type', 'log_action', 'log_params' ],
-			$query['conds'],
-			$logs
-		);
+		unset( $query['fields'] );
+		$this->newSelectQueryBuilder()
+			->select( [ 'log_type', 'log_action', 'log_params' ] )
+			->queryInfo( $query )
+			->assertResultSet( $logs );
 	}
 
 	/** @return array */
