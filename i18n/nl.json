@@ -18,7 +18,7 @@
 	"achievement-earned-at-tooltip": "$2 om $1",
 	"special-shareachievement": "Prestatiebadge delen",
 	"special-shareachievement-invalid": "Ongeldige toegang",
-	"special-shareachievement-invalid-username": "Ongeldige gebruikersnaam",
+	"special-shareachievement-invalid-username": "Onjuiste gebruikersnaam",
 	"special-shareachievement-invalid-achievement-name": "Ongeldige naam van prestatie",
 	"special-shareachievement-message": "Gefeliciteerd! U hebt behaald:",
 	"special-shareachievement-message-other": "$1 behaalde",
