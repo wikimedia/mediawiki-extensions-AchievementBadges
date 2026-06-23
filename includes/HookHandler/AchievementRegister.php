@@ -20,6 +20,7 @@ class AchievementRegister implements
 	\MediaWiki\ChangeTags\Hook\ChangeTagsAfterUpdateTagsHook,
 	\MediaWiki\Extension\AchievementBadges\Hooks\BeforeCreateAchievementHook,
 	\MediaWiki\Extension\AchievementBadges\Hooks\SpecialAchievementsBeforeGetEarnedHook,
+	\MediaWiki\Hook\UserEditCountUpdateHook,
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
@@ -169,6 +170,20 @@ class AchievementRegister implements
 	/**
 	 * @inheritDoc
 	 */
+	public function onUserEditCountUpdate( $infos ): void {
+		foreach ( $infos as $info ) {
+			$user = User::newFromIdentity( $info->getUser() );
+			Achievement::sendStats( [
+				'key' => Constants::ACHV_KEY_EDIT_PAGE,
+				'user' => $user,
+				'stats' => $user->getEditCount(),
+			] );
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function onPageSaveComplete(
 		$wikiPage,
 		$user,
@@ -189,11 +204,6 @@ class AchievementRegister implements
 			return;
 		}
 
-		Achievement::sendStats( [
-			'key' => Constants::ACHV_KEY_EDIT_PAGE,
-			'user' => $user,
-			'stats' => $user->getEditCount(),
-		] );
 		if ( $wikiPage->getTitle()->equals( $user->getUserPage() ) &&
 			$revisionRecord->getSize() > 500 ) {
 				Achievement::achieve( [

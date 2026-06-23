@@ -24,6 +24,7 @@
 		"BeforeCreateAchievement": "AchievementRegister",
 		"LocalUserCreated": "AchievementRegister",
 		"PageSaveComplete": "AchievementRegister",
+		"UserEditCountUpdate": "AchievementRegister",
 		"SpecialAchievementsBeforeGetEarned": "AchievementRegister",
 		"UserSaveSettings": "AchievementRegister",
 		"ChangeTagsAfterUpdateTags": "AchievementRegister"
