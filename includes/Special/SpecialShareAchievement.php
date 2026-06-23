@@ -253,7 +253,10 @@ class SpecialShareAchievement extends SpecialPage {
 				->plaintextParams( $achvName )
 				->inLanguage( $obtainerLang )->text();
 		$meta['description'] = $meta['og:description'];
-		$meta['og:image'] = MediaWikiServices::getInstance()->getUrlUtils()->expand( $ogImagePath );
+		$ogImage = MediaWikiServices::getInstance()->getUrlUtils()->expand( $ogImagePath );
+		if ( $ogImage !== null ) {
+			$meta['og:image'] = $ogImage;
+		}
 
 		$out = $this->getOutput();
 		foreach ( $meta as $property => $value ) {
