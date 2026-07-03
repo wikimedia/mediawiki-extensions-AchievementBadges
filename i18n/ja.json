@@ -6,7 +6,8 @@
 			"Omotecho",
 			"Sou0012",
 			"Yamagata Yusuke",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Tensama0415"
 		]
 	},
 	"achievementbadges-desc": "[[Special:Achievements|実績(アチーブメント)]]システムを提供する。",
@@ -38,7 +39,7 @@
 	"achievementbadges-beta-feature-achievement-enable-description": "与えられたアチーブメントを獲得して、バッジを手に入れる。",
 	"log-name-achievementbadges": "達成記録",
 	"log-description-achievementbadges": "利用者が獲得した実績のリストを表示する記録です。",
-	"logentry-achievementbadges": "$1が実績「$4」を解除しました",
+	"logentry-achievementbadges": "$1が実績「$4」を{{GENDER:$2|解除}}しました",
 	"notification-header-achievementbadges-earn": "実績 $3 を{{GENDER:$2|獲得しました}}。",
 	"notification-link-text-all-achievements": "すべてのアチーブメント",
 	"achievementbadges-link-on-user-contributes": "達成されたアチーブメント",
