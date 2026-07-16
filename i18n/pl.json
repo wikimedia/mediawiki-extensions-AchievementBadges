@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Msz2001",
-			"SemanticPioneer"
+			"SemanticPioneer",
+			"PanWor"
 		]
 	},
 	"achievementbadges-desc": "Zapewnia system [[Special:Achievements|osiągnięć]].",
@@ -88,7 +89,7 @@
 	"achievementbadges-achievement-description-create-page-1": "{{GENDER:$1|Stworzyłeś|Stworzyłaś}} pięć nowych stron na {{SITENAME}}.",
 	"achievementbadges-achievement-name-create-page-2": "Trawiaste Kwiaty",
 	"achievementbadges-achievement-hint-create-page-2": "Kontynuuj tworzenie nowych stron. To osiągnięcie ma średni poziom trudności.",
-	"achievementbadges-achievement-description-create-page-2": "{{GENDER:$1|Stworzyłeś|Stworzyłaś}} 30 nowych stron na {{SITENAME}}. Na {{SITENAME}} jest twój ślad.",
+	"achievementbadges-achievement-description-create-page-2": "{{GENDER:$1|Stworzyłeś|Stworzyłaś|Stworzono}} 30 nowych stron na {{SITENAME}}. {{SITENAME}} ma Twój ślad.",
 	"achievementbadges-achievement-name-create-page-3": "Zagajnik",
 	"achievementbadges-achievement-hint-create-page-3": "Kontynuuj tworzenie nowych stron. To osiągnięcie jest trudne do zdobycia.",
 	"achievementbadges-achievement-description-create-page-3": "{{GENDER:$1|Stworzyłeś|Stworzyłaś}} 100 nowych stron na {{SITENAME}}. Twoje ślady nabierają kolorów na {{SITENAME}}!",
