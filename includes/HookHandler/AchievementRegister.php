@@ -227,23 +227,18 @@ class AchievementRegister implements
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 
 		if ( $editResult->isNew() ) {
-			$query = $this->revisionStore->getQueryInfo();
-			$newPages = $dbr->selectRowCount(
-				$query['tables'],
-				'*',
-				[
+			$newPages = $this->revisionStore->newSelectQueryBuilder( $dbr )
+				->clearFields()
+				->where( [
 					'actor_user' => $user->getId(),
 					'rev_parent_id' => 0,
 					$dbr->bitAnd(
 						'rev_deleted', RevisionRecord::DELETED_USER
 						) . ' != ' . RevisionRecord::DELETED_USER,
-				],
-				__METHOD__,
-				[
-					'LIMIT' => 1000,
-				],
-				$query['joins']
-			);
+				] )
+				->limit( 1000 )
+				->caller( __METHOD__ )
+				->fetchRowCount();
 			Achievement::sendStats( [
 				'key' => Constants::ACHV_KEY_CREATE_PAGE,
 				'user' => $user,

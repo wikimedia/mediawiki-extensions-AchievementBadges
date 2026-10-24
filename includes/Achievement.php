@@ -188,14 +188,10 @@ class Achievement {
 			'log_action' => $key,
 			'log_actor' => $user->getActorId(),
 		] );
-		return $dbr->selectRowCount(
-			$query['tables'],
-			$query['fields'],
-			$query['conds'],
-			__METHOD__,
-			[],
-			$query['joins']
-		);
+		return $dbr->newSelectQueryBuilder()
+			->queryInfo( $query )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 	}
 
 	public static function isAchievementBadgesAvailable( User $user ): bool {

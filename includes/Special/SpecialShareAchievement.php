@@ -156,16 +156,12 @@ class SpecialShareAchievement extends SpecialPage {
 			'log_action' => $this->unsuffixedKey,
 			'log_actor' => $this->obtainer->getActorId(),
 		] );
-		$row = $dbr->selectRow(
-			$query['tables'],
-			[
-				'log_timestamp',
-			],
-			$query['conds'],
-			__METHOD__,
-			[],
-			$query['joins']
-		);
+		unset( $query['fields'] );
+		$row = $dbr->newSelectQueryBuilder()
+			->select( 'log_timestamp' )
+			->queryInfo( $query )
+			->caller( __METHOD__ )
+			->fetchRow();
 		if ( !$row ) {
 			return false;
 		}

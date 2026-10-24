@@ -179,19 +179,16 @@ class SpecialAchievements extends SpecialPage {
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_actor' => $user->getActorId(),
 		] );
-		/** @var stdClass $rows */
-		$rows = $dbr->select(
-			$query['tables'],
-			[
+		unset( $query['fields'] );
+		$rows = $dbr->newSelectQueryBuilder()
+			->select( [
 				'log_action',
 				'log_params',
 				'log_timestamp',
-			],
-			$query['conds'],
-			__METHOD__,
-			[],
-			$query['joins']
-		);
+			] )
+			->queryInfo( $query )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		$achvs = [];
 		foreach ( $rows as $row ) {

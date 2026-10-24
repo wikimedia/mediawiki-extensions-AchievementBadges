@@ -50,11 +50,10 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 			'log_action' => $key,
 			'log_actor' => $user->getActorId(),
 		] );
-		$actual = $dbr->selectRowCount(
-			$query['tables'],
-			'*',
-			$query['conds']
-		);
+		$actual = $dbr->newSelectQueryBuilder()
+			->queryInfo( $query )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 		$this->assertSame( $num, $actual );
 	}
 
