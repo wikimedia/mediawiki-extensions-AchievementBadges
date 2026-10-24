@@ -13,7 +13,7 @@ use MediaWiki\User\UserFactory;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use User;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Special page
@@ -26,7 +26,7 @@ class SpecialAchievements extends SpecialPage {
 	public const PAGE_NAME = 'Achievements';
 
 	private HookRunner $hookRunner;
-	private ILoadBalancer $loadBalancer;
+	private IConnectionProvider $dbProvider;
 	private UserFactory $userFactory;
 	private TemplateParser $templateParser;
 	private LoggerInterface $logger;
@@ -34,12 +34,12 @@ class SpecialAchievements extends SpecialPage {
 
 	public function __construct(
 		HookRunner $hookRunner,
-		ILoadBalancer $loadBalancer,
+		IConnectionProvider $dbProvider,
 		UserFactory $userFactory
 	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->hookRunner = $hookRunner;
-		$this->loadBalancer = $loadBalancer;
+		$this->dbProvider = $dbProvider;
 		$this->userFactory = $userFactory;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 		$this->logger = LoggerFactory::getInstance( 'AchievementBadges' );
@@ -174,7 +174,7 @@ class SpecialAchievements extends SpecialPage {
 	 * @return string[]
 	 */
 	private function getEarnedAchievementData( User $user ): array {
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->dbProvider->getReplicaDatabase();
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_actor' => $user->getActorId(),

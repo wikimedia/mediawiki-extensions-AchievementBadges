@@ -18,7 +18,7 @@ use MWTimestamp;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use User;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class Achievement {
 	private static ?LoggerInterface $logger = null;
@@ -158,14 +158,14 @@ class Achievement {
 	}
 
 	/**
-	 * @param IDatabase $db
+	 * @param IReadableDatabase $db
 	 * @return array With four keys:
 	 *   - tables: (string[]) to include in the `$table` to `IDatabase->select()`
 	 *   - fields: (string[]) to include in the `$vars` to `IDatabase->select()`
 	 *   - conds: (array) to include in the `$conds` to `IDatabase->select()`
 	 *   - joins: (array) to include in the `$join_conds` to `IDatabase->select()`
 	 */
-	public static function getQueryInfo( IDatabase $db ) {
+	public static function getQueryInfo( IReadableDatabase $db ) {
 		$queryInfo = [
 			'tables' => [
 				'logging',
@@ -181,7 +181,7 @@ class Achievement {
 	}
 
 	private static function selectLogCount( string $key, User $user ): int {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 		$query = self::getQueryInfo( $dbr );
 		$query['fields'] = '*';
 		$query['conds'] = array_merge( $query['conds'], [

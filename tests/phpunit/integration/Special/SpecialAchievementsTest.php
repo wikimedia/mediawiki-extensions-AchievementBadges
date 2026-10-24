@@ -26,7 +26,7 @@ class SpecialAchievementsTest extends SpecialPageTestBase {
 		$services = $this->getServiceContainer();
 		return new SpecialAchievements(
 			$this->createMock( HookRunner::class ),
-			$services->getDBLoadBalancer(),
+			$services->getConnectionProvider(),
 			$services->getUserFactory()
 		);
 	}

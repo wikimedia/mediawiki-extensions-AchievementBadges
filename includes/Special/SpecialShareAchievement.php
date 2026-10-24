@@ -19,7 +19,7 @@ use NamespaceInfo;
 use Psr\Log\LoggerInterface;
 use SpecialPage;
 use User;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Special page
@@ -43,21 +43,21 @@ class SpecialShareAchievement extends SpecialPage {
 	private array $registry;
 	private Message $achvNameMsg;
 	private LanguageFactory $languageFactory;
-	private ILoadBalancer $loadBalancer;
+	private IConnectionProvider $dbProvider;
 	private UrlUtils $urlUtils;
 	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		LanguageFactory $languageFactory,
-		ILoadBalancer $loadBalancer,
+		IConnectionProvider $dbProvider,
 		UrlUtils $urlUtils,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( self::PAGE_NAME );
 		$this->languageFactory = $languageFactory;
-		$this->loadBalancer = $loadBalancer;
+		$this->dbProvider = $dbProvider;
 		$this->urlUtils = $urlUtils;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -150,7 +150,7 @@ class SpecialShareAchievement extends SpecialPage {
 		if ( $registry['type'] !== $this->achievementType ) {
 			return false;
 		}
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->dbProvider->getReplicaDatabase();
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $this->unsuffixedKey,

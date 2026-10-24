@@ -48,7 +48,7 @@
 			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\AchievementRegister",
 			"services": [
 				"MainConfig",
-				"DBLoadBalancer",
+				"ConnectionProvider",
 				"RevisionStore",
 				"UserFactory",
 				"UserOptionsLookup"
@@ -60,7 +60,7 @@
 			"class": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialAchievements",
 			"services": [
 				"AchievementBadgesHookRunner",
-				"DBLoadBalancer",
+				"ConnectionProvider",
 				"UserFactory"
 			]
 		},
@@ -68,7 +68,7 @@
 			"class": "MediaWiki\\Extension\\AchievementBadges\\Special\\SpecialShareAchievement",
 			"services": [
 				"LanguageFactory",
-				"DBLoadBalancer",
+				"ConnectionProvider",
 				"UrlUtils",
 				"UserFactory",
 				"UserOptionsLookup"

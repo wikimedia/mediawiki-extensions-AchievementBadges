@@ -77,7 +77,7 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 			];
 		}
 
-		$dbr = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase();
 		$query = Achievement::getQueryInfo( $dbr );
 		$query['conds'] = array_merge( $query['conds'], [
 			'log_action' => $key,

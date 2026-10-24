@@ -23,7 +23,7 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 		$services = $this->getServiceContainer();
 		return new SpecialShareAchievement(
 			$services->getLanguageFactory(),
-			$services->getDBLoadBalancer(),
+			$services->getConnectionProvider(),
 			$services->getUrlUtils(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup()

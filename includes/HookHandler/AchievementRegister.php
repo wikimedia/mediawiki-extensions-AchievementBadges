@@ -13,7 +13,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use User;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class AchievementRegister implements
 	\MediaWiki\Api\Hook\APIAfterExecuteHook,
@@ -26,20 +26,20 @@ class AchievementRegister implements
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
 	private Config $config;
-	private ILoadBalancer $loadBalancer;
+	private IConnectionProvider $dbProvider;
 	private RevisionStore $revisionStore;
 	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		Config $config,
-		ILoadBalancer $loadBalancer,
+		IConnectionProvider $dbProvider,
 		RevisionStore $revisionStore,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
-		$this->loadBalancer = $loadBalancer;
+		$this->dbProvider = $dbProvider;
 		$this->revisionStore = $revisionStore;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -224,7 +224,7 @@ class AchievementRegister implements
 			'user' => $user,
 		] );
 
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->dbProvider->getReplicaDatabase();
 
 		if ( $editResult->isNew() ) {
 			$newPages = $this->revisionStore->newSelectQueryBuilder( $dbr )
