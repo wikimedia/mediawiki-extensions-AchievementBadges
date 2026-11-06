@@ -2,27 +2,17 @@
 
 namespace MediaWiki\Extension\AchievementBadges;
 
-use ExtensionRegistry;
 use FatalError;
 use Language;
 use LogPage;
-use ManualLogEntry;
-use MediaWiki\Extension\AchievementBadges\Special\SpecialAchievements;
-use MediaWiki\Extension\BetaFeatures\BetaFeatures;
-use MediaWiki\Extension\Notifications\Model\Event;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use MWTimestamp;
-use Psr\Log\LoggerInterface;
-use SpecialPage;
 use User;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 class Achievement {
-	private static ?LoggerInterface $logger = null;
-
 	/**
 	 * You should not call the constructor.
 	 * @return never
@@ -33,6 +23,7 @@ class Achievement {
 	}
 
 	/**
+	 * @deprecated Use AchievementManager::award() instead
 	 * @param array $info arguments:
 	 * key:
 	 * user: The user who earned the achievement.
@@ -41,42 +32,11 @@ class Achievement {
 		if ( !isset( $info['key'] ) ) {
 			throw new MWException( "'key' parameter is mandatory" );
 		}
-
-		$user = $info['user'];
-		if ( !self::isAchievementBadgesAvailable( $user ) ) {
-			return;
-		}
-		$key = $info['key'];
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$registry = $config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
-		$unRegistry = $config->get( Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS );
-
-		if ( in_array( $key, $unRegistry ) ) {
-			return;
-		} elseif ( !isset( $registry[$key] ) ) {
-			self::getLogger()->warning( "Unknown achievement key: {$key}" );
-			return;
-		}
-		$type = $registry[$key]['type'] ?? 'instant';
-		if ( $type !== 'instant' ) {
-			throw new MWException(
-				__METHOD__ . "is called with only an instant achievement, but $key is not" );
-		}
-
-		$count = self::selectLogCount( $key, $user );
-		if ( $count > 0 ) {
-			self::getLogger()->debug( "User $user satisfied the condition of achievement $key," .
-				' but ignored because already achieved it.' );
-			// The achievement was earned already.
-			return;
-		} else {
-			self::getLogger()->debug( "User $user satisfied the condition of achievement $key" );
-		}
-
-		self::achieveInternal( $key, $user );
+		self::getManager()->award( $info['key'], $info['user'] );
 	}
 
 	/**
+	 * @deprecated Use AchievementManager::awardForStats() instead
 	 * @param array $info arguments:
 	 * key:
 	 * user: The user who earned the achievement.
@@ -86,75 +46,11 @@ class Achievement {
 		if ( !isset( $info['key'] ) ) {
 			throw new MWException( "'key' parameter is mandatory" );
 		}
-
-		$user = $info['user'];
-		if ( !self::isAchievementBadgesAvailable( $user ) ) {
-			self::getLogger()->debug( 'The user cannot use AchievementBadges' );
-			return;
-		}
-		$key = $info['key'];
-		$stats = $info['stats'];
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$registry = $config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
-		$unRegistry = $config->get( Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS );
-
-		if ( in_array( $key, $unRegistry ) ) {
-			return;
-		} elseif ( !isset( $registry[$key] ) ) {
-			self::getLogger()->warning( "Unknown achievement key: {$key}" );
-			return;
-		}
-		if ( $registry[$key]['type'] !== 'stats' ) {
-			throw new MWException( "Only instant achievement can be called by " . __METHOD__ );
-		}
-		self::getLogger()->debug( $user->getName() . " has a stats with a value $stats at $key" );
-		$thresholds = $registry[$key]['thresholds'];
-		if ( $stats < $thresholds[0] ) {
-			return;
-		}
-		$numThresholds = count( $thresholds );
-
-		$earned = self::selectLogCount( $key, $user );
-		self::getLogger()->debug( $user->getName() . " has $earned achieved achievements at $key" );
-
-		for ( $i = $earned; $i < $numThresholds; $i++ ) {
-			if ( $stats >= $thresholds[$i] ) {
-				self::getLogger()->debug( $user->getName() . " exceeds {$i}-index threshold of $key" );
-				self::achieveInternal( $key, $user, $i );
-			} else {
-				break;
-			}
-		}
+		self::getManager()->awardForStats( $info['key'], $info['user'], $info['stats'] );
 	}
 
-	private static function achieveInternal( string $key, User $user, ?int $index = null ) {
-		$logEntry = new ManualLogEntry( Constants::LOG_TYPE, $key );
-		$logEntry->setPerformer( $user );
-		$logEntry->setTarget( SpecialPage::getTitleFor( SpecialAchievements::PAGE_NAME ) );
-		$params = [
-			'4::key' => $key,
-		];
-		if ( $index !== null ) {
-			$params['5::index'] = $index;
-		}
-		$logEntry->setParameters( $params );
-
-		$logEntry->insert();
-		self::getLogger()->debug( 'A log is inserted with param: ' .
-			str_replace( "\n", ' ', print_r( $params, true ) ) );
-
-		$suffixedKey = $key;
-		if ( $index !== null ) {
-			$suffixedKey .= "-$index";
-		}
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
-			Event::create( [
-				'type' => Constants::EVENT_KEY_EARN,
-				'agent' => $user,
-				'extra' => [ 'key' => $suffixedKey ],
-			] );
-			self::getLogger()->debug( "A echo event of achievement $suffixedKey is created for $user " );
-		}
+	private static function getManager(): AchievementManager {
+		return MediaWikiServices::getInstance()->getService( 'AchievementBadgesAchievementManager' );
 	}
 
 	/**
@@ -180,40 +76,13 @@ class Achievement {
 		return $queryInfo;
 	}
 
-	private static function selectLogCount( string $key, User $user ): int {
-		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
-		$query = self::getQueryInfo( $dbr );
-		$query['fields'] = '*';
-		$query['conds'] = array_merge( $query['conds'], [
-			'log_action' => $key,
-			'log_actor' => $user->getActorId(),
-		] );
-		return $dbr->newSelectQueryBuilder()
-			->queryInfo( $query )
-			->caller( __METHOD__ )
-			->fetchRowCount();
-	}
-
+	/**
+	 * @deprecated Use AchievementManager::canEarn() instead
+	 * @param User $user
+	 * @return bool
+	 */
 	public static function isAchievementBadgesAvailable( User $user ): bool {
-		if ( $user->isSystemUser() ) {
-			return false;
-		}
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		$configEnabled = $config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE );
-		$userOptionEnabled = $configEnabled &&
-			BetaFeatures::isFeatureEnabled( $user, Constants::PREF_KEY_ACHIEVEMENT_ENABLE );
-
-		if ( !$configEnabled ) {
-			// If AchievementBadges is not a beta feature, it is available to everyone.
-			return true;
-		}
-		if ( $user->isRegistered() && $userOptionEnabled ) {
-			// If AchievementBadges is a beta feature, only a registered user which enables the feature
-			// can use it.
-			return true;
-		}
-		return false;
+		return self::getManager()->canEarn( $user );
 	}
 
 	/**
@@ -323,15 +192,5 @@ class Achievement {
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * @return LoggerInterface
-	 */
-	private static function getLogger(): LoggerInterface {
-		if ( !self::$logger ) {
-			self::$logger = LoggerFactory::getInstance( 'AchievementBadges' );
-		}
-		return self::$logger;
 	}
 }

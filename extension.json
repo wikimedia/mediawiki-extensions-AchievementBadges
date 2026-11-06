@@ -49,6 +49,7 @@
 			"class": "MediaWiki\\Extension\\AchievementBadges\\HookHandler\\AchievementRegister",
 			"services": [
 				"MainConfig",
+				"AchievementBadgesAchievementManager",
 				"ConnectionProvider",
 				"RevisionStore",
 				"UserEditTracker",

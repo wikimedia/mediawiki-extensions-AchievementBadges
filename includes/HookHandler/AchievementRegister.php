@@ -7,7 +7,7 @@ use Config;
 use DeferredUpdates;
 use ExtensionRegistry;
 use File;
-use MediaWiki\Extension\AchievementBadges\Achievement;
+use MediaWiki\Extension\AchievementBadges\AchievementManager;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
@@ -36,6 +36,7 @@ class AchievementRegister implements
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
 	private Config $config;
+	private AchievementManager $achievementManager;
 	private IConnectionProvider $dbProvider;
 	private RevisionStore $revisionStore;
 	private UserEditTracker $userEditTracker;
@@ -44,6 +45,7 @@ class AchievementRegister implements
 
 	public function __construct(
 		Config $config,
+		AchievementManager $achievementManager,
 		IConnectionProvider $dbProvider,
 		RevisionStore $revisionStore,
 		UserEditTracker $userEditTracker,
@@ -51,6 +53,7 @@ class AchievementRegister implements
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
+		$this->achievementManager = $achievementManager;
 		$this->dbProvider = $dbProvider;
 		$this->revisionStore = $revisionStore;
 		$this->userEditTracker = $userEditTracker;
@@ -188,7 +191,7 @@ class AchievementRegister implements
 		if ( !isset( $registry[Constants::ACHV_KEY_SIGN_UP] ) ) {
 			return;
 		}
-		Achievement::achieve( [ 'key' => Constants::ACHV_KEY_SIGN_UP, 'user' => $user ] );
+		$this->achievementManager->award( Constants::ACHV_KEY_SIGN_UP, $user );
 	}
 
 	/**
@@ -203,7 +206,7 @@ class AchievementRegister implements
 		if ( !isset( $registry[Constants::ACHV_KEY_SIGN_UP] ) ) {
 			return;
 		}
-		Achievement::achieve( [ 'key' => Constants::ACHV_KEY_SIGN_UP, 'user' => $user ] );
+		$this->achievementManager->award( Constants::ACHV_KEY_SIGN_UP, $user );
 	}
 
 	/**
@@ -214,10 +217,7 @@ class AchievementRegister implements
 			return;
 		}
 		if ( $this->userOptionsLookup->getOption( $user, Constants::PREF_KEY_ACHIEVEMENT_ENABLE ) ) {
-			Achievement::achieve( [
-				'key' => Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES,
-				'user' => $user,
-			] );
+			$this->achievementManager->award( Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES, $user );
 		}
 	}
 
@@ -237,11 +237,8 @@ class AchievementRegister implements
 			return;
 		}
 		$user = $this->userFactory->newFromUserIdentity( $uploader );
-		DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
-			Achievement::achieve( [
-				'key' => Constants::ACHV_KEY_UPLOAD_FILE,
-				'user' => $user,
-			] );
+		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+			$this->achievementManager->award( Constants::ACHV_KEY_UPLOAD_FILE, $user );
 		} );
 	}
 
@@ -262,11 +259,8 @@ class AchievementRegister implements
 			return;
 		}
 		$user = $this->userFactory->newFromUserIdentity( $user );
-		DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
-			Achievement::achieve( [
-				'key' => Constants::ACHV_KEY_DARK_MODE,
-				'user' => $user,
-			] );
+		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+			$this->achievementManager->award( Constants::ACHV_KEY_DARK_MODE, $user );
 		} );
 	}
 
@@ -276,11 +270,11 @@ class AchievementRegister implements
 	public function onUserEditCountUpdate( $infos ): void {
 		foreach ( $infos as $info ) {
 			$user = $this->userFactory->newFromUserIdentity( $info->getUser() );
-			Achievement::sendStats( [
-				'key' => Constants::ACHV_KEY_EDIT_PAGE,
-				'user' => $user,
-				'stats' => $user->getEditCount(),
-			] );
+			$this->achievementManager->awardForStats(
+				Constants::ACHV_KEY_EDIT_PAGE,
+				$user,
+				$user->getEditCount()
+			);
 		}
 	}
 
@@ -323,10 +317,7 @@ class AchievementRegister implements
 	): void {
 		if ( $wikiPage->getTitle()->equals( $user->getUserPage() ) &&
 			$revisionRecord->getSize() > 500 ) {
-				Achievement::achieve( [
-					'key' => Constants::ACHV_KEY_LONG_USER_PAGE,
-					'user' => $user,
-				] );
+				$this->achievementManager->award( Constants::ACHV_KEY_LONG_USER_PAGE, $user );
 		}
 		// Set user's timezone!
 		$userTimestamp = MWTimestamp::getInstance( $revisionRecord->getTimestamp() );
@@ -339,10 +330,7 @@ class AchievementRegister implements
 			$firstEditTimestamp->offsetForUser( $user );
 			if ( $firstEditTimestamp->format( 'Ymd' ) !== $userTimestamp->format( 'Ymd' ) ) {
 				$weekday = (int)$userTimestamp->format( 'w' );
-				Achievement::achieve( [
-					'key' => self::WEEKDAYS[$weekday],
-					'user' => $user,
-				] );
+				$this->achievementManager->award( self::WEEKDAYS[$weekday], $user );
 			}
 		}
 
@@ -361,26 +349,26 @@ class AchievementRegister implements
 				->limit( 1000 )
 				->caller( __METHOD__ )
 				->fetchRowCount();
-			Achievement::sendStats( [
-				'key' => Constants::ACHV_KEY_CREATE_PAGE,
-				'user' => $user,
-				'stats' => $newPages,
-			] );
-			Achievement::sendStats( [
-				'key' => Constants::ACHV_KEY_EDIT_SIZE,
-				'user' => $user,
-				'stats' => $revisionRecord->getSize(),
-			] );
+			$this->achievementManager->awardForStats(
+				Constants::ACHV_KEY_CREATE_PAGE,
+				$user,
+				$newPages
+			);
+			$this->achievementManager->awardForStats(
+				Constants::ACHV_KEY_EDIT_SIZE,
+				$user,
+				$revisionRecord->getSize()
+			);
 		} else {
 			$parentRevision = $revisionRecord->getParentId();
 			$parentRevision = $this->revisionStore->getRevisionById( $parentRevision );
 			$diff = $revisionRecord->getSize() - $parentRevision->getSize();
 			if ( $diff > 0 ) {
-				Achievement::sendStats( [
-					'key' => Constants::ACHV_KEY_EDIT_SIZE,
-					'user' => $user,
-					'stats' => $diff,
-				] );
+				$this->achievementManager->awardForStats(
+					Constants::ACHV_KEY_EDIT_SIZE,
+					$user,
+					$diff
+				);
 			}
 		}
 	}
@@ -392,10 +380,7 @@ class AchievementRegister implements
 			// The given $user is empty when visual editing
 			$user = $this->revisionStore->getRevisionById( $rev_id )->getUser();
 			$user = $this->userFactory->newFromUserIdentity( $user );
-			Achievement::achieve( [
-				'key' => Constants::ACHV_KEY_VISUAL_EDIT,
-				'user' => $user,
-			] );
+			$this->achievementManager->award( Constants::ACHV_KEY_VISUAL_EDIT, $user );
 		}
 	}
 
@@ -419,15 +404,12 @@ class AchievementRegister implements
 			return;
 		}
 		$recipient = $this->userFactory->newFromName( $result['recipient'] );
+		if ( !$recipient ) {
+			return;
+		}
 		LoggerFactory::getInstance( 'AchievementBadges' )->debug( "$user thanks to $recipient" );
-		Achievement::achieve( [
-			'key' => Constants::ACHV_KEY_THANKS,
-			'user' => $user,
-		] );
-		Achievement::achieve( [
-			'key' => Constants::ACHV_KEY_BE_THANKED,
-			'user' => $recipient,
-		] );
+		$this->achievementManager->award( Constants::ACHV_KEY_THANKS, $user );
+		$this->achievementManager->award( Constants::ACHV_KEY_BE_THANKED, $recipient );
 	}
 
 	/**
@@ -447,10 +429,7 @@ class AchievementRegister implements
 		}
 		foreach ( $results as $result ) {
 			if ( is_array( $result ) && !empty( $result['watched'] ) ) {
-				Achievement::achieve( [
-					'key' => Constants::ACHV_KEY_WATCH_PAGE,
-					'user' => $user,
-				] );
+				$this->achievementManager->award( Constants::ACHV_KEY_WATCH_PAGE, $user );
 				return;
 			}
 		}

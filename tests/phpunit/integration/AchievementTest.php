@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\AchievementBadges\Tests\Integration;
 
+use InvalidArgumentException;
 use MediaWiki\Extension\AchievementBadges\Achievement;
+use MediaWiki\Extension\AchievementBadges\AchievementManager;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\MainConfigNames;
 use MediaWikiIntegrationTestCase;
@@ -14,6 +16,7 @@ use User;
  * @group Database
  *
  * @covers \MediaWiki\Extension\AchievementBadges\Achievement
+ * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager
  */
 class AchievementTest extends MediaWikiIntegrationTestCase {
 
@@ -22,36 +25,40 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 	}
 
+	private function getManager(): AchievementManager {
+		return $this->getServiceContainer()->getService( 'AchievementBadgesAchievementManager' );
+	}
+
 	/**
-	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::isAchievementBadgesAvailable
+	 * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager::canEarn
 	 */
-	public function testIsAchievementBadgesAvailable() {
+	public function testCanEarn() {
 		$this->overrideConfigValue( Constants::CONFIG_KEY_DISABLED_ACHIEVEMENTS, [
 			Constants::ACHV_KEY_SIGN_UP, Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES ] );
 
 		$systemUser = User::newSystemUser( __METHOD__ );
 		$anon = new User;
 		$user = $this->getTestUser()->getUser();
-		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $systemUser ),
+		$this->assertFalse( $this->getManager()->canEarn( $systemUser ),
 			'A system user cannot use AB' );
 
 		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, false );
-		$this->assertTrue( Achievement::isAchievementBadgesAvailable( $user ),
+		$this->assertTrue( $this->getManager()->canEarn( $user ),
 			'Every user can use AB where wiki uses AB as a default' );
-		$this->assertTrue( Achievement::isAchievementBadgesAvailable( $anon ),
+		$this->assertTrue( $this->getManager()->canEarn( $anon ),
 			'A anonymous user can use AB where wiki uses AB as a default' );
 
 		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, true );
-		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $user ),
+		$this->assertFalse( $this->getManager()->canEarn( $user ),
 			'A user which do not enable AB cannot use AB where wiki uses AB as a beta feature' );
-		$this->assertFalse( Achievement::isAchievementBadgesAvailable( $anon ),
+		$this->assertFalse( $this->getManager()->canEarn( $anon ),
 			'A anonymous user cannot use AB where wiki uses AB as a beta feature' );
 
 		$user = $this->getMutableTestUser()->getUser();
 		$manager = $this->getServiceContainer()->getUserOptionsManager();
 		$manager->setOption( $user, Constants::PREF_KEY_ACHIEVEMENT_ENABLE, '1' );
 		$user->saveSettings();
-		$this->assertTrue( Achievement::isAchievementBadgesAvailable( $user ),
+		$this->assertTrue( $this->getManager()->canEarn( $user ),
 			'A user which enables AB can use AB where wiki uses AB as a beta feature' );
 	}
 
@@ -131,13 +138,13 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideStatsAchievements
-	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::sendStats
+	 * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager::awardForStats
 	 *
 	 * @param string $key
 	 * @param int[] $thresholds
 	 * @param array $testSets
 	 */
-	public function testSendStats( $key, $thresholds, $testSets ) {
+	public function testAwardForStats( $key, $thresholds, $testSets ) {
 		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
 			$key => [
 				'type' => 'stats',
@@ -148,13 +155,55 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 
 		foreach ( $testSets as $set ) {
 			[ $stats, $expected ] = $set;
-			Achievement::sendStats( [
-				'key' => $key,
-				'user' => $user,
-				'stats' => $stats,
-			] );
+			$this->getManager()->awardForStats( $key, $user, $stats );
 			$this->assertLogging( $user, $key, $expected );
 		}
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager::awardForStats
+	 */
+	public function testAwardForStatsWithInstantAchievement() {
+		$key = 'test-achievement-instant';
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
+			$key => [ 'type' => 'instant' ],
+		] );
+		$user = $this->getTestUser()->getUser();
+
+		$this->expectException( InvalidArgumentException::class );
+		$this->getManager()->awardForStats( $key, $user, 1 );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager::award
+	 */
+	public function testAward() {
+		$key = 'test-achievement-instant';
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
+			$key => [ 'type' => 'instant' ],
+		] );
+		$user = $this->getMutableTestUser()->getUser();
+
+		$this->getManager()->award( $key, $user );
+		$this->assertLogging( $user, $key );
+
+		// Awarding it again does not add another log entry.
+		$this->getManager()->award( $key, $user );
+		$this->assertLogging( $user, $key );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager::award
+	 */
+	public function testAwardWithStatsAchievement() {
+		$key = 'test-achievement-stats';
+		$this->overrideConfigValue( Constants::CONFIG_KEY_ACHIEVEMENTS, [
+			$key => [ 'type' => 'stats', 'thresholds' => [ 1 ] ],
+		] );
+		$user = $this->getTestUser()->getUser();
+
+		$this->expectException( InvalidArgumentException::class );
+		$this->getManager()->award( $key, $user );
 	}
 
 	/**
