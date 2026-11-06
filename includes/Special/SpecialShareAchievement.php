@@ -74,7 +74,6 @@ class SpecialShareAchievement extends SpecialPage {
 		$viewer = $this->viewer = $this->getUser();
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.achievementbadges.special.shareachievement.styles' );
-		$out->addModules( [ 'ext.achievementbadges.special.shareachievement' ] );
 		$config = $this->getConfig();
 
 		$split = explode( '/', base64_decode( $subPage ?? '' ) ?: '', 2 );

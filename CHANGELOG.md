@@ -6,6 +6,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 
 - Localisations update.
 - Remove AddThis.
+- Stop loading the Facebook JavaScript SDK on Special:ShareAchievement. The Facebook share link still works as a plain link.
 
 ## v0.3.1
 

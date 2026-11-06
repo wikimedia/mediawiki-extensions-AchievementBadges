@@ -19,7 +19,6 @@
 		"GetBetaFeaturePreferences": "Main",
 		"ContributionsToolLinks": "Main",
 		"MediaWikiServices": "MediaWikiServices",
-		"ResourceLoaderGetConfigVars": "Main",
 		"APIAfterExecute": "AchievementRegister",
 		"BeforeCreateAchievement": "AchievementRegister",
 		"LocalUserCreated": "AchievementRegister",
@@ -85,11 +84,6 @@
 		},
 		"ext.achievementbadges.special.shareachievement.styles": {
 			"styles": [ "styles/spacial-shareachievement.less" ]
-		},
-		"ext.achievementbadges.special.shareachievement": {
-			"targets": [ "desktop", "mobile" ],
-			"scripts": [ "shareachievement.js" ],
-			"dependencies": [ "ext.achievementbadges.dm", "mediawiki.page.ready" ]
 		},
 		"ext.achievementbadges.dm": {
 			"targets": [ "desktop", "mobile" ],

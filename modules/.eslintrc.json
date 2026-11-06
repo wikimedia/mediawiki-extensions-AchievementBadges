@@ -4,9 +4,6 @@
 		"wikimedia/client",
 		"wikimedia/mediawiki"
 	],
-	"globals": {
-		"FB": false
-	},
 	"env": {
 		"commonjs": true
 	}

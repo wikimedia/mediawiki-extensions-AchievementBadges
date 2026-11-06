@@ -22,7 +22,6 @@ class Main implements
 	\MediaWiki\Extension\Notifications\Hooks\BeforeCreateEchoEventHook,
 	\MediaWiki\Extension\Notifications\Hooks\BeforeEchoEventInsertHook,
 	\MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook,
-	\MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook,
 	\MediaWiki\Hook\ContributionsToolLinksHook
 {
 	private Config $config;
@@ -114,13 +113,6 @@ class Main implements
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$vars['wg' . Constants::CONFIG_KEY_FACEBOOK_APP_ID] = $config->get( Constants::CONFIG_KEY_FACEBOOK_APP_ID );
 	}
 
 	/**
