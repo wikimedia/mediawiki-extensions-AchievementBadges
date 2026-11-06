@@ -3,17 +3,20 @@
 namespace MediaWiki\Extension\AchievementBadges\HookHandler;
 
 use Config;
+use DeferredUpdates;
 use ExtensionRegistry;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use User;
 use Wikimedia\Rdbms\IConnectionProvider;
+use WikiPage;
 
 class AchievementRegister implements
 	\MediaWiki\Api\Hook\APIAfterExecuteHook,
@@ -208,6 +211,20 @@ class AchievementRegister implements
 			return;
 		}
 
+		DeferredUpdates::addCallableUpdate(
+			function () use ( $wikiPage, $user, $revisionRecord, $editResult ) {
+				$this->checkEditAchievements( $wikiPage, $user, $revisionRecord, $editResult );
+			},
+			DeferredUpdates::POSTSEND
+		);
+	}
+
+	private function checkEditAchievements(
+		WikiPage $wikiPage,
+		User $user,
+		RevisionRecord $revisionRecord,
+		EditResult $editResult
+	): void {
 		if ( $wikiPage->getTitle()->equals( $user->getUserPage() ) &&
 			$revisionRecord->getSize() > 500 ) {
 				Achievement::achieve( [
