@@ -32,6 +32,9 @@ final class Constants {
 	/** @var string */
 	public const PREF_KEY_ACHIEVEMENT_ENABLE = 'achievementbadges-beta-feature-achievement-enable';
 
+	/** @var string The preference of the DarkMode extension */
+	public const PREF_KEY_DARK_MODE = 'darkmode';
+
 	/** @var string */
 	public const LOG_TYPE = 'achievementbadges';
 
@@ -94,6 +97,9 @@ final class Constants {
 
 	/** @var string */
 	public const ACHV_KEY_WATCH_PAGE = 'watch-page';
+
+	/** @var string */
+	public const ACHV_KEY_DARK_MODE = 'dark-mode';
 
 	/** This class is for namespacing constants only. Forbid construction.
 	 * @return never

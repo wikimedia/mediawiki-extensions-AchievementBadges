@@ -13,6 +13,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MWTimestamp;
 use User;
@@ -27,6 +28,7 @@ class AchievementRegister implements
 	\MediaWiki\Extension\AchievementBadges\Hooks\SpecialAchievementsBeforeGetEarnedHook,
 	\MediaWiki\Hook\UserEditCountUpdateHook,
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
+	\MediaWiki\User\Options\Hook\SaveUserOptionsHook,
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
 	private Config $config;
@@ -123,6 +125,12 @@ class AchievementRegister implements
 			'type' => 'instant',
 			'priority' => 500,
 		] + $this->getImages( Constants::ACHV_KEY_WATCH_PAGE );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'DarkMode' ) ) {
+			$achievements[Constants::ACHV_KEY_DARK_MODE] = [
+				'type' => 'instant',
+				'priority' => 500,
+			] + $this->getImages( Constants::ACHV_KEY_DARK_MODE );
+		}
 	}
 
 	/**
@@ -191,6 +199,31 @@ class AchievementRegister implements
 				'user' => $user,
 			] );
 		}
+	}
+
+	/**
+	 * Gives the dark mode achievement when the user turns on the dark mode of the DarkMode
+	 * extension, from its toggle link or from Special:Preferences.
+	 *
+	 * @inheritDoc
+	 */
+	public function onSaveUserOptions( UserIdentity $user, array &$modifiedOptions, array $originalOptions ) {
+		$registry = $this->config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
+		if ( !isset( $registry[Constants::ACHV_KEY_DARK_MODE] ) ) {
+			return;
+		}
+		if ( empty( $modifiedOptions[Constants::PREF_KEY_DARK_MODE] ) ||
+			!empty( $originalOptions[Constants::PREF_KEY_DARK_MODE] )
+		) {
+			return;
+		}
+		$user = $this->userFactory->newFromUserIdentity( $user );
+		DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
+			Achievement::achieve( [
+				'key' => Constants::ACHV_KEY_DARK_MODE,
+				'user' => $user,
+			] );
+		} );
 	}
 
 	/**

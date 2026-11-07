@@ -26,6 +26,7 @@
 		"UserEditCountUpdate": "AchievementRegister",
 		"SpecialAchievementsBeforeGetEarned": "AchievementRegister",
 		"UserSaveSettings": "AchievementRegister",
+		"SaveUserOptions": "AchievementRegister",
 		"ChangeTagsAfterUpdateTags": "AchievementRegister"
 	},
 	"ExtensionFunctions": [
