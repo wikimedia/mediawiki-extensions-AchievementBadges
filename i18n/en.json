@@ -126,12 +126,12 @@
 	"achievementbadges-achievement-hint-be-thanked": "Continue {{GENDER:$1|editing}}.",
 	"achievementbadges-achievement-description-be-thanked": "Someone thanked {{GENDER:$1|you}} for your edit.",
 	"achievementbadges-achievement-name-watch-page": "Keeping an eye on it",
-	"achievementbadges-achievement-hint-watch-page": "{{GENDER:$1|Watch}} a page to follow its changes.",
+	"achievementbadges-achievement-hint-watch-page": "{{GENDER:$1|Keep}} up with the pages {{GENDER:$1|you}} care about.",
 	"achievementbadges-achievement-description-watch-page": "{{GENDER:$1|You}} added a page to {{GENDER:$1|your}} watchlist.",
 	"achievementbadges-achievement-name-dark-mode": "Night owl",
-	"achievementbadges-achievement-hint-dark-mode": "{{GENDER:$1|Try}} the dark mode.",
+	"achievementbadges-achievement-hint-dark-mode": "{{GENDER:$1|Give}} {{GENDER:$1|your}} eyes a rest late at night.",
 	"achievementbadges-achievement-description-dark-mode": "{{GENDER:$1|You}} turned on the dark mode.",
 	"achievementbadges-achievement-name-upload-file": "Picture this",
-	"achievementbadges-achievement-hint-upload-file": "{{GENDER:$1|Upload}} a file.",
+	"achievementbadges-achievement-hint-upload-file": "Sometimes a picture says more than words.",
 	"achievementbadges-achievement-description-upload-file": "{{GENDER:$1|You}} uploaded a file."
 }

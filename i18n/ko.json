@@ -129,5 +129,14 @@
 	"achievementbadges-achievement-description-thanks": "다른 사람의 편집에 감사를 표했습니다.",
 	"achievementbadges-achievement-name-be-thanked": "감사한 날",
 	"achievementbadges-achievement-hint-be-thanked": "편집을 계속{{GENDER:$1|하세요}}.",
-	"achievementbadges-achievement-description-be-thanked": "내가 {{GENDER:$1|한}} 편집에 다른 사람이 감사를 표했습니다."
+	"achievementbadges-achievement-description-be-thanked": "내가 {{GENDER:$1|한}} 편집에 다른 사람이 감사를 표했습니다.",
+	"achievementbadges-achievement-name-watch-page": "눈여겨보기",
+	"achievementbadges-achievement-hint-watch-page": "관심 가는 문서의 소식을 {{GENDER:$1|놓치지}} 마세요.",
+	"achievementbadges-achievement-description-watch-page": "문서를 주시문서 목록에 {{GENDER:$1|추가했습니다}}.",
+	"achievementbadges-achievement-name-dark-mode": "올빼미",
+	"achievementbadges-achievement-hint-dark-mode": "밤늦게 읽을 때는 눈을 {{GENDER:$1|아껴}} 주세요.",
+	"achievementbadges-achievement-description-dark-mode": "어두운 모드를 {{GENDER:$1|켰습니다}}.",
+	"achievementbadges-achievement-name-upload-file": "그림 한 장",
+	"achievementbadges-achievement-hint-upload-file": "글보다 그림 한 장이 나을 때도 있습니다.",
+	"achievementbadges-achievement-description-upload-file": "파일을 {{GENDER:$1|올렸습니다}}."
 }
