@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512">
+	<defs>
+		<filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+			<feDropShadow dx="0" dy="8" flood-color="#2E2670" flood-opacity=".45" stdDeviation="8"/>
+		</filter>
+	</defs>
+	<rect width="100%" height="100%" fill="#ACA6E4"/>
+	<circle cx="256" cy="256" r="220" fill="#C7C1F0" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
+	<g filter="url(#shadow)">
+		<path fill="#FFF" d="M174 146h120l46 46v176H174z"/>
+		<path fill="#E3E5EE" d="M294 146v46h46z"/>
+		<g transform="matrix(1.3 0 0 1.3 -78.4 -90.8)">
+			<rect width="104" height="12" x="206" y="330" fill="#E3E5EE" rx="6"/>
+			<path fill="none" stroke="#4FC49E" stroke-linecap="round" stroke-width="6" d="M226 330v-70"/>
+			<path fill="#4FC49E" d="M226 298.5c-13.446 2.085-24.967-7.583-25.984-21.803 14.181-1.468 25.702 8.2 25.984 21.803"/>
+			<path fill="#8FE3C8" d="M224.695 296.57c-1.191-11.026-11.487-19.665-22.307-18.718 9.45 4.17 17.05 10.547 22.307 18.718"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width=".96" d="m225.265 297.883-22.062-18.512m14.217 11.93-6.311.552m.183-5.695-4.96.434m8.107 1.79-.473-5.41"/>
+			<circle cx="226" cy="247" r="10" fill="#F49AB8"/>
+			<circle cx="238.4" cy="256" r="10" fill="#F49AB8"/>
+			<circle cx="233.6" cy="270.5" r="10" fill="#F49AB8"/>
+			<circle cx="218.4" cy="270.5" r="10" fill="#F49AB8"/>
+			<circle cx="213.6" cy="256" r="10" fill="#F49AB8"/>
+			<circle cx="226" cy="260" r="8" fill="#FFF"/>
+			<path fill="none" stroke="#4FC49E" stroke-linecap="round" stroke-width="6" d="M258 330V220"/>
+			<path fill="#4FC49E" d="M258 280.5c-13.446 2.085-24.967-7.583-25.984-21.803 14.181-1.468 25.702 8.2 25.984 21.803"/>
+			<path fill="#8FE3C8" d="M256.695 278.57c-1.191-11.026-11.487-19.665-22.307-18.718 9.45 4.17 17.05 10.547 22.307 18.718"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width=".96" d="m257.265 279.883-22.062-18.512m14.217 11.93-6.311.552m.183-5.695-4.96.434m8.107 1.79-.473-5.41"/>
+			<circle cx="258" cy="207" r="10" fill="#FFD45C"/>
+			<circle cx="270.4" cy="216" r="10" fill="#FFD45C"/>
+			<circle cx="265.6" cy="230.5" r="10" fill="#FFD45C"/>
+			<circle cx="250.4" cy="230.5" r="10" fill="#FFD45C"/>
+			<circle cx="245.6" cy="216" r="10" fill="#FFD45C"/>
+			<circle cx="258" cy="220" r="8" fill="#FFF"/>
+			<path fill="none" stroke="#4FC49E" stroke-linecap="round" stroke-width="6" d="M292 330v-84"/>
+			<path fill="#4FC49E" d="M292 292.2c.282-13.604 11.803-23.271 25.984-21.803-1.017 14.22-12.538 23.888-25.984 21.803"/>
+			<path fill="#8FE3C8" d="M294.127 291.25c11.065.741 21.36-7.898 22.308-18.718-5.748 8.583-13.348 14.96-22.308 18.718"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width=".96" d="m292.735 291.583 22.062-18.512M300.58 285l.552-6.312m5.576 1.17.434-4.96m-3.17 7.673 5.41.473"/>
+			<circle cx="292" cy="233" r="10" fill="#E06C96"/>
+			<circle cx="304.4" cy="242" r="10" fill="#E06C96"/>
+			<circle cx="299.6" cy="256.5" r="10" fill="#E06C96"/>
+			<circle cx="284.4" cy="256.5" r="10" fill="#E06C96"/>
+			<circle cx="279.6" cy="242" r="10" fill="#E06C96"/>
+			<circle cx="292" cy="246" r="8" fill="#FFF"/>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512">
+	<defs>
+		<filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+			<feDropShadow dx="0" dy="8" flood-color="#2E2670" flood-opacity=".45" stdDeviation="8"/>
+		</filter>
+	</defs>
+	<rect width="100%" height="100%" fill="#ACA6E4"/>
+	<circle cx="256" cy="256" r="220" fill="#C7C1F0" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
+	<g filter="url(#shadow)">
+		<path fill="#FFF" d="M174 146h120l46 46v176H174z"/>
+		<path fill="#E3E5EE" d="M294 146v46h46z"/>
+		<g transform="matrix(1.3 0 0 1.3 -78.4 -90.8)">
+			<rect width="104" height="12" x="206" y="330" fill="#E3E5EE" rx="6"/>
+			<path fill="#4FC49E" d="M254 330v-60h8v60z"/>
+			<path fill="#4FC49E" d="M258 272c-25.76 8.776-51.81-6.264-58.751-33.92C226.67 230.264 252.72 245.304 258 272"/>
+			<path fill="#8FE3C8" d="M254.76 268.651c-6.176-21.302-29.455-34.742-50.437-29.12 20.062 4.932 37.244 14.852 50.437 29.12"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="1.92" d="m256.337 271.04-49.883-28.8m32.147 18.56-12.24 3.28m-1.616-11.28-9.617 2.577m16.588.709-2.811-10.491"/>
+			<path fill="#4FC49E" d="M258 262c2.932-27.055 27.572-44.308 55.571-38.911C309.066 251.245 284.426 268.498 258 262"/>
+			<path fill="#8FE3C8" d="M262.404 260.479c21.917 3.405 43.935-12.013 47.707-33.405-12.948 16.098-29.2 27.478-47.707 33.405"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="1.92" d="m259.573 260.899 47.183-33.038m-30.407 21.29 2.2-12.478m10.906 3.302 1.73-9.805m-7.654 14.734 10.697 1.886"/>
+			<path fill="#4FC49E" d="M258 236c-14.08-12.32-14.08-33 0-46.64 14.08 13.64 14.08 34.32 0 46.64"/>
+			<path fill="#8FE3C8" d="M258.88 232.92c10.56-11 10.56-29.48 0-40.04 3.96 13.64 3.96 27.28 0 40.04"/>
+			<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="1.32" d="M258 234.68v-39.6m0 25.52-6.16-6.16m6.16-4.84-4.84-4.84m5.28 10.12 5.28-5.28"/>
+		</g>
+	</g>
+</svg>

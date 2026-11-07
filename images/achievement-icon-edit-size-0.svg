@@ -10,8 +10,8 @@
 	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
 	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
 	<g filter="url(#shadow)">
-		<path fill="#4FC49E" d="M180 330c0-90 60-150 150-150 0 90-60 150-150 150"/>
-		<path fill="#8FE3C8" d="M200 340c10-70 70-110 130-100-14 66-66 108-130 100"/>
-		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="6" d="m186 326 126-126m-98 130 92-74"/>
+		<path fill="#4FC49E" d="M196 334c-4.808-72.125 51.69-128.623 127.42-127.42C324.624 282.31 268.126 338.807 196 334"/>
+		<path fill="#8FE3C8" d="M206.819 327.99c58.902-1.202 109.39-51.69 109.39-109.39-26.447 48.083-63.711 85.348-109.39 109.39"/>
+		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="5.1" d="m199.606 330.394 108.188-108.188m-69.721 69.721V258.27m30.052 3.606V235.43m-13.223 42.073h28.85"/>
 	</g>
 </svg>

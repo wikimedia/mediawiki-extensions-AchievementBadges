@@ -217,6 +217,21 @@ class Achievement {
 	}
 
 	/**
+	 * Returns the icon path of an achievement, or of a threshold of a stats achievement when
+	 * the achievement has the `icons` property.
+	 *
+	 * @param array $info An entry of $wgAchievementBadgesAchievements
+	 * @param int|null $index Index of the threshold
+	 * @return string|array|null
+	 */
+	public static function getIconPath( array $info, ?int $index = null ) {
+		if ( $index !== null && isset( $info['icons'][$index] ) ) {
+			return $info['icons'][$index];
+		}
+		return $info['icon'] ?? null;
+	}
+
+	/**
 	 * @param Language $lang
 	 * @param string|array|null $path
 	 * @return string

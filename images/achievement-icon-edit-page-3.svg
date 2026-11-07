@@ -10,13 +10,15 @@
 	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
 	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
 	<g filter="url(#shadow)">
-		<g transform="rotate(45 256 256)">
-			<rect width="60" height="34" x="226" y="140" fill="#F49AB8" rx="14"/>
-			<path fill="#E3E5EE" d="M226 168h60v20h-60z"/>
-			<path fill="#FFD45C" d="M226 188h60v136h-60z"/>
-			<path fill="#F5B82E" d="M246 188h20v136h-20z"/>
-			<path fill="#F6D9AE" d="M226 324h60l-30 56z"/>
-			<path fill="#2B2540" d="M246 362h20l-10 18z"/>
+		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="10" d="M152 226h56m-72 34h70m-48 34h48"/>
+		<path fill="none" stroke="#8FE3C8" stroke-linecap="round" stroke-width="10" d="M176 243h30m-26 34h26"/>
+		<g transform="rotate(90 10 270)scale(.82)">
+			<rect width="60" height="34" x="-30" y="-120" fill="#F49AB8" rx="14"/>
+			<path fill="#E3E5EE" d="M-30-92h60v20h-60z"/>
+			<path fill="#FFD45C" d="M-30-72h60V64h-60z"/>
+			<path fill="#F5B82E" d="M-10-72h20V64h-20z"/>
+			<path fill="#F6D9AE" d="M-30 64h60L0 120z"/>
+			<path fill="#2B2540" d="M-10 102h20L0 120z"/>
 		</g>
 	</g>
 </svg>

@@ -164,7 +164,9 @@ class SpecialShareAchievement extends SpecialPage {
 		if ( !$row ) {
 			return false;
 		}
-		$iconPath = Achievement::getAchievementIcon( $this->obtainerLang, $registry['icon'] ?? null );
+		[ , , $index ] = Achievement::extractKeySegments( $this->suffixedKey );
+		$iconPath = Achievement::getAchievementIcon( $this->obtainerLang,
+			Achievement::getIconPath( $registry, $index ) );
 		$achvName = $this->achvNameMsg->text();
 		$obtainerText = $this->obtainer->getName();
 		$description = $this->msg( 'achievementbadges-achievement-description-' . $this->suffixedKey )

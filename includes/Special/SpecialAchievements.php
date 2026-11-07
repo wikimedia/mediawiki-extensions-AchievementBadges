@@ -95,6 +95,7 @@ class SpecialAchievements extends SpecialPage {
 				$max = count( $info['thresholds'] );
 				for ( $i = 0; $i < $max; $i++ ) {
 					$suffixedKey = "$key-$i";
+					$icon = Achievement::getAchievementIcon( $lang, Achievement::getIconPath( $info, $i ) );
 					$isEarned = array_key_exists( $suffixedKey, $earnedAchvs );
 					$timestamp = $earnedAchvs[$suffixedKey] ?? null;
 					$new = $this->getDataAchievement( $suffixedKey, $icon, $target, $isEarned, $timestamp );

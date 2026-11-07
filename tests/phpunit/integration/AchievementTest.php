@@ -241,6 +241,17 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 			'A call without any parameter falls back' );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\AchievementBadges\Achievement::getIconPath()
+	 */
+	public function testGetIconPath() {
+		$info = [ 'icon' => 'icon.svg', 'icons' => [ 'icon-0.svg', 'icon-1.svg' ] ];
+		$this->assertSame( 'icon.svg', Achievement::getIconPath( $info ) );
+		$this->assertSame( 'icon-1.svg', Achievement::getIconPath( $info, 1 ) );
+		$this->assertSame( 'icon.svg', Achievement::getIconPath( $info, 2 ) );
+		$this->assertNull( Achievement::getIconPath( [] ) );
+	}
+
 	/** @return array */
 	public static function provideKeys() {
 		return [

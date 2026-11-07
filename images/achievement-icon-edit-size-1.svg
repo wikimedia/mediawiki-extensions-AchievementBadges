@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512">
+	<defs>
+		<filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+			<feDropShadow dx="0" dy="8" flood-color="#2E2670" flood-opacity=".45" stdDeviation="8"/>
+		</filter>
+	</defs>
+	<rect width="100%" height="100%" fill="#ACA6E4"/>
+	<circle cx="256" cy="256" r="220" fill="#C7C1F0" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
+	<g filter="url(#shadow)">
+		<path fill="#4FC49E" d="M256 352c-52.644-2.93-88.525-48.856-80.923-103.576C230.012 254.286 265.893 300.21 256 352"/>
+		<path fill="#8FE3C8" d="M252.61 343.633c4.366-42.75-27.698-83.79-69.47-88.919 32.46 23.42 56.125 53.712 69.47 88.92"/>
+		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="3.72" d="m253.71 349.069-68.708-87.942M229.28 317.8l-24.367-2.992m5.282-21.436-19.146-2.35m29.284 13.312 2.565-20.886"/>
+		<path fill="#4FC49E" d="M256 352c-9.893-51.79 25.988-97.714 80.923-103.576C344.525 303.144 308.644 349.07 256 352"/>
+		<path fill="#8FE3C8" d="M263.298 346.687c42.537-6.106 74.6-47.146 69.471-88.92-14.871 37.163-38.537 67.454-69.47 88.92"/>
+		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="3.72" d="m258.29 349.069 68.708-87.942M282.72 317.8l-2.992-24.367m22.077-.061-2.35-19.146m-5.834 31.635 20.887-2.565"/>
+		<path fill="#4FC49E" d="M256 352c-39.68-34.72-39.68-93 0-131.44 39.68 38.44 39.68 96.72 0 131.44"/>
+		<path fill="#8FE3C8" d="M258.48 343.32c29.76-31 29.76-83.08 0-112.84 11.16 38.44 11.16 76.88 0 112.84"/>
+		<path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="3.72" d="M256 348.28v-111.6m0 71.92-17.36-17.36M256 277.6l-13.64-13.64m14.88 28.52 14.88-14.88"/>
+		<path fill="#E06C96" d="M232 330h48l-6 26h-36z"/>
+		<circle cx="256" cy="336" r="10" fill="#F49AB8"/>
+	</g>
+</svg>

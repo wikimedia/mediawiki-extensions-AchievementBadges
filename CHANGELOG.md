@@ -11,6 +11,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 - New achievement for watching a page from the watch star or other API calls. Pages watched while editing do not count.
 - New achievement for turning on the dark mode of the DarkMode extension. It is available only when DarkMode is installed.
 - New achievement for uploading a file. It is available only when `$wgEnableUploads` is on.
+- Each level of the edit count, edit size and page creation achievements has its own icon. An achievement of the `stats` type can set the new `icons` property, a list of icons for each threshold.
 
 ## v0.3.1
 

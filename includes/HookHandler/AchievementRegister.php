@@ -90,7 +90,7 @@ class AchievementRegister implements
 				'type' => 'stats',
 				'thresholds' => [ 1, 10, 100, 1000, 10000 ],
 				'priority' => 200,
-			] + $this->getImages( Constants::ACHV_KEY_EDIT_PAGE );
+			] + $this->getImages( Constants::ACHV_KEY_EDIT_PAGE, 5 );
 		}
 		$achievements[Constants::ACHV_KEY_LONG_USER_PAGE] = [
 			'type' => 'instant',
@@ -100,12 +100,12 @@ class AchievementRegister implements
 			'type' => 'stats',
 			'thresholds' => [ 1000, 5000, 10000, 50000, 100000 ],
 			'priority' => 300,
-		] + $this->getImages( Constants::ACHV_KEY_EDIT_SIZE );
+		] + $this->getImages( Constants::ACHV_KEY_EDIT_SIZE, 5 );
 		$achievements[Constants::ACHV_KEY_CREATE_PAGE] = [
 			'type' => 'stats',
 			'thresholds' => [ 1, 5, 30, 100, 300, 1000 ],
 			'priority' => 300,
-		] + $this->getImages( Constants::ACHV_KEY_CREATE_PAGE );
+		] + $this->getImages( Constants::ACHV_KEY_CREATE_PAGE, 6 );
 		foreach ( self::WEEKDAYS as $weekday ) {
 			$achievements[$weekday] = [
 				'type' => 'instant',
@@ -151,13 +151,20 @@ class AchievementRegister implements
 	 * a preview image, so the Open Graph image is the fallback one.
 	 *
 	 * @param string $key
+	 * @param int $levels Number of thresholds of a stats achievement, which has an icon
+	 *  for each threshold
 	 * @return array
 	 */
-	private function getImages( string $key ): array {
-		return [
-			'icon' => "extensions/AchievementBadges/images/achievement-icon-$key.svg",
+	private function getImages( string $key, int $levels = 0 ): array {
+		$path = 'extensions/AchievementBadges/images/achievement-icon-';
+		$images = [
+			'icon' => $levels ? "$path$key-0.svg" : "$path$key.svg",
 			'og-image' => $this->config->get( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE ),
 		];
+		for ( $i = 0; $i < $levels; $i++ ) {
+			$images['icons'][] = "$path$key-$i.svg";
+		}
+		return $images;
 	}
 
 	private function isVisualEditorTagUsed(): bool {

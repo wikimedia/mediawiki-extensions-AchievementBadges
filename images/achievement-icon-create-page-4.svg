@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512">
+	<defs>
+		<filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+			<feDropShadow dx="0" dy="8" flood-color="#2E2670" flood-opacity=".45" stdDeviation="8"/>
+		</filter>
+	</defs>
+	<rect width="100%" height="100%" fill="#ACA6E4"/>
+	<circle cx="256" cy="256" r="220" fill="#C7C1F0" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
+	<g filter="url(#shadow)">
+		<path fill="#FFF" d="M174 146h120l46 46v176H174z"/>
+		<path fill="#E3E5EE" d="M294 146v46h46z"/>
+		<g transform="translate(-31.96 -30.32)scale(1.12)">
+			<rect width="104" height="12" x="206" y="330" fill="#E3E5EE" rx="6"/>
+			<path fill="#A86B33" d="M250 330v-80h16v80h10-36z"/>
+			<path fill="none" stroke="#A86B33" stroke-linecap="round" stroke-width="8" d="m258 270-20-18m20 10 22-20"/>
+			<circle cx="258" cy="226" r="50" fill="#33A37F"/>
+			<circle cx="230" cy="240" r="30" fill="#33A37F"/>
+			<circle cx="286" cy="240" r="30" fill="#33A37F"/>
+			<circle cx="258" cy="218" r="38" fill="#4FC49E"/>
+			<circle cx="236" cy="232" r="18" fill="#4FC49E"/>
+			<circle cx="282" cy="230" r="20" fill="#4FC49E"/>
+			<circle cx="246" cy="206" r="12" fill="#8FE3C8"/>
+			<circle cx="272" cy="214" r="10" fill="#8FE3C8"/>
+		</g>
+	</g>
+</svg>
