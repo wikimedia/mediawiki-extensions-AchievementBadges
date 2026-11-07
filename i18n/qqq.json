@@ -138,5 +138,8 @@
 	"achievementbadges-achievement-description-watch-page": "{{doc-achievementbadges-achievement-description}}",
 	"achievementbadges-achievement-name-dark-mode": "{{doc-achievementbadges-achievement-name}}",
 	"achievementbadges-achievement-hint-dark-mode": "{{doc-achievementbadges-achievement-hint}}",
-	"achievementbadges-achievement-description-dark-mode": "{{doc-achievementbadges-achievement-description}}"
+	"achievementbadges-achievement-description-dark-mode": "{{doc-achievementbadges-achievement-description}}",
+	"achievementbadges-achievement-name-upload-file": "{{doc-achievementbadges-achievement-name}}",
+	"achievementbadges-achievement-hint-upload-file": "{{doc-achievementbadges-achievement-hint}}",
+	"achievementbadges-achievement-description-upload-file": "{{doc-achievementbadges-achievement-description}}"
 }

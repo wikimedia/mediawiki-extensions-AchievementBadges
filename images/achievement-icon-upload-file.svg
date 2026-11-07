@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512">
+	<defs>
+		<filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+			<feDropShadow dx="0" dy="8" flood-color="#2E2670" flood-opacity=".45" stdDeviation="8"/>
+		</filter>
+	</defs>
+	<rect width="100%" height="100%" fill="#ACA6E4"/>
+	<circle cx="256" cy="256" r="220" fill="#C7C1F0" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="180" fill="#8E83DD" filter="url(#shadow)"/>
+	<circle cx="256" cy="256" r="140" fill="#5144A3" filter="url(#shadow)"/>
+	<g filter="url(#shadow)">
+		<rect width="176" height="140" x="168" y="174" fill="#FFF" rx="14"/>
+		<rect width="152" height="96" x="180" y="186" fill="#9ED2F5" rx="6"/>
+		<circle cx="296" cy="214" r="14" fill="#FFD45C"/>
+		<path fill="#8FE3C8" d="M180 282l46-56 34 38 22-22 50 40z"/>
+		<circle cx="320" cy="314" r="38" fill="#F49AB8"/>
+		<path fill="#FFF" d="M320 290l22 24h-14v22h-16v-22h-14z"/>
+	</g>
+</svg>

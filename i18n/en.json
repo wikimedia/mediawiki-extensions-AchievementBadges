@@ -130,5 +130,8 @@
 	"achievementbadges-achievement-description-watch-page": "{{GENDER:$1|You}} added a page to {{GENDER:$1|your}} watchlist.",
 	"achievementbadges-achievement-name-dark-mode": "Night owl",
 	"achievementbadges-achievement-hint-dark-mode": "{{GENDER:$1|Try}} the dark mode.",
-	"achievementbadges-achievement-description-dark-mode": "{{GENDER:$1|You}} turned on the dark mode."
+	"achievementbadges-achievement-description-dark-mode": "{{GENDER:$1|You}} turned on the dark mode.",
+	"achievementbadges-achievement-name-upload-file": "Picture this",
+	"achievementbadges-achievement-hint-upload-file": "{{GENDER:$1|Upload}} a file.",
+	"achievementbadges-achievement-description-upload-file": "{{GENDER:$1|You}} uploaded a file."
 }

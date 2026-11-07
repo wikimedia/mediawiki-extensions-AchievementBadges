@@ -10,6 +10,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 - Each built-in achievement has its own icon now, and the fallback icon is redrawn in the same style. `$wgAchievementBadgesAchievementFallbackIcon` is used only for achievements without an icon.
 - New achievement for watching a page from the watch star or other API calls. Pages watched while editing do not count.
 - New achievement for turning on the dark mode of the DarkMode extension. It is available only when DarkMode is installed.
+- New achievement for uploading a file. It is available only when `$wgEnableUploads` is on.
 
 ## v0.3.1
 

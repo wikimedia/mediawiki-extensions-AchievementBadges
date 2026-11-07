@@ -101,6 +101,9 @@ final class Constants {
 	/** @var string */
 	public const ACHV_KEY_DARK_MODE = 'dark-mode';
 
+	/** @var string */
+	public const ACHV_KEY_UPLOAD_FILE = 'upload-file';
+
 	/** This class is for namespacing constants only. Forbid construction.
 	 * @return never
 	 * @throws FatalError

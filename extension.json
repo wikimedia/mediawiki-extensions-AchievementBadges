@@ -27,6 +27,7 @@
 		"SpecialAchievementsBeforeGetEarned": "AchievementRegister",
 		"UserSaveSettings": "AchievementRegister",
 		"SaveUserOptions": "AchievementRegister",
+		"UploadComplete": "AchievementRegister",
 		"ChangeTagsAfterUpdateTags": "AchievementRegister"
 	},
 	"ExtensionFunctions": [

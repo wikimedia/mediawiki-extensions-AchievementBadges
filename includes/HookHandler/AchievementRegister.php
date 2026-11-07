@@ -6,9 +6,11 @@ use ApiBase;
 use Config;
 use DeferredUpdates;
 use ExtensionRegistry;
+use File;
 use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Storage\EditResult;
@@ -30,6 +32,7 @@ class AchievementRegister implements
 	\MediaWiki\Hook\UserEditCountUpdateHook,
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\User\Options\Hook\SaveUserOptionsHook,
+	\MediaWiki\Upload\Hook\UploadCompleteHook,
 	\MediaWiki\User\Hook\UserSaveSettingsHook
 {
 	private Config $config;
@@ -135,6 +138,12 @@ class AchievementRegister implements
 				'priority' => 500,
 			] + $this->getImages( Constants::ACHV_KEY_DARK_MODE );
 		}
+		if ( $config->get( MainConfigNames::EnableUploads ) ) {
+			$achievements[Constants::ACHV_KEY_UPLOAD_FILE] = [
+				'type' => 'instant',
+				'priority' => 500,
+			] + $this->getImages( Constants::ACHV_KEY_UPLOAD_FILE );
+		}
 	}
 
 	/**
@@ -203,6 +212,30 @@ class AchievementRegister implements
 				'user' => $user,
 			] );
 		}
+	}
+
+	/**
+	 * Gives the upload achievement for a file uploaded from Special:Upload or the upload API,
+	 * which UploadWizard uses.
+	 *
+	 * @inheritDoc
+	 */
+	public function onUploadComplete( $uploadBase ) {
+		$registry = $this->config->get( Constants::CONFIG_KEY_ACHIEVEMENTS );
+		if ( !isset( $registry[Constants::ACHV_KEY_UPLOAD_FILE] ) ) {
+			return;
+		}
+		$uploader = $uploadBase->getLocalFile()->getUploader( File::RAW );
+		if ( !$uploader || !$uploader->isRegistered() ) {
+			return;
+		}
+		$user = $this->userFactory->newFromUserIdentity( $uploader );
+		DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
+			Achievement::achieve( [
+				'key' => Constants::ACHV_KEY_UPLOAD_FILE,
+				'user' => $user,
+			] );
+		} );
 	}
 
 	/**
