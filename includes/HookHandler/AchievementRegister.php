@@ -68,56 +68,70 @@ class AchievementRegister implements
 			$achievements[Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES] = [
 				'type' => 'instant',
 				'priority' => 0,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_ENABLE_ACHIEVEMENT_BADGES );
 		} elseif ( $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_WELCOME ) ) {
 			$achievements[Constants::ACHV_KEY_SIGN_UP] = [
 				'type' => 'instant',
 				'priority' => 0,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_SIGN_UP );
 		}
 		if ( $config->get( Constants::CONFIG_KEY_REPLACE_ECHO_THANK_YOU_EDIT ) ) {
 			$achievements[Constants::ACHV_KEY_EDIT_PAGE] = [
 				'type' => 'stats',
 				'thresholds' => [ 1, 10, 100, 1000, 10000 ],
 				'priority' => 200,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_EDIT_PAGE );
 		}
 		$achievements[Constants::ACHV_KEY_LONG_USER_PAGE] = [
 			'type' => 'instant',
 			'priority' => 100,
-		];
+		] + $this->getImages( Constants::ACHV_KEY_LONG_USER_PAGE );
 		$achievements[Constants::ACHV_KEY_EDIT_SIZE] = [
 			'type' => 'stats',
 			'thresholds' => [ 1000, 5000, 10000, 50000, 100000 ],
 			'priority' => 300,
-		];
+		] + $this->getImages( Constants::ACHV_KEY_EDIT_SIZE );
 		$achievements[Constants::ACHV_KEY_CREATE_PAGE] = [
 			'type' => 'stats',
 			'thresholds' => [ 1, 5, 30, 100, 300, 1000 ],
 			'priority' => 300,
-		];
+		] + $this->getImages( Constants::ACHV_KEY_CREATE_PAGE );
 		foreach ( self::WEEKDAYS as $weekday ) {
 			$achievements[$weekday] = [
 				'type' => 'instant',
 				'priority' => 500,
-			];
+			] + $this->getImages( $weekday );
 		}
 		if ( $this->isVisualEditorTagUsed() ) {
 			$achievements[Constants::ACHV_KEY_VISUAL_EDIT] = [
 				'type' => 'instant',
 				'priority' => 400,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_VISUAL_EDIT );
 		}
 		if ( self::isThanksEnabled() ) {
 			$achievements[Constants::ACHV_KEY_THANKS] = [
 				'type' => 'instant',
 				'priority' => 500,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_THANKS );
 			$achievements[Constants::ACHV_KEY_BE_THANKED] = [
 				'type' => 'instant',
 				'priority' => 500,
-			];
+			] + $this->getImages( Constants::ACHV_KEY_BE_THANKED );
 		}
+	}
+
+	/**
+	 * Returns the images of a built-in achievement. Most social media do not show an SVG as
+	 * a preview image, so the Open Graph image is the fallback one.
+	 *
+	 * @param string $key
+	 * @return array
+	 */
+	private function getImages( string $key ): array {
+		return [
+			'icon' => "extensions/AchievementBadges/images/achievement-icon-$key.svg",
+			'og-image' => $this->config->get( Constants::CONFIG_KEY_ACHIEVEMENT_FALLBACK_OG_IMAGE ),
+		];
 	}
 
 	private function isVisualEditorTagUsed(): bool {
