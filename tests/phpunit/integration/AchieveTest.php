@@ -7,6 +7,7 @@ use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\Extension\Notifications\Mapper\NotificationMapper;
 use MediaWikiIntegrationTestCase;
 use User;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group AchievementBadges
@@ -195,6 +196,32 @@ class AchieveTest extends MediaWikiIntegrationTestCase {
 		$this->assertNotificationForAchievement( true, $user, Constants::ACHV_KEY_EDIT_SIZE . '-4',
 			"All edit-size-4 should be achieved" );
 		$this->assertEarnedAchievement( 5, $user, Constants::ACHV_KEY_EDIT_SIZE );
+	}
+
+	public function testWeekdayFromSecondDay() {
+		$this->overrideConfigValues( [
+			Constants::CONFIG_KEY_ACHIEVEMENTS => [
+				Constants::ACHV_KEY_CONTRIBS_MONDAY => [ 'type' => 'instant' ],
+				Constants::ACHV_KEY_CONTRIBS_TUESDAY => [ 'type' => 'instant' ],
+			],
+			'LocalTZoffset' => 0,
+		] );
+
+		// Monday
+		ConvertibleTimestamp::setFakeTime( '20261102120000' );
+		$user = new User();
+		$user->setName( __METHOD__ );
+		$user->addToDatabase();
+
+		$this->editPage( __METHOD__, 'lorem', '', NS_MAIN, $user );
+		ConvertibleTimestamp::setFakeTime( '20261102130000' );
+		$this->editPage( __METHOD__, 'lorem ipsum', '', NS_MAIN, $user );
+		$this->assertEarnedAchievement( 0, $user, Constants::ACHV_KEY_CONTRIBS_MONDAY );
+
+		// Tuesday
+		ConvertibleTimestamp::setFakeTime( '20261103120000' );
+		$this->editPage( __METHOD__, 'lorem ipsum dolor', '', NS_MAIN, $user );
+		$this->assertEarnedAchievement( 1, $user, Constants::ACHV_KEY_CONTRIBS_TUESDAY );
 	}
 
 	public function testLongUserPage() {

@@ -12,6 +12,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
@@ -34,6 +35,7 @@ class AchievementRegister implements
 	private Config $config;
 	private IConnectionProvider $dbProvider;
 	private RevisionStore $revisionStore;
+	private UserEditTracker $userEditTracker;
 	private UserFactory $userFactory;
 	private UserOptionsLookup $userOptionsLookup;
 
@@ -41,12 +43,14 @@ class AchievementRegister implements
 		Config $config,
 		IConnectionProvider $dbProvider,
 		RevisionStore $revisionStore,
+		UserEditTracker $userEditTracker,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
 		$this->dbProvider = $dbProvider;
 		$this->revisionStore = $revisionStore;
+		$this->userEditTracker = $userEditTracker;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
@@ -287,11 +291,20 @@ class AchievementRegister implements
 		// Set user's timezone!
 		$userTimestamp = MWTimestamp::getInstance( $revisionRecord->getTimestamp() );
 		$userTimestamp->offsetForUser( $user );
-		$weekday = (int)$userTimestamp->format( 'w' );
-		Achievement::achieve( [
-			'key' => self::WEEKDAYS[$weekday],
-			'user' => $user,
-		] );
+		// Weekday badges start from the second day the user edits, so that the first
+		// edit does not earn a weekday badge along with the other first-edit badges.
+		$firstEdit = $this->userEditTracker->getFirstEditTimestamp( $user );
+		if ( $firstEdit !== false ) {
+			$firstEditTimestamp = MWTimestamp::getInstance( $firstEdit );
+			$firstEditTimestamp->offsetForUser( $user );
+			if ( $firstEditTimestamp->format( 'Ymd' ) !== $userTimestamp->format( 'Ymd' ) ) {
+				$weekday = (int)$userTimestamp->format( 'w' );
+				Achievement::achieve( [
+					'key' => self::WEEKDAYS[$weekday],
+					'user' => $user,
+				] );
+			}
+		}
 
 		$dbr = $this->dbProvider->getReplicaDatabase();
 

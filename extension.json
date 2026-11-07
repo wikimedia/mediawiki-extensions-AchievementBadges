@@ -50,6 +50,7 @@
 				"MainConfig",
 				"ConnectionProvider",
 				"RevisionStore",
+				"UserEditTracker",
 				"UserFactory",
 				"UserOptionsLookup"
 			]
