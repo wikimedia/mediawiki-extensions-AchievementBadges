@@ -4,44 +4,29 @@
  * https://www.mediawiki.org/wiki/Manual:Coding_conventions/SVG#Exemplified_safe_configuration
  */
 'use strict';
-const { extendDefaultPlugins } = require( 'svgo' );
 module.exports = {
 	multipass: true,
-	plugins: extendDefaultPlugins( [
+	plugins: [
 		{
-			name: 'cleanupIDs',
-			active: false
+			name: 'preset-default',
+			params: {
+				overrides: {
+					cleanupIds: false,
+					removeDesc: false,
+					removeTitle: false,
+					removeViewBox: false,
+					// If the SVG doesn't start with an XML declaration, then its MIME type will
+					// be detected as "text/plain" rather than "image/svg+xml" by libmagic and,
+					// consequently, MediaWiki's CSSMin CSS minifier. libmagic's default database
+					// currently requires that SVGs contain an XML declaration:
+					// https://github.com/threatstack/libmagic/blob/master/magic/Magdir/sgml#L5
+					removeXMLProcInst: false
+				}
+			}
 		},
-		{
-			name: 'removeDesc',
-			active: false
-		},
-		{
-			name: 'removeRasterImages',
-			active: true
-		},
-		{
-			name: 'removeTitle',
-			active: false
-		},
-		{
-			name: 'removeViewBox',
-			active: false
-		},
-		{
-			// If the SVG doesn't start with an XML declaration, then its MIME type will
-			// be detected as "text/plain" rather than "image/svg+xml" by libmagic and,
-			// consequently, MediaWiki's CSSMin CSS minifier. libmagic's default database
-			// currently requires that SVGs contain an XML declaration:
-			// https://github.com/threatstack/libmagic/blob/master/magic/Magdir/sgml#L5
-			name: 'removeXMLProcInst',
-			active: false
-		},
-		{
-			name: 'sortAttrs',
-			active: true
-		}
-	] ),
+		'removeRasterImages',
+		'sortAttrs'
+	],
 	// Configure the indent (default 4 spaces) used by `--pretty` here:
 	// @see https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options
 	//
