@@ -92,6 +92,9 @@ final class Constants {
 	/** @var string */
 	public const ACHV_KEY_BE_THANKED = 'be-thanked';
 
+	/** @var string */
+	public const ACHV_KEY_WATCH_PAGE = 'watch-page';
+
 	/** This class is for namespacing constants only. Forbid construction.
 	 * @return never
 	 * @throws FatalError

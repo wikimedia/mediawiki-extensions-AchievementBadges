@@ -132,5 +132,8 @@
 	"achievementbadges-achievement-description-thanks": "{{doc-achievementbadges-achievement-description}}",
 	"achievementbadges-achievement-name-be-thanked": "{{doc-achievementbadges-achievement-name}}",
 	"achievementbadges-achievement-hint-be-thanked": "{{doc-achievementbadges-achievement-hint}}",
-	"achievementbadges-achievement-description-be-thanked": "{{doc-achievementbadges-achievement-description}}"
+	"achievementbadges-achievement-description-be-thanked": "{{doc-achievementbadges-achievement-description}}",
+	"achievementbadges-achievement-name-watch-page": "{{doc-achievementbadges-achievement-name}}",
+	"achievementbadges-achievement-hint-watch-page": "{{doc-achievementbadges-achievement-hint}}",
+	"achievementbadges-achievement-description-watch-page": "{{doc-achievementbadges-achievement-description}}"
 }

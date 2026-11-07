@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AchievementBadges\HookHandler;
 
+use ApiBase;
 use Config;
 use DeferredUpdates;
 use ExtensionRegistry;
@@ -118,6 +119,10 @@ class AchievementRegister implements
 				'priority' => 500,
 			] + $this->getImages( Constants::ACHV_KEY_BE_THANKED );
 		}
+		$achievements[Constants::ACHV_KEY_WATCH_PAGE] = [
+			'type' => 'instant',
+			'priority' => 500,
+		] + $this->getImages( Constants::ACHV_KEY_WATCH_PAGE );
 	}
 
 	/**
@@ -310,7 +315,12 @@ class AchievementRegister implements
 
 	/** @inheritDoc */
 	public function onAPIAfterExecute( $module ) {
-		if ( $module->getModuleName() !== 'thank' ) {
+		$moduleName = $module->getModuleName();
+		if ( $moduleName === 'watch' ) {
+			$this->checkWatchAchievement( $module );
+			return;
+		}
+		if ( $moduleName !== 'thank' ) {
 			return;
 		}
 		$user = $module->getUser();
@@ -332,5 +342,31 @@ class AchievementRegister implements
 			'key' => Constants::ACHV_KEY_BE_THANKED,
 			'user' => $recipient,
 		] );
+	}
+
+	/**
+	 * Watching a page from the watch star calls the watch API module. Pages watched
+	 * because of an edit do not count, as an edit does not call this module.
+	 *
+	 * @param ApiBase $module
+	 */
+	private function checkWatchAchievement( ApiBase $module ): void {
+		$user = $module->getUser();
+		if ( !$user->isNamed() ) {
+			return;
+		}
+		$results = $module->getResult()->getResultData( [ 'watch' ], [ 'Strip' => 'all' ] );
+		if ( !is_array( $results ) ) {
+			return;
+		}
+		foreach ( $results as $result ) {
+			if ( is_array( $result ) && !empty( $result['watched'] ) ) {
+				Achievement::achieve( [
+					'key' => Constants::ACHV_KEY_WATCH_PAGE,
+					'user' => $user,
+				] );
+				return;
+			}
+		}
 	}
 }

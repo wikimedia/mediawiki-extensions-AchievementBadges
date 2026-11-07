@@ -8,6 +8,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 - Remove AddThis.
 - Stop loading the Facebook JavaScript SDK on Special:ShareAchievement. The Facebook share link still works as a plain link.
 - Each built-in achievement has its own icon now, and the fallback icon is redrawn in the same style. `$wgAchievementBadgesAchievementFallbackIcon` is used only for achievements without an icon.
+- New achievement for watching a page from the watch star or other API calls. Pages watched while editing do not count.
 
 ## v0.3.1
 
