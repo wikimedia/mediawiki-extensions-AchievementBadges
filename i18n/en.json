@@ -22,6 +22,7 @@
 	"special-shareachievement-external-description": "$1 just {{GENDER:$1|earned}} the achievement $2 at {{SITENAME}}!",
 	"special-shareachievement-header-share": "Share",
 	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-share": "Share",
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "I just {{GENDER:$1|earned}} the $2 achievement at {{SITENAME}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 just {{GENDER:$1|earned}} the $2 achievement at {{SITENAME}}! $3",

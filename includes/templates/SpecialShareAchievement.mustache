@@ -5,7 +5,7 @@
 <h3 class="share-achievement">{{text-share-header}}</h2>
 <ul class="share-media">
   {{#data-share}}<li>
-    <a id="{{text-id}}" href="{{text-url}}" target="_blank"><span>{{text-text}}</span></a>
+    <a id="{{text-id}}" href="{{text-url}}"{{#bool-new-window}} target="_blank"{{/bool-new-window}}{{#text-share-text}} data-share-text="{{.}}"{{/text-share-text}}><span>{{text-text}}</span></a>
   </li>{{/data-share}}
 </ul>
 {{#text-suggestion}}<div class="achievement-suggestion">{{{.}}}</div>{{/text-suggestion}}

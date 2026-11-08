@@ -30,6 +30,7 @@
 	"special-shareachievement-external-description": "This is used as a Open Graph description.",
 	"special-shareachievement-header-share": "This is a label is used as a header in [[Special:ShareAchievement]].\n\nParameters:\n* $1 - the name of the user who earn the achievement\n\n{{identical|Share}}",
 	"special-shareachievement-item-facebook": "This is a label for a link for sharing.\n{{identical|Facebook}}",
+	"special-shareachievement-item-share": "This is a label for a link that opens the share sheet of the browser.\n{{Identical|Share}}",
 	"special-shareachievement-item-twitter": "This is a label for a link for sharing.",
 	"special-shareachievement-tweet": "This is used to send a new tweet.\n* $1 - user's name\n* $2 - the name of the obtained achievement\n* $3 - URL to the achievement page",
 	"special-shareachievement-tweet-viewer": "This is used to send a new tweet that is obtained by other than the user who tweets.\n* $1 - user's name\n* $2 - the name of the obtained achievement\n* $3 - URL to the achievement page",

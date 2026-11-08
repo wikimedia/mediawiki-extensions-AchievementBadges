@@ -190,6 +190,27 @@ class SpecialShareAchievement extends SpecialPage {
 		$obtainer = $this->obtainer;
 
 		$titleUrl = $this->getUrlForShare();
+		$tweet = $obtainer->equals( $this->viewer )
+			? 'special-shareachievement-tweet'
+			: 'special-shareachievement-tweet-viewer';
+
+		// MediaWiki 1.47 added share() to mediawiki.page.ready, which opens the
+		// browser's share sheet. It reaches any app the reader has, so it replaces
+		// the per-service links.
+		if ( version_compare( MW_VERSION, '1.47', '>=' ) ) {
+			$this->getOutput()->addModules( 'ext.achievementbadges.special.shareachievement' );
+			$text = $this->msg( $tweet )
+				->plaintextParams( $obtainer->getName() )
+				->plaintextParams( $this->achvNameMsg->text() )
+				->plaintextParams( '' )
+				->text();
+			return [ [
+				'text-id' => 'share-achievement-share',
+				'text-text' => $this->msg( 'special-shareachievement-item-share' ),
+				'text-url' => $titleUrl,
+				'text-share-text' => trim( $text ),
+			] ];
+		}
 
 		$share = [];
 		$facebookAppId = $config->get( Constants::CONFIG_KEY_FACEBOOK_APP_ID );
@@ -200,14 +221,11 @@ class SpecialShareAchievement extends SpecialPage {
 				'&href=' . urlencode( $titleUrl );
 			$share[] = [
 				'text-id' => 'share-achievement-facebook',
+				'bool-new-window' => true,
 				'text-text' => $this->msg( 'special-shareachievement-item-facebook' ),
 				'text-url' => $url,
 			];
 		}
-		$tweet = $obtainer->equals( $this->viewer )
-			? 'special-shareachievement-tweet'
-			: 'special-shareachievement-tweet-viewer';
-
 		$tweet = $this->msg( $tweet );
 		$tweet = $tweet->plaintextParams( $obtainer->getName() )
 			->plaintextParams( $this->achvNameMsg->text() )
@@ -216,6 +234,7 @@ class SpecialShareAchievement extends SpecialPage {
 		$tweetUrl = 'https://twitter.com/intent/tweet?text=' . urlencode( $tweet );
 		$share[] = [
 			'text-id' => 'share-achievement-twitter',
+				'bool-new-window' => true,
 			'text-text' => $this->msg( 'special-shareachievement-item-twitter' ),
 			'text-url' => $tweetUrl,
 		];

@@ -85,6 +85,10 @@
 		"ext.achievementbadges.special.achievements.styles": {
 			"styles": [ "styles/spacial-achievements.less" ]
 		},
+		"ext.achievementbadges.special.shareachievement": {
+			"packageFiles": [ "ext.achievementbadges.special.shareachievement.js" ],
+			"dependencies": [ "mediawiki.page.ready" ]
+		},
 		"ext.achievementbadges.special.shareachievement.styles": {
 			"styles": [ "styles/spacial-shareachievement.less" ]
 		},

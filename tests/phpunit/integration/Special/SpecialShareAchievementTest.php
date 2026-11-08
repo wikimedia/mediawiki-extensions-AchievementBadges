@@ -58,6 +58,21 @@ class SpecialShareAchievementTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'special-shareachievement-message', $html );
 	}
 
+	public function testShareLinks() {
+		$key = 'share-badge3';
+		$id = $this->getAchievedUserId( $key );
+
+		[ $html, ] = $this->executeSpecialPage( base64_encode( "$id/$key" ), null, 'qqx' );
+		if ( version_compare( MW_VERSION, '1.47', '>=' ) ) {
+			$this->assertStringContainsString( 'id="share-achievement-share"', $html );
+			$this->assertStringContainsString( 'data-share-text="', $html );
+			$this->assertStringNotContainsString( 'twitter.com', $html );
+		} else {
+			$this->assertStringContainsString( 'twitter.com/intent/tweet', $html );
+			$this->assertStringNotContainsString( 'id="share-achievement-share"', $html );
+		}
+	}
+
 	public function testMetaTags() {
 		$key = 'share-badge2';
 		$id = $this->getAchievedUserId( $key );
