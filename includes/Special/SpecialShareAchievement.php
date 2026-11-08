@@ -209,6 +209,7 @@ class SpecialShareAchievement extends SpecialPage {
 				'text-text' => $this->msg( 'special-shareachievement-item-share' ),
 				'text-url' => $titleUrl,
 				'text-share-text' => trim( $text ),
+				'bool-primary' => true,
 			] ];
 		}
 

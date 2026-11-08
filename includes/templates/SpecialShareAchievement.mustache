@@ -1,11 +1,16 @@
-<div class="message">{{{text-message}}}</div>
-<div class="achievement-name">{{text-name}}</div>
-<img class="achievement-icon" src="{{text-icon}}" alt="">
-<div class="achievement-description">{{{text-description}}}</div>
-<h3 class="share-achievement">{{text-share-header}}</h2>
-<ul class="share-media">
-  {{#data-share}}<li>
-    <a id="{{text-id}}" href="{{text-url}}"{{#bool-new-window}} target="_blank"{{/bool-new-window}}{{#text-share-text}} data-share-text="{{.}}"{{/text-share-text}}><span>{{text-text}}</span></a>
-  </li>{{/data-share}}
-</ul>
-{{#text-suggestion}}<div class="achievement-suggestion">{{{.}}}</div>{{/text-suggestion}}
+<div class="ext-achievementbadges-share">
+  <div class="ext-achievementbadges-share-card">
+    <div class="ext-achievementbadges-share-message">{{{text-message}}}</div>
+    <img class="ext-achievementbadges-share-icon" src="{{text-icon}}" alt="">
+    <div class="ext-achievementbadges-share-name">{{text-name}}</div>
+    <div class="ext-achievementbadges-share-description">{{{text-description}}}</div>
+    <div class="ext-achievementbadges-share-buttons" role="group" aria-label="{{text-share-header}}">
+      {{#data-share}}<a id="{{text-id}}" href="{{text-url}}"
+        class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--size-large{{#bool-primary}} cdx-button--action-progressive cdx-button--weight-primary{{/bool-primary}}"
+        {{#bool-new-window}} target="_blank"{{/bool-new-window}}{{#text-share-text}} data-share-text="{{.}}"{{/text-share-text}}>
+        {{#bool-primary}}<span class="cdx-button__icon ext-achievementbadges-share-button-icon" aria-hidden="true"></span>{{/bool-primary}}{{text-text}}
+      </a>{{/data-share}}
+    </div>
+    {{#text-suggestion}}<div class="ext-achievementbadges-share-suggestion">{{{.}}}</div>{{/text-suggestion}}
+  </div>
+</div>

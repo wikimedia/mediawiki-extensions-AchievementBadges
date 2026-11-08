@@ -90,6 +90,9 @@
 			"dependencies": [ "mediawiki.page.ready" ]
 		},
 		"ext.achievementbadges.special.shareachievement.styles": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexStyleOnly": true,
+			"codexComponents": [ "CdxButton" ],
 			"styles": [ "styles/spacial-shareachievement.less" ]
 		},
 		"ext.achievementbadges.dm": {

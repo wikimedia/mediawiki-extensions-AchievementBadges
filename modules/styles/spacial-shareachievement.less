@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 @keyframes coloring {
 	0%,
 	10% {
@@ -11,60 +13,67 @@
 	}
 }
 
-.message {
-	text-align: center;
-	font-weight: normal;
-	font-size: 1.3em;
-	margin: 1.5rem 0;
+.ext-achievementbadges-share {
+	padding: @spacing-100 0;
 }
 
-.achievement-name {
+.ext-achievementbadges-share-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 28rem;
+	margin: 0 auto;
+	border: @border-width-base @border-style-base @border-color-subtle;
+	border-radius: @border-radius-base;
+	overflow: hidden;
+	padding: 0 @spacing-150 @spacing-150;
+	background-color: @background-color-base;
+	box-shadow: @box-shadow-medium;
 	text-align: center;
-	font-weight: bold;
-	border: none;
-	font-size: 1.6em;
-	margin: 0;
 }
 
-.achievement-icon {
-	display: block;
-	width: 5.5em;
-	margin: 2em auto;
+.ext-achievementbadges-share-message {
+	// A band behind the upper half of the medal
+	align-self: stretch;
+	margin: 0 -@spacing-150;
+	padding: @spacing-150 @spacing-100 6.5em;
+	background-color: @background-color-progressive-subtle;
+	color: @color-emphasized;
+	font-weight: @font-weight-bold;
+}
+
+.ext-achievementbadges-share-icon {
+	width: 9em;
+	height: auto;
+	margin-top: -5.5em;
+	border-radius: @border-radius-circle;
+	box-shadow: 0 0 0 0.4em @background-color-base, @box-shadow-large;
 	animation: coloring 2s forwards;
 }
 
-.achievement-description {
-	text-align: center;
-	max-width: 20em;
-	margin: auto;
+.ext-achievementbadges-share-name {
+	margin: @spacing-200 0 @spacing-50;
+	font-size: 1.6em;
+	font-weight: @font-weight-bold;
+	line-height: @line-height-small;
 }
 
-.share-achievement {
-	text-align: center;
-	font-weight: normal;
-	margin: 3em 0 1em;
+.ext-achievementbadges-share-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: @spacing-50;
+	margin-top: @spacing-150;
 }
 
-.share-media {
-	list-style-type: none;
-	padding: 0;
-	text-align: center;
-
-	li {
-		display: inline-block;
-		border-radius: 1.5em;
-
-		&:not( :last-child ) {
-			margin-right: 0.5em;
-		}
-	}
+.ext-achievementbadges-share-button-icon {
+	.cdx-mixin-css-icon( @cdx-icon-share, @param-is-button-icon: true );
 }
 
-.addthis_inline_share_toolbox {
-	text-align: center;
-}
-
-.achievement-suggestion {
-	margin-top: 3em;
-	text-align: center;
+.ext-achievementbadges-share-suggestion {
+	align-self: stretch;
+	margin-top: @spacing-150;
+	border-top: @border-width-base @border-style-base @border-color-muted;
+	padding-top: @spacing-100;
+	color: @color-subtle;
 }
