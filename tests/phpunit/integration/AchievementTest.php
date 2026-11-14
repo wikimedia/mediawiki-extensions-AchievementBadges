@@ -7,6 +7,8 @@ use MediaWiki\Extension\AchievementBadges\Achievement;
 use MediaWiki\Extension\AchievementBadges\AchievementManager;
 use MediaWiki\Extension\AchievementBadges\Constants;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use User;
@@ -19,6 +21,7 @@ use User;
  * @covers \MediaWiki\Extension\AchievementBadges\AchievementManager
  */
 class AchievementTest extends MediaWikiIntegrationTestCase {
+	use TempUserTestTrait;
 
 	/** @inheritDoc */
 	protected function setUp(): void {
@@ -47,6 +50,12 @@ class AchievementTest extends MediaWikiIntegrationTestCase {
 			'Every user can use AB where wiki uses AB as a default' );
 		$this->assertTrue( $this->getManager()->canEarn( $anon ),
 			'A anonymous user can use AB where wiki uses AB as a default' );
+
+		$this->enableAutoCreateTempUser();
+		$tempUser = $this->getServiceContainer()->getTempUserCreator()
+			->create( null, new FauxRequest() )->getUser();
+		$this->assertFalse( $this->getManager()->canEarn( $tempUser ),
+			'A temporary account cannot use AB' );
 
 		$this->overrideConfigValue( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE, true );
 		$this->assertFalse( $this->getManager()->canEarn( $user ),

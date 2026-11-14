@@ -123,6 +123,10 @@ class AchievementManager {
 		if ( $user->isSystemUser() ) {
 			return false;
 		}
+		// A temporary account is not carried over when its owner signs up
+		if ( $user->isTemp() ) {
+			return false;
+		}
 		if ( !$this->config->get( Constants::CONFIG_KEY_ENABLE_BETA_FEATURE ) ) {
 			// If AchievementBadges is not a beta feature, it is available to everyone.
 			return true;
