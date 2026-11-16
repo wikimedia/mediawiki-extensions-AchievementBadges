@@ -26,6 +26,7 @@
 	"special-shareachievement-external-description": "$1 właśnie {{GENDER:$1|zdobył|zdobyła}} osiągniecie $2 na {{SITENAME}}!",
 	"special-shareachievement-header-share": "Podziel się",
 	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-share": "Udostępnij",
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Właśnie {{GENDER:$1|zdobyłem|zdobyłam}} osiągnięcie $2 na {{SITENAME}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 właśnie {{GENDER:$1|zdobył|zdobyła}} osiągnięcie $2 na {{SITENAME}}! $3",
@@ -121,12 +122,15 @@
 	"achievementbadges-achievement-hint-contribs-friday": "Współtwórz w Piątek.",
 	"achievementbadges-achievement-description-contribs-friday": "{{GENDER:$1|Współtworzyłeś|Współtworzyłaś}} w Piątek!",
 	"achievementbadges-achievement-name-contribs-saturday": "Jest Sobota!",
-	"achievementbadges-achievement-hint-contribs-saturday": "Współtwórz w Sobotę.",
+	"achievementbadges-achievement-hint-contribs-saturday": "Wnieś swój wkład w sobotę następującą po dniu pierwszej edycji",
 	"achievementbadges-achievement-description-contribs-saturday": "{{GENDER:$1|Współtworzyłeś|Współtworzyłaś}} w Sobotę!",
 	"achievementbadges-achievement-name-thanks": "Dzięki!",
 	"achievementbadges-achievement-hint-thanks": "Zawsze jest coś, za co można być wdzięcznym.",
 	"achievementbadges-achievement-description-thanks": "Podziękowałeś komuś za edycję.",
 	"achievementbadges-achievement-name-be-thanked": "Dzień wdzięczności",
 	"achievementbadges-achievement-hint-be-thanked": "Kontynuuj {{GENDER:$1|edycję}}.",
-	"achievementbadges-achievement-description-be-thanked": "Ktoś podziękował {{GENDER:$1|Ci}} za edycję."
+	"achievementbadges-achievement-description-be-thanked": "Ktoś podziękował {{GENDER:$1|Ci}} za edycję.",
+	"achievementbadges-achievement-name-dark-mode": "Nocny marek",
+	"achievementbadges-achievement-description-dark-mode": "{{GENDER:$1|Włączyłeś|Włączyłaś|Udało Ci się włączyć}} tryb ciemny.",
+	"achievementbadges-achievement-hint-upload-file": "Czasami jeden obraz mówi więcej niż tysiąc słów."
 }

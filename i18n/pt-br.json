@@ -26,6 +26,7 @@
 	"special-shareachievement-external-description": "$1 acabou de {{GENDER:$1|ganhar}} a conquista $2 em {{SITENAME}}!",
 	"special-shareachievement-header-share": "Compartilhar",
 	"special-shareachievement-item-facebook": "Facebook",
+	"special-shareachievement-item-share": "Compartilhar",
 	"special-shareachievement-item-twitter": "Twitter",
 	"special-shareachievement-tweet": "Acabei de {{GENDER:$1|ganhar}} a conquista de $2 em {{SITENAME}}! $3",
 	"special-shareachievement-tweet-viewer": "$1 acabou de {{GENDER:$1|ganhar}} a conquista $2 em {{SITENAME}}! $3",
