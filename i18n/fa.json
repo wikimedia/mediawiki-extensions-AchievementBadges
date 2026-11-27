@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Darafsh"
+			"Darafsh",
+			"LProfo"
 		]
 	},
+	"special-shareachievement-header-share": "هم‌رسانی",
 	"special-shareachievement-item-twitter": "توییتر"
 }
